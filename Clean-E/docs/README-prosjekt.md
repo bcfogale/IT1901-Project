@@ -14,3 +14,5 @@ En app som håndterer rengjøringsoppgaver i form av en ukes kalender hvor oppga
 
 
 Bilder/Inspirasjon:
+
+![clean-E] (/prosjekt-images/cleanE-1.png)
