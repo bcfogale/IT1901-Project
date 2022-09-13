@@ -16,6 +16,7 @@ public class Task {
     
     public Task(User assignedUser, String taskName, int pointsValue, String dueDay) {
         this.assignedUser = assignedUser;
+        assignedUser.addTask(this); // Adds this task to the assigned users task list
         this.taskName = taskName;
         this.pointsValue = pointsValue;
         if (days.contains(dueDay.toLowerCase())) {
