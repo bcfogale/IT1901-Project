@@ -15,4 +15,6 @@ En app som håndterer rengjøringsoppgaver i form av en ukes kalender hvor oppga
 
 Bilder/Inspirasjon:
 
-https://gitlab.stud.idi.ntnu.no/it1901/groups-2022/gr2244/gr2244/-/raw/master/prosjekt-images/cleanE-1.png
+![image.png](./image.png)
+
+
