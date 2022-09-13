@@ -16,5 +16,3 @@ En app som håndterer rengjøringsoppgaver i form av en ukes kalender hvor oppga
 Bilder/Inspirasjon:
 
 ![image.png](./image.png)
-
-
