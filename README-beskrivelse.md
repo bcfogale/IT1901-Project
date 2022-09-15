@@ -1,3 +1,0 @@
-*En README.md-fil på rotnivå i kodelageret skal beskrive innholdet, spesielt hvilken mappe inni kodelageret som utgjør kodingsprosjektet.*
-
-
