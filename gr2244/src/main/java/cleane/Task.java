@@ -47,6 +47,12 @@ public class Task {
         return completed;
     }
 
+    public String getDueDay() {
+        return dueDay;
+    }
+
+    
+
     
 
     
