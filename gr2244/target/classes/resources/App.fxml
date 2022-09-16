@@ -98,7 +98,7 @@
                   <ImageView pickOnBounds="true" preserveRatio="true" />
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="130.0" text="New task" GridPane.columnIndex="1">
+            <Button mnemonicParsing="false" onAction="#handleNewTask" prefHeight="70.0" prefWidth="130.0" text="New task" GridPane.columnIndex="1">
                <graphic>
                   <ImageView pickOnBounds="true" preserveRatio="true" />
                </graphic>
