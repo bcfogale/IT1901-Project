@@ -9,7 +9,7 @@ public class FileManagement {
 
     
 
-    private void writeToFile(Leaderboard leaderboard) {
+    public void writeToFile(Leaderboard leaderboard) {
 
         
 
@@ -25,7 +25,7 @@ public class FileManagement {
         }
     }
 
-    private Leaderboard readFromFile() {
+    public Leaderboard readFromFile() {
         
 
         try {
