@@ -10,4 +10,9 @@ public class Leaderboard {
     public void sortList(){
         users.sort((u1, u2) -> u1.getPoints() - u2.getPoints());
     }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
 }
