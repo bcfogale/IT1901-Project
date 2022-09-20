@@ -11,13 +11,24 @@ public class CleanEController {
     private Leaderboard leaderboard;
     private Task task;
     private User user;
+    private FileManagement manager;
 
     @FXML
     private Button taskButton;
 
 
     @FXML
-    private ListView<Task> taskView;
+    private ListView<Task> monday, tuesday, wednesday, thursday, friday, saturday, sunday;
+
+
+    @FXML
+    private void initialize() {
+        try {
+            manager.readUser();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+    }
 
     @FXML
     private void handleNewTask() {
@@ -45,6 +56,10 @@ public class CleanEController {
         TextField dueDay = new TextField();
         dueDay.setPromptText("Due day");
         System.out.println("Due day for task was set to: " + dueDay);
+    }
+
+    private void updateListViews() {
+        monday = observablelist
     }
 
 }
