@@ -33,6 +33,15 @@ public class CleanEController {
         }
     }
 
+    private User userTextToObject(TextField userText){
+        for (User user : User.users) {
+            if (user.getName() == userText.getText()) {
+                return user;
+            }
+        }
+        return null;
+    }
+
     @FXML
     private void handleNewTask() {
         //selve dialogpane:
@@ -60,7 +69,9 @@ public class CleanEController {
         dueDay.setPromptText("Due day");
         System.out.println("Due day for task was set to: " + dueDay);
 
-        new Task(new User(assignedUser.getText()), taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
+        User user = userTextToObject(assignedUser);
+
+        new Task(user, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
 
         updateListViews();
     }
