@@ -1,5 +1,7 @@
 package cleane;
 
+import java.util.Iterator;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -21,6 +23,7 @@ public class CleanEController {
 
     @FXML
     private void handleNewTask() {
+
         //selve dialogpane:
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("New Task");
@@ -45,6 +48,19 @@ public class CleanEController {
         TextField dueDay = new TextField();
         dueDay.setPromptText("Due day");
         System.out.println("Due day for task was set to: " + dueDay);
+
+        //bruk prompts til å lage ny task:
+        Task task = new Task(assignedUser.getText(), taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
+        
+        // TODO: hjelpemetode for å sjekke om User allerede finnes
+/*         for (User user : users) {
+            if(user.getName().equals(assignedUser.getText())) {
+
+            } */
+            Iterator<User> userIterator = users.iterator();
+        }
     }
+
+    
 
 }
