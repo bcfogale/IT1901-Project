@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="cleanE.LeaderboardTest" time="0.012" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="cleanE.LeaderboardTest" time="0.019" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="NO"/>
     <property name="sun.boot.library.path" value="/Users/sanderslinning/.sdkman/candidates/java/17.0.1-tem/lib"/>
-    <property name="sun.java.command" value="/Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244/target/surefire/surefirebooter16415938205086243185.jar /Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244/target/surefire 2022-09-20T10-48-11_259-jvmRun1 surefire6885071599978633583tmp surefire_013947496673215160035tmp"/>
+    <property name="sun.java.command" value="/Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244/target/surefire/surefirebooter10433171169585290008.jar /Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244/target/surefire 2022-09-20T12-15-08_904-jvmRun1 surefire15252792422280014344tmp surefire_010278968899816690345tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244/target/test-classes:/Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244/target/classes:/Users/sanderslinning/.m2/repository/org/openjfx/javafx-controls/17.0.2/javafx-controls-17.0.2.jar:/Users/sanderslinning/.m2/repository/org/openjfx/javafx-controls/17.0.2/javafx-controls-17.0.2-mac-aarch64.jar:/Users/sanderslinning/.m2/repository/org/openjfx/javafx-graphics/17.0.2/javafx-graphics-17.0.2.jar:/Users/sanderslinning/.m2/repository/org/openjfx/javafx-graphics/17.0.2/javafx-graphics-17.0.2-mac-aarch64.jar:/Users/sanderslinning/.m2/repository/org/openjfx/javafx-base/17.0.2/javafx-base-17.0.2.jar:/Users/sanderslinning/.m2/repository/org/openjfx/javafx-base/17.0.2/javafx-base-17.0.2-mac-aarch64.jar:/Users/sanderslinning/.m2/repository/org/openjfx/javafx-fxml/17.0.2/javafx-fxml-17.0.2.jar:/Users/sanderslinning/.m2/repository/org/openjfx/javafx-fxml/17.0.2/javafx-fxml-17.0.2-mac-aarch64.jar:/Users/sanderslinning/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.7.2/junit-jupiter-api-5.7.2.jar:/Users/sanderslinning/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/sanderslinning/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/sanderslinning/.m2/repository/org/junit/platform/junit-platform-commons/1.7.2/junit-platform-commons-1.7.2.jar:/Users/sanderslinning/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.7.2/junit-jupiter-engine-5.7.2.jar:/Users/sanderslinning/.m2/repository/org/junit/platform/junit-platform-engine/1.7.2/junit-platform-engine-1.7.2.jar:/Users/sanderslinning/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.7.2/junit-jupiter-params-5.7.2.jar:/Users/sanderslinning/.m2/repository/org/testfx/testfx-core/4.0.16-alpha/testfx-core-4.0.16-alpha.jar:/Users/sanderslinning/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/sanderslinning/.m2/repository/org/assertj/assertj-core/3.13.2/assertj-core-3.13.2.jar:/Users/sanderslinning/.m2/repository/org/testfx/testfx-junit5/4.0.16-alpha/testfx-junit5-4.0.16-alpha.jar:/Users/sanderslinning/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -25,9 +25,9 @@
     <property name="basedir" value="/Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
-    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="/Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244/target/surefire/surefirebooter16415938205086243185.jar"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="surefire.real.class.path" value="/Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244/target/surefire/surefirebooter10433171169585290008.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.1+12"/>
     <property name="user.name" value="sanderslinning"/>
@@ -52,5 +52,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testConstructor" classname="cleanE.LeaderboardTest" time="0.01"/>
+  <testcase name="testConstructor" classname="cleanE.LeaderboardTest" time="0.016"/>
 </testsuite>
