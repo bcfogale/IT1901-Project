@@ -59,8 +59,14 @@ public class CleanEController {
         TextField dueDay = new TextField();
         dueDay.setPromptText("Due day");
         System.out.println("Due day for task was set to: " + dueDay);
+
+        new Task(new User(assignedUser.getText()), taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
+
+        updateListViews();
     }
 
+
+    @FXML
     private void updateListViews() {
 
         ObservableList<Task> monday = FXCollections.observableArrayList();
@@ -71,7 +77,7 @@ public class CleanEController {
         ObservableList<Task> saturday = FXCollections.observableArrayList();
         ObservableList<Task> sunday = FXCollections.observableArrayList();
 
-        
+
         for (User user : User.users) {
             for (Task task : user.getTasks()) {
                 
