@@ -55,7 +55,7 @@ public class FileManagement {
     }
 
     public Path getFolderPath() {
-        return Path.of(System.getProperty("user.home"), "resources");
+        return Path.of(System.getProperty("user.home"), "savestates");
     }
 
     
