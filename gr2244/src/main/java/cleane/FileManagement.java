@@ -4,12 +4,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class FileManagement {
 
-    public void writeUser(ArrayList<User> users) throws IOException {
+    public void writeUser(List<User> users) throws IOException {
         Files.createDirectories(getFolderPath());
         try(PrintWriter writer = new PrintWriter(getFilePath().toFile())){
             for (User user : users) {
@@ -56,6 +56,13 @@ public class FileManagement {
 
     public Path getFolderPath() {
         return Path.of(System.getProperty("user.home"), "savestates");
+    }
+
+    public static void main(String[] args) throws IOException {
+        User u = new User("SAndER");
+        u.addPoints(10);
+        FileManagement f = new FileManagement();
+        f.writeUser(User.users);
     }
 
     
