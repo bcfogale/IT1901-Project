@@ -29,14 +29,14 @@ public class FileManagement {
                 String scannedLine = scanner.nextLine();
                 if (scannedLine.substring(0, 1).equals("$")) {
                     String[] userProperties = scannedLine.split("&");
-                    String userID = userProperties[0];
+                    String userID = userProperties[0].substring(1);
                     int points = Integer.parseInt(userProperties[1]);
                     user = new User(userID);
                     user.addPoints(points);
                     
                 } else if (scannedLine.substring(0, 1).equals("¥")) {
                     String[] taskProperties = scannedLine.split("~");
-                    String taskName = taskProperties[0];
+                    String taskName = taskProperties[0].substring(1);
                     int pointsValue = Integer.parseInt(taskProperties[1]);
                     String dueDay = taskProperties[2];
 
@@ -59,10 +59,14 @@ public class FileManagement {
     }
 
     public static void main(String[] args) throws IOException {
-        User u = new User("SAndER");
-        u.addPoints(10);
         FileManagement f = new FileManagement();
-        f.writeUser(User.users);
+        f.readUser();
+        for (User user : User.users) {
+            for (Task task : user.getTasks()) {
+                System.out.println(task);
+            }
+            
+        }
     }
 
     
