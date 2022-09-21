@@ -71,7 +71,7 @@ public class CleanEController {
 
         User user = userTextToObject(assignedUser);
 
-        new Task(user, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
+        new Task(user, taskName.getText()  , Integer.parseInt(pointsValue.getText()), dueDay.getText());
 
         updateListViews();
     }

@@ -1,6 +1,6 @@
-cleane/CleanEApp.class
-cleane/Task.class
-cleane/CleanEController.class
-cleane/FileManagement.class
-cleane/User.class
-cleane/Leaderboard.class
+cleane\CleanEApp.class
+cleane\Task.class
+cleane\FileManagement.class
+cleane\CleanEController.class
+cleane\Leaderboard.class
+cleane\User.class
