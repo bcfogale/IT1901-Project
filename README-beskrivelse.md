@@ -1,19 +1,20 @@
 
-<u>**Introduksjon**</u>
+<u><h3>**Introduksjon**</h3></u>
 
 Clean-E er en applikasjon for behandling/delegering av rengjøringsoppgaver. Applikasjonen er implementert av en JavaFX-app og håndtering av data er lagret lokalt. 
 
-<p><center><img src="prosjekt-images/clean-E(first_draft).png"  width="200" height="300" ></center>
+<p style="text-align:center;"><img src="prosjekt-images/clean-E(first_draft).png"  width="200" height="300" ></p>
 
-<center><small><em>First draft of Clean-E</em></small></center></p>
+<p style="text-align:center;">
+<small><em >First draft of Clean-E</em></small></p>
 
 
 
-<u>**Arkitekturen**</u>
+<u><h3>**Arkitekturen**</h3></u>
 
 Applikasjonen bruker brukergrensesnittet som står i senteret. Brukere skal interagere mest på den, og systemet skal behandle alle av de informasjonene som er lagret av brukere, ie. vises informasjon og/eller addere "ny task".
 
-<u>**Modularisering**</u>
+<u><h3>**Modularisering**</h3></u>
 
 Clean-E prosjektet er sett-moduler strukturert. Prosjektet er tildelt i nemlig en brukergrensesnitt, og fillagring.
 
