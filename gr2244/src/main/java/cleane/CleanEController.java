@@ -1,28 +1,68 @@
 package cleane;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import java.io.IOException;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
+
+
+//source: https://www.youtube.com/watch?v=hcM-R-YOKkQ&ab_channel=BroCode
 
 public class CleanEController {
-
-    private Leaderboard leaderboard;
-    private Task task;
-    private User user;
-    private FileManagement manager = new FileManagement();
-
-    @FXML
-    private Button taskButton;
 
 
     @FXML
     private ListView<Task> monday, tuesday, wednesday, thursday, friday, saturday, sunday;
+
+    private FileManagement manager = new FileManagement();
+
+//TODO: metode for switching mellom scenes
+    // private Stage stage;
+    // private Scene scene;
+    //private Parent root; //usikker på hva denne skal gjøre enda...
+
+    @FXML
+    Button newTaskButton, adButton;
+
+
+    public void switchToTask(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/resources/cleane/newTask.fxml"));
+        Stage window = (Stage) newTaskButton.getScene().getWindow();
+        window.setScene(new Scene(root));
+        // stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        // scene = new Scene(root);
+        // stage.setScene(scene);
+        // stage.show();
+    }
+
+    public void switchToCalendar() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/resources/cleane/App.fxml"));
+
+        Stage stage = (Stage) adButton.getScene().getWindow();
+        
+        stage.setScene(new Scene(root));
+        
+    }
+
+    // private Leaderboard leaderboard;
+    // private Task task;
+    // private User user;
+
+    // @FXML
+    // private Button taskButton;
+
+    // @FXML
+    // private ListView<Task> taskView;
+
+    
 
 
     @FXML
@@ -121,8 +161,41 @@ public class CleanEController {
                 }
             }
         }
+    }
 
+    @FXML
+    private TextField assignedUser;
 
+    @FXML
+    private TextField taskName;
+
+    @FXML
+    private TextField pointsValue;
+
+    @FXML
+    private TextField dueDay;
+    
+
+    
+
+    //For scene: newTask
+
+    //hjelpemetode
+    private User userTextToObject(TextField assignedUser){
+        for (User user : User.users) {
+            if (user.getName() == assignedUser.getText()) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    @FXML
+    private void addTask() throws IOException {
+        User user = userTextToObject(assignedUser);
+        new Task(user, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
+        switchToCalendar();
+        updateListViews();
     }
 
 }
