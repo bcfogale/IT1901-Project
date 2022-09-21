@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 //source: https://www.youtube.com/watch?v=hcM-R-YOKkQ&ab_channel=BroCode
 
 public class CleanEController {
-    
+
 //TODO: metode for switching mellom scenes
     private Stage stage;
     private Scene scene;
@@ -26,13 +26,15 @@ public class CleanEController {
 
     public void switchToTask(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/resources/newTask.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Stage window = (Stage) newTaskButton.getScene().getWindow();
+        window.setScene(new Scene(root));
+        // stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        // scene = new Scene(root);
+        // stage.setScene(scene);
+        // stage.show();
     }
 
-    public void switchToCalendar(ActionEvent event) throws IOException{
+    public void switchToCalendar(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/resources/App.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
