@@ -36,7 +36,7 @@ public class FileManagement {
                     
                 } else if (scannedLine.substring(0, 1).equals("¥")) {
                     String[] taskProperties = scannedLine.split("~");
-                    String taskName = taskProperties[0];
+                    String taskName = taskProperties[0].substring(1);
                     int pointsValue = Integer.parseInt(taskProperties[1]);
                     String dueDay = taskProperties[2];
 
@@ -61,7 +61,12 @@ public class FileManagement {
     public static void main(String[] args) throws IOException {
         FileManagement f = new FileManagement();
         f.readUser();
-        System.out.println(User.users);
+        for (User user : User.users) {
+            for (Task task : user.getTasks()) {
+                System.out.println(task);
+            }
+            
+        }
     }
 
     
