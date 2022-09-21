@@ -5,7 +5,7 @@
 
 Clean-E er en applikasjon for behandling/delegering av rengjøringsoppgaver. Applikasjonen er implementert av en JavaFX-app og håndtering av data er lagret lokalt. 
 
-![Clean-E first draft](prosjekt-images/clean-E(first_draft).png "Clean-E first draft")
+<img src="prosjekt-images/clean-E(first_draft).png"  width="200" height="200">
 
 **Arkitekturen**
 
