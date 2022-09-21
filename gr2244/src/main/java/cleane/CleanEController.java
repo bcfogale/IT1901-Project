@@ -92,25 +92,25 @@ public class CleanEController {
         for (User user : User.users) {
             for (Task task : user.getTasks()) {
                 
-                if (task.getTaskName().equals("monday")) {
+                if (task.getDueDay().equals("monday")) {
                     monday.add(task);
                 }
-                else if (task.getTaskName().equals("tuesday")) {
+                else if (task.getDueDay().equals("tuesday")  ) {
                     tuesday.add(task);
                 }
-                else if (task.getTaskName().equals("wednesday")) {
+                else if (task.getDueDay().equals("wednesday")) {
                     wednesday.add(task);
                 }
-                else if (task.getTaskName().equals("thursday")) {
+                else if (task.getDueDay().equals("thursday") ) {
                     thursday.add(task);
                 }
-                else if (task.getTaskName().equals("friday")) {
+                else if (task.getDueDay().equals("friday")) {
                     friday.add(task);
                 }
-                else if (task.getTaskName().equals("saturday")) {
+                else if (task.getDueDay().equals("saturday")) {
                     saturday.add(task);
                 }
-                else if (task.getTaskName().equals("sunday")) {
+                else if (task.getDueDay().endsWith("sunday")) {
                     sunday.add(task);
                 }
             }
