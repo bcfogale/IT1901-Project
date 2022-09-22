@@ -33,7 +33,11 @@ public class CleanEController {
     Button newTaskButton, adButton;
 
     public void initialize() {
-        updateListViews();
+        try {
+            updateListViews();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
     }
 
 
