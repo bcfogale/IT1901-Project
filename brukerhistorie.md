@@ -6,16 +6,19 @@ men prøver å oppsummere hver av dem litt strukturert.
 
 <em><u><h3>Cleaning list (user1)</h3></u></em>
 
-De fleste studenter bor sammen i et kollektiv. Vanligvis huset trengs å bli ryddet og vasket, og folk trenger en vis måte å bli mer strukturert. 
+Som student som bor i kollektiv er det viktig for meg at rengjøring av kollektivet er noe alle bidrar med og derfor at det er en felles oversikt over ulike oppgaver folk gjør. 
 
-Derfor er det viktig for brukere till applikasjonen at de kunne delegere oppgaver til seg selv/ andre. De taskene har informasjon om navnet til delakeren, tidspunkt, og poeng til hver oppgaver. Brukere har også tilgang til sine egne informasjoner. Dessuten, applikasjonen har en ekstra funksjon for å gjøre opprydding gøyere hvor deltakere kan se de poengene som er samlet som en konkuranse mellom de ved bruk av "Scoreboard".
+Derfor er det viktig at brukerne til applikasjonen kan delegere oppgaver til seg selv og andre. Oppgavene har informasjon om navnet til personen som skal utføre oppgave, hvilken dag oppgaven skal utføres, og poeng til hver oppgave. Brukere skal kunne se sine egne og andre sine oppgaver.
+
+
 
 Viktig å kunne se :
-- Listen til hele uke
+- Egne oppgaver
+- Andres oppgaver
 
 
 
 Viktig å kunne gjøre :
-- legge inn en "ny task"
+- Legge til en ny oppgave
 
 
