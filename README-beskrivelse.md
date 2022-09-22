@@ -8,6 +8,11 @@ Clean-E er en applikasjon for behandling/delegering av rengjøringsoppgaver. App
 <p style="text-align:center;">
 <small><em >First draft of Clean-E</em></small></p>
 
+<p style="text-align:center;"><img src="prosjekt-images/clean-e(newTask).png"  width="200" height="300" ></p>
+
+<p style="text-align:center;">
+<small><em >First draft of newTask</em></small></p>
+
 
 
 <u><h3>**Arkitekturen**</h3></u>
