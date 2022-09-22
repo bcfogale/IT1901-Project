@@ -1,0 +1,9 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - init: sdk use java 14.0.2.j9-adpt
+    command: cd gr2244
+
+ports:
+  - port: 6080
