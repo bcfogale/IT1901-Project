@@ -144,16 +144,20 @@ public class CleanEController {
 
     //hjelpemetode
     private User userTextToObject(String assignedUser){
-        for (User user : User.users) {
-            if (user.getName().equals(assignedUser)) {
-                return user;
-            } else {
-                return new User(assignedUser);
+        if (User.users.isEmpty()) {
+            return new User(assignedUser);
+        }
+        else {
+            for (User user : User.users) {
+                if (user.getName().equals(assignedUser)) {
+                    return user;
+                } else {
+                    return new User(assignedUser);
+                }
+    
             }
-
         }
         return null;
-        
     }
 
     @FXML
