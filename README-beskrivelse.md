@@ -18,6 +18,8 @@ Applikasjonen bruker brukergrensesnittet som står i senteret. Brukere skal inte
 
 Clean-E prosjektet er sett-moduler strukturert. Prosjektet er tildelt i nemlig en brukergrensesnitt, og fillagring.
 
+_Applikasjonfiler_
+
 - [Clean-E App](gr2244/src/main/java/cleane/CleanEApp.java) => Filen inneholder main kode for å kjøre appen.
 
 - [Clean-E Controller](gr2244/src/main/java/cleane/CleanEController.java) => Filen inneholder kode som er knyttet til GUI fil "App.fxml"
@@ -30,7 +32,15 @@ Clean-E prosjektet er sett-moduler strukturert. Prosjektet er tildelt i nemlig e
 
 - [Clean-E User](gr2244/src/main/java/cleane/User.java) => Filen inneholder informasjon for hver brukere.
 
-- [Clean-E App](gr2244/src/main/java/resources/App.fxml) => Filen inneholder bruker GUI som er knyttet til kontrolfilen "CleanEController.java"
+_Brukergrensesnitt_
+
+- [Clean-E App](gr2244/src/main/java/resources/App.fxml) => Filen inneholder main bruker GUI som er knyttet til kontrolfilen "CleanEController.java"
+
+- [NewTask](gr2244/src/main/java/resources/newTask.fxml) => Filen inneholder bruker GUI som er knyttet til kontrolfilen "CleanEController.java"
+
+_Lagringfiler_
+
+- [cleane.txt](gr2244/savestates/cleane.txt) => Filen inneholder lagring informasjon fra "newTask.fxml"
 
 
 
