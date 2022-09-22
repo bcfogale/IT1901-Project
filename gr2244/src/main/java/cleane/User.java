@@ -42,6 +42,11 @@ public class User {
         getTasks().add(task);
     }
 
+    @Override
+    public String toString() {
+        return ""+ name;
+    }
+
 
 
 

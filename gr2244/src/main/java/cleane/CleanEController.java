@@ -1,14 +1,16 @@
 package cleane;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import java.io.IOException;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.Node;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 
@@ -16,16 +18,31 @@ import javafx.stage.Stage;
 
 public class CleanEController {
 
-//TODO: metode for switching mellom scenes
-    private Stage stage;
-    private Scene scene;
-    private Parent root; //usikker på hva denne skal gjøre enda...
 
     @FXML
-    Button newTaskButton;
+    private ListView<Task> monday, tuesday, wednesday, thursday, friday, saturday, sunday;
+
+    private FileManagement manager = new FileManagement();
+
+//TODO: metode for switching mellom scenes
+    // private Stage stage;
+    // private Scene scene;
+    //private Parent root; //usikker på hva denne skal gjøre enda...
+
+    @FXML
+    Button newTaskButton, adButton;
+
+    public void initialize() {
+        try {
+            updateListViews();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+    }
+
 
     public void switchToTask(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/resources/newTask.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/resources/cleane/newTask.fxml"));
         Stage window = (Stage) newTaskButton.getScene().getWindow();
         window.setScene(new Scene(root));
         // stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -34,23 +51,83 @@ public class CleanEController {
         // stage.show();
     }
 
-    public void switchToCalendar(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/resources/App.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    public void switchToCalendar() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/resources/cleane/App.fxml"));
+
+        Stage stage = (Stage) adButton.getScene().getWindow();
+        
+        stage.setScene(new Scene(root));
+        
+    }
+    
+
+
+    
+    @FXML
+    private void loadFromFile() throws IOException {
+        manager.readUser();
+        
+        updateListViews();
     }
 
-    // private Leaderboard leaderboard;
-    // private Task task;
-    // private User user;
 
-    // @FXML
-    // private Button taskButton;
+    @FXML
+    private void handleTest(){
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Error message");
+        alert.setHeaderText("Something went wrong");
+        alert.setContentText("Hallo");
+        alert.showAndWait();
+    }
 
-    // @FXML
-    // private ListView<Task> taskView;
+
+
+    @FXML
+    private void updateListViews() {
+        this.monday.getItems().clear();
+        this.tuesday.getItems().clear();
+        this.wednesday.getItems().clear();
+        this.thursday.getItems().clear();
+        this.friday.getItems().clear();
+        this.saturday.getItems().clear();
+        this.sunday.getItems().clear();
+
+        for (User user : User.users) {
+            for (Task task : user.getTasks()) {
+                
+                if (task.getDueDay().equals("monday")) {
+                    this.monday.getItems().add(task);
+                }
+                else if (task.getDueDay().equals("tuesday")  ) {
+                    this.tuesday.getItems().add(task);
+                }
+                else if (task.getDueDay().equals("wednesday")) {
+                    this.wednesday.getItems().add(task);
+                }
+                else if (task.getDueDay().equals("thursday") ) {
+                    this.thursday.getItems().add(task);
+                }
+                else if (task.getDueDay().equals("friday")) {
+                    this.friday.getItems().add(task);
+                }
+                else if (task.getDueDay().equals("saturday")) {
+                    this.saturday.getItems().add(task);
+                }
+                else if (task.getDueDay().equals("sunday")) {
+                    this.sunday.getItems().add(task);
+                }
+            }
+        }
+    }
+
+
+    @FXML
+    private void handleSaveButton() throws IOException {
+        manager.writeUser(User.users);
+    }
+
+
+    //For scene: newTask
 
     @FXML
     private TextField assignedUser;
@@ -65,24 +142,29 @@ public class CleanEController {
     private TextField dueDay;
     
 
-    
-
-    //For scene: newTask
-
     //hjelpemetode
-    private User userTextToObject(TextField assignedUser){
-        for (User user : User.users) {
-            if (user.getName() == assignedUser.getText()) {
-                return user;
+    private User userTextToObject(String assignedUser){
+        if (User.users.isEmpty()) {
+            return new User(assignedUser);
+        }
+        else {
+            for (User user : User.users) {
+                if (user.getName().equals(assignedUser)) {
+                    return user;
+                } else {
+                    return new User(assignedUser);
+                }
+    
             }
         }
         return null;
     }
 
     @FXML
-    private void addTask() {
-        User user = userTextToObject(assignedUser);
-        new Task(user, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
+    private void appendTask() throws IOException {
+        new Task(userTextToObject(assignedUser.getText()), taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
+        switchToCalendar();
+        updateListViews();
     }
 
 }
