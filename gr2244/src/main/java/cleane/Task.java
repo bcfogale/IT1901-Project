@@ -53,8 +53,7 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task [assignedUser=" + assignedUser + ", completed=" + completed + ", dueDay=" + dueDay
-                + ", pointsValue=" + pointsValue + ", taskName=" + taskName + "]";
+        return "Taskname: " + taskName + "   " + "AssignedUser: " + assignedUser + "   " + "Points: " + pointsValue + "   " + "Dueday: " + dueDay;
     }
     
 

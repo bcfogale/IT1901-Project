@@ -44,7 +44,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "Object: "+ name;
+        return ""+ name;
     }
 
 
