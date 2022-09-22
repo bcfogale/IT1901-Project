@@ -74,12 +74,12 @@
             </HBox>
             <HBox alignment="CENTER">
                <children>
-                  <Text fx:id="dueDay" strokeType="OUTSIDE" strokeWidth="0.0" text="Due date:" textAlignment="RIGHT" wrappingWidth="111.15884399414062">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Due date:" textAlignment="RIGHT" wrappingWidth="111.15884399414062">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Text>
-                  <TextField fx:id="dueDate2" />
+                  <TextField fx:id="dueDay" />
                </children>
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -87,7 +87,7 @@
             </HBox>
             <HBox alignment="TOP_RIGHT">
                <children>
-                  <Button fx:id="adButton" mnemonicParsing="false" onAction="#addTask" prefWidth="63.0" text="Add task">
+                  <Button fx:id="adButton" mnemonicParsing="false" onAction="#appendTask" prefWidth="63.0" text="Add task">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>

@@ -138,25 +138,32 @@ public class CleanEController {
             for (Task task : user.getTasks()) {
                 
                 if (task.getDueDay().equals("monday")) {
+                    this.monday.getItems().clear();
                     this.monday.getItems().add(task);
         
                 }
                 else if (task.getDueDay().equals("tuesday")  ) {
+                    this.tuesday.getItems().clear();
                     this.tuesday.getItems().add(task);
                 }
                 else if (task.getDueDay().equals("wednesday")) {
+                    this.wednesday.getItems().clear();
                     this.wednesday.getItems().add(task);
                 }
                 else if (task.getDueDay().equals("thursday") ) {
+                    this.thursday.getItems().clear();
                     this.thursday.getItems().add(task);
                 }
                 else if (task.getDueDay().equals("friday")) {
+                    this.friday.getItems().clear();
                     this.friday.getItems().add(task);
                 }
                 else if (task.getDueDay().equals("saturday")) {
+                    this.saturday.getItems().clear();
                     this.saturday.getItems().add(task);
                 }
                 else if (task.getDueDay().endsWith("sunday")) {
+                    this.sunday.getItems().clear();
                     this.sunday.getItems().add(task);
                 }
             }
@@ -181,21 +188,27 @@ public class CleanEController {
     //For scene: newTask
 
     //hjelpemetode
-    private User userTextToObject(TextField assignedUser){
+    private User userTextToObject(String assignedUser){
         for (User user : User.users) {
-            if (user.getName() == assignedUser.getText()) {
+            if (user.getName() == assignedUser) {
                 return user;
             }
         }
-        return null;
+        return new User(assignedUser);
     }
 
     @FXML
-    private void addTask() throws IOException {
-        User user = userTextToObject(assignedUser);
+    private void appendTask() throws IOException {
+        User user = userTextToObject(assignedUser.getText());
         new Task(user, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
         switchToCalendar();
         updateListViews();
+    }
+    public static void main(String[] args) {
+        User u = new User("Sander");
+        CleanEController c = new CleanEController();
+        System.out.println(c.userTextToObject("Sander"));
+
     }
 
 }
