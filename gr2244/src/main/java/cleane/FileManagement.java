@@ -55,7 +55,7 @@ public class FileManagement {
     }
 
     public Path getFolderPath() {
-        return Path.of(System.getProperty("user.home"), "savestates");
+        return Path.of(System.getProperty("user.dir"), "savestates");
     }
 
     public static void main(String[] args) throws IOException {

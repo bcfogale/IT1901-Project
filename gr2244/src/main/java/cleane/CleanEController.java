@@ -32,6 +32,10 @@ public class CleanEController {
     @FXML
     Button newTaskButton, adButton;
 
+    public void initialize() {
+        updateListViews();
+    }
+
 
     public void switchToTask(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/resources/cleane/newTask.fxml"));
@@ -51,38 +55,17 @@ public class CleanEController {
         stage.setScene(new Scene(root));
         
     }
-
-    // private Leaderboard leaderboard;
-    // private Task task;
-    // private User user;
-
-    // @FXML
-    // private Button taskButton;
-
-    // @FXML
-    // private ListView<Task> taskView;
-
     
 
 
+    
     @FXML
-    private void initialize() {
-        try {
-            manager.readUser();
-            updateListViews();
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
+    private void loadFromFile() throws IOException {
+        manager.readUser();
+        
+        updateListViews();
     }
 
-    // private User userTextToObject(TextField userText){
-    //     for (User user : User.users) {
-    //         if (user.getName() == userText.getText()) {
-    //             return user;
-    //         }
-    //     }
-    //     return null;
-    // }
 
     @FXML
     private void handleTest(){
@@ -93,82 +76,54 @@ public class CleanEController {
         alert.showAndWait();
     }
 
-    // @FXML
-    // private void handleNewTask() {
-    //     //selve dialogpane:
-    //     TextInputDialog dialog = new TextInputDialog();
-    //     dialog.setTitle("New Task");
-    //     dialog.setHeaderText("Add new task");
-
-    //     //inputfield for å legge inn bruker:
-    //     TextField assignedUser = new TextField();
-    //     assignedUser.setPromptText("User");
-    //     System.out.println("Task was assigned to: " + assignedUser);
-
-    //     //inputfield for å legge inn oppgavenavn:
-    //     TextField taskName = new TextField();
-    //     taskName.setPromptText("Name of task");
-    //     System.out.println("Task name " + taskName + "was added");
-
-    //     //inputfieldsfor å legge inn poeng:
-    //     TextField pointsValue = new TextField();
-    //     pointsValue.setPromptText("0");
-    //     System.out.println("Points value " + pointsValue + "was added to task");
-
-    //     //inputfield for å legge inn dato:
-    //     TextField dueDay = new TextField();
-    //     dueDay.setPromptText("Due day");
-    //     System.out.println("Due day for task was set to: " + dueDay);
-
-    //     User user = userTextToObject(assignedUser);
-
-    //     new Task(user, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
-
-    //     updateListViews();
-    // }
 
 
     @FXML
     private void updateListViews() {
-
-
-
+        this.monday.getItems().clear();
+        this.tuesday.getItems().clear();
+        this.wednesday.getItems().clear();
+        this.thursday.getItems().clear();
+        this.friday.getItems().clear();
+        this.saturday.getItems().clear();
+        this.sunday.getItems().clear();
 
         for (User user : User.users) {
             for (Task task : user.getTasks()) {
                 
                 if (task.getDueDay().equals("monday")) {
-                    this.monday.getItems().clear();
                     this.monday.getItems().add(task);
-        
                 }
                 else if (task.getDueDay().equals("tuesday")  ) {
-                    this.tuesday.getItems().clear();
                     this.tuesday.getItems().add(task);
                 }
                 else if (task.getDueDay().equals("wednesday")) {
-                    this.wednesday.getItems().clear();
                     this.wednesday.getItems().add(task);
                 }
                 else if (task.getDueDay().equals("thursday") ) {
-                    this.thursday.getItems().clear();
                     this.thursday.getItems().add(task);
                 }
                 else if (task.getDueDay().equals("friday")) {
-                    this.friday.getItems().clear();
                     this.friday.getItems().add(task);
                 }
                 else if (task.getDueDay().equals("saturday")) {
-                    this.saturday.getItems().clear();
                     this.saturday.getItems().add(task);
                 }
-                else if (task.getDueDay().endsWith("sunday")) {
-                    this.sunday.getItems().clear();
+                else if (task.getDueDay().equals("sunday")) {
                     this.sunday.getItems().add(task);
                 }
             }
         }
     }
+
+
+    @FXML
+    private void handleSaveButton() throws IOException {
+        manager.writeUser(User.users);
+    }
+
+
+    //For scene: newTask
 
     @FXML
     private TextField assignedUser;
@@ -183,32 +138,25 @@ public class CleanEController {
     private TextField dueDay;
     
 
-    
-
-    //For scene: newTask
-
     //hjelpemetode
     private User userTextToObject(String assignedUser){
         for (User user : User.users) {
-            if (user.getName() == assignedUser) {
+            if (user.getName().equals(assignedUser)) {
                 return user;
+            } else {
+                return new User(assignedUser);
             }
+
         }
-        return new User(assignedUser);
+        return null;
+        
     }
 
     @FXML
     private void appendTask() throws IOException {
-        User user = userTextToObject(assignedUser.getText());
-        new Task(user, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
+        new Task(userTextToObject(assignedUser.getText()), taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
         switchToCalendar();
         updateListViews();
-    }
-    public static void main(String[] args) {
-        User u = new User("Sander");
-        CleanEController c = new CleanEController();
-        System.out.println(c.userTextToObject("Sander"));
-
     }
 
 }
