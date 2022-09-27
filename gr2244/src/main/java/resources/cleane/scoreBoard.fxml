@@ -107,7 +107,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
         <children>
-            <Button fx:id="calendarButton" mnemonicParsing="false" onAction="#updateListViews" prefHeight="70.0" prefWidth="136.0" text="Calendar">
+            <Button fx:id="calendarButton" mnemonicParsing="false" onAction="#switchToCalendar" prefHeight="70.0" prefWidth="136.0" text="Calendar">
                <graphic>
                   <ImageView pickOnBounds="true" preserveRatio="true" />
                </graphic>
