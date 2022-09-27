@@ -30,7 +30,8 @@ public class CleanEController {
     //private Parent root; //usikker på hva denne skal gjøre enda...
 
     @FXML
-    Button newTaskButton, adButton;
+    Button newTaskButton, calendarButton, scoreBoardButton;
+
 
     public void initialize() {
         try {
@@ -54,12 +55,23 @@ public class CleanEController {
     public void switchToCalendar() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/resources/cleane/App.fxml"));
 
-        Stage stage = (Stage) adButton.getScene().getWindow();
+        Stage stage = (Stage) calendarButton.getScene().getWindow();
         
         stage.setScene(new Scene(root));
         
     }
-    
+
+//  creates the link to scoreboard window
+    public void switchToScoreboard(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/resources/cleane/scoreBoard.fxml"));
+        Stage window = (Stage) scoreBoardButton.getScene().getWindow();
+        window.setScene(new Scene(root));
+        // stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        // scene = new Scene(root);
+        // stage.setScene(scene);
+        // stage.show();
+    }
+     
 
 
     
