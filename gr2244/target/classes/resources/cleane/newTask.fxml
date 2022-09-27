@@ -128,28 +128,23 @@
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
-         <children>
-            <Button fx:id="calendarButton" mnemonicParsing="false" onAction="#updateListViews" prefHeight="70.0" prefWidth="136.0" text="Calendar">
-               <graphic>
-                  <ImageView pickOnBounds="true" preserveRatio="true" />
-               </graphic>
-            </Button>
-            <Button fx:id="newTaskButton" disable="true" mnemonicParsing="false" onAction="#switchToTask" prefHeight="70.0" prefWidth="135.0" text="New task" GridPane.columnIndex="1">
-               <graphic>
-                  <ImageView pickOnBounds="true" preserveRatio="true" />
-               </graphic>
-            </Button>
-            <Button fx:id="scoreBoardButton" mnemonicParsing="false" onAction="#switchToScoreboard" prefHeight="70.0" prefWidth="137.0" text="Scoreboard" GridPane.columnIndex="2">
-               <graphic>
-                  <ImageView pickOnBounds="true" preserveRatio="true" />
-               </graphic>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#updateListViews" prefHeight="70.0" prefWidth="136.0" text="Calendar">
-               <graphic>
-                  <ImageView pickOnBounds="true" preserveRatio="true" />
-               </graphic>
-            </Button>
-         </children>
+        <children>
+         <Button fx:id="calendarButton" mnemonicParsing="false" onAction="#updateListViews" prefHeight="70.0" prefWidth="136.0" text="Calendar">
+            <graphic>
+               <ImageView pickOnBounds="true" preserveRatio="true" />
+            </graphic>
+         </Button>
+         <Button fx:id="newTaskButton" mnemonicParsing="false" onAction="#switchToTask" prefHeight="70.0" prefWidth="134.0" text="New task" GridPane.columnIndex="1">
+            <graphic>
+               <ImageView pickOnBounds="true" preserveRatio="true" />
+            </graphic>
+         </Button>
+         <Button fx:id="scoreBoardButton" mnemonicParsing="false" onAction="#switchToScoreboard" prefHeight="70.0" prefWidth="132.0" text="Scoreboard" GridPane.columnIndex="2">
+            <graphic>
+               <ImageView pickOnBounds="true" preserveRatio="true" />
+            </graphic>
+         </Button>
+      </children>
       </GridPane>
    </children>
 </GridPane>
