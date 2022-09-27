@@ -1,0 +1,16 @@
+@startuml diagram
+
+actor U1
+U1 -> "~#addButton: Button" as addButton: click
+addButton -> CleanEController: appendTask()
+CleanEController -> "~#assignedUser: TextField" as assignedUser: getText()
+CleanEController -> "~#taskName: TextField" as taskName: getText()
+CleanEController -> "~#pointsValue: TextField" as pointsValue: getText()
+CleanEController -> "~#dueDay: TextField" as dueDay: getText()
+CleanEController -> Task: new Task()
+Task -> User: assignedUser.addTask(this) 
+CleanEController -> App.fxml: switchToCalendar()
+App.fxml -> U1: setScene()
+CleanEController -> App.fxml : updateListviews()
+
+@enduml
