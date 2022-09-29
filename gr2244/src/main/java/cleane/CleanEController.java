@@ -24,6 +24,8 @@ public class CleanEController {
 
     private FileManagement manager = new FileManagement();
 
+    
+
 //TODO: metode for switching mellom scenes
     // private Stage stage;
     // private Scene scene;
@@ -54,9 +56,7 @@ public class CleanEController {
 
     public void switchToCalendar() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/resources/cleane/App.fxml"));
-
         Stage stage = (Stage) calendarButton.getScene().getWindow();
-        
         stage.setScene(new Scene(root));
         
     }
@@ -66,10 +66,8 @@ public class CleanEController {
         Parent root = FXMLLoader.load(getClass().getResource("/resources/cleane/scoreBoard.fxml"));
         Stage window = (Stage) scoreBoardButton.getScene().getWindow();
         window.setScene(new Scene(root));
-        // stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        // scene = new Scene(root);
-        // stage.setScene(scene);
-        // stage.show();
+
+        
     }
      
 
@@ -177,6 +175,11 @@ public class CleanEController {
         new Task(userTextToObject(assignedUser.getText()), taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
         switchToCalendar();
         updateListViews();
+    }
+
+    @FXML
+    private void leaderBoardList() throws IOException{
+        
     }
 
 }
