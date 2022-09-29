@@ -8,9 +8,7 @@ public class User {
     public static List<User> users = new ArrayList<>();
     
     private int points;
-
     private List<Task> tasks = new ArrayList<>();
-
     private String name;
 
     public User(String name) {

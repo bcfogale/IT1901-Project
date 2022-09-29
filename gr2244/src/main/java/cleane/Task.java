@@ -51,9 +51,11 @@ public class Task {
         return dueDay;
     }
 
+   
+
     @Override
     public String toString() {
-        return "Taskname: " + taskName + "   " + "AssignedUser: " + assignedUser + "   " + "Points: " + pointsValue + "   " + "Dueday: " + dueDay;
+        return "Taskname: " + taskName + "   " + "   " + "Points: " + pointsValue + "   " + "Dueday: " + dueDay;
     }
     
 
