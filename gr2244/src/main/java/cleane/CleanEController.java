@@ -162,7 +162,7 @@ public class CleanEController {
 
     @FXML
     private void appendTask() throws IOException {
-        new Task(userTextToObject(assignedUser.getText()), taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
+        new Task(userTextToObject(assignedUser.toString()), taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
         switchToCalendar();
         updateListViews();
     }

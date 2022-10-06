@@ -3,20 +3,25 @@ package cleane;
 import java.util.Arrays;
 import java.util.List;
 
+
+
 public class Task {
 
     final private List<String> days =Arrays.asList("monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday");
     
-    private User assignedUser;
+   
     private String taskName;
     private int pointsValue;
     private boolean completed = false;
     private String dueDay;
+    private User assignedUser;
+  
 
     
     public Task(User assignedUser, String taskName, int pointsValue, String dueDay) {
         this.assignedUser = assignedUser;
-        assignedUser.addTask(this); // Adds this task to the assigned users task list
+         // Adds this task to the assigned users task list
+        assignedUser.addTask(this);;
         this.taskName = taskName;
         this.pointsValue = pointsValue;
         if (days.contains(dueDay.toLowerCase())) {
@@ -50,6 +55,7 @@ public class Task {
     public String getDueDay() {
         return dueDay;
     }
+
 
    
 

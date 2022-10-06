@@ -2,6 +2,8 @@ package cleane.json;
 
 import java.io.IOException;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
@@ -9,6 +11,8 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import cleane.Task;
 import cleane.User;
 
+/* @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, 
+                  property = "@id") */
 public class UserSerializer extends JsonSerializer<User>{
 
     /*
