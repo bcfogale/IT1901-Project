@@ -42,7 +42,7 @@ public class CleanEController {
 
 
     public void switchToTask(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/resources/cleane/newTask.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxui/src/main/java/resources/cleane/App.fxml"));
         Stage window = (Stage) newTaskButton.getScene().getWindow();
         window.setScene(new Scene(root));
         // stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -52,7 +52,7 @@ public class CleanEController {
     }
 
     public void switchToCalendar() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/resources/cleane/App.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxui/src/main/java/resources/cleane/App.fxml"));
 
         Stage stage = (Stage) adButton.getScene().getWindow();
         
