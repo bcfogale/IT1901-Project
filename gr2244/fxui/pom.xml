@@ -14,6 +14,7 @@
   
   <dependencies>
 
+        <!--Makes sure that core is built before fxui-->
         <dependency>
           <groupId>IT1901.cleane</groupId>
           <artifactId>core</artifactId>
@@ -34,15 +35,15 @@
 		    <dependency>
 			      <groupId>org.testfx</groupId>
 			      <artifactId>testfx-core</artifactId>
+            <version>4.0.16-alpha</version>
+			      <scope>test</scope>
 		    </dependency>
 
 		    <dependency>
 			      <groupId>org.testfx</groupId>
 			      <artifactId>testfx-junit5</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest</artifactId>
+            <version>4.0.16-alpha</version>
+			      <scope>test</scope>
         </dependency>
 
     </dependencies>
