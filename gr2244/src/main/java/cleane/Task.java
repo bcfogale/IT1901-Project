@@ -3,8 +3,6 @@ package cleane;
 import java.util.Arrays;
 import java.util.List;
 
-import javafx.scene.control.CheckBox;
-
 public class Task {
 
     final private List<String> days =Arrays.asList("monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday");
@@ -12,9 +10,8 @@ public class Task {
     private User assignedUser;
     private String taskName;
     private int pointsValue;
-    private boolean completed;
+    private boolean completed = false;
     private String dueDay;
-    private CheckBox checkBox;
 
     
     public Task(User assignedUser, String taskName, int pointsValue, String dueDay) {
@@ -22,18 +19,17 @@ public class Task {
         assignedUser.addTask(this); // Adds this task to the assigned users task list
         this.taskName = taskName;
         this.pointsValue = pointsValue;
-        this.completed = false;
         if (days.contains(dueDay.toLowerCase())) {
             this.dueDay = dueDay;
         }
         else {
             throw new IllegalArgumentException("Choose a valid day.");
         }
-        checkBox.setSelected(false);
     }
 
     public void setTrue() {
         this.completed = true;
+        getAssignedUser().addPoints(pointsValue);
     }
 
     public User getAssignedUser() {
@@ -48,15 +44,12 @@ public class Task {
         return pointsValue;
     }
 
-    public String getDueDay() {
-        return dueDay;
+    public boolean isCompleted() {
+        return completed;
     }
 
-    public void completeTask() {
-        if (checkBox.isSelected()) {
-            this.setTrue();
-            assignedUser.addPoints(pointsValue);
-        }
+    public String getDueDay() {
+        return dueDay;
     }
 
     @Override
@@ -64,5 +57,13 @@ public class Task {
         return "Taskname: " + taskName + "   " + "AssignedUser: " + assignedUser + "   " + "Points: " + pointsValue + "   " + "Dueday: " + dueDay;
     }
     
+
+    
+
+    
+
+    
+
+
 
 }
