@@ -177,6 +177,7 @@ public class CleanEController {
         new Task(userTextToObject(assignedUser.getText()), taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
         // switchToCalendar();
         updateListViews();
+        clearTask();
     }
 
     //Kontrollerlogikk for leaderBoard
@@ -239,4 +240,10 @@ public class CleanEController {
         //oppdater leaderboardview
     }
 
+    private void clearTask() throws IOException{
+        this.assignedUser.clear();
+        this.taskName.clear();
+        this.pointsValue.clear();
+        this.dueDay.clear();
+    }
 }
