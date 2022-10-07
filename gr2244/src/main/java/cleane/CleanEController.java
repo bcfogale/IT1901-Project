@@ -240,6 +240,7 @@ public class CleanEController {
         //oppdater leaderboardview
     }
 
+    @FXML
     private void clearTask() throws IOException{
         this.assignedUser.clear();
         this.taskName.clear();
