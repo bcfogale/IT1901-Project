@@ -3,21 +3,16 @@ package cleane;
 import java.util.Arrays;
 import java.util.List;
 
-
-
 public class Task {
 
     final private List<String> days =Arrays.asList("monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday");
     
-   
     private String taskName;
     private int pointsValue;
     private boolean completed = false;
     private String dueDay;
     private User assignedUser;
   
-
-    
     public Task(User assignedUser, String taskName, int pointsValue, String dueDay) {
         this.assignedUser = assignedUser;
          // Adds this task to the assigned users task list
@@ -30,6 +25,17 @@ public class Task {
         else {
             throw new IllegalArgumentException("Choose a valid day.");
         }
+    }
+
+    // This constructor is only used for deserialization purposes
+    public Task(String taskName, int pointsValue, String dueDay) {
+        this.taskName = taskName;
+        this.pointsValue = pointsValue;
+        this.dueDay = dueDay;
+    }
+
+    public void setAssignedUser(User assignedUser) {
+        this.assignedUser = assignedUser;
     }
 
     public void setTrue() {
@@ -57,20 +63,9 @@ public class Task {
     }
 
 
-   
-
     @Override
     public String toString() {
-        return "Taskname: " + taskName + "   " + "   " + "Points: " + pointsValue + "   " + "Dueday: " + dueDay;
+        return "Task [taskName=" + taskName + ", pointsValue=" + pointsValue + ", completed=" + completed + ", dueDay="
+                + dueDay + ", assignedUser=" + assignedUser.getName() + "]";
     }
-    
-
-    
-
-    
-
-    
-
-
-
 }
