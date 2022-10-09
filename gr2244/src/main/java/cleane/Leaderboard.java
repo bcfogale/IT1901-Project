@@ -7,9 +7,17 @@ public class Leaderboard {
 
     private List<User> users2 = new ArrayList<>();
     
+<<<<<<< HEAD
     // public Leaderboard(List<User> users) {
     //     this.users = users;
     // }
+=======
+    public Leaderboard(){}
+
+    public Leaderboard(List<User> users) {
+        this.users = users;
+    }
+>>>>>>> 77b5a4aa411af276efd60ecd39f1442abd3e8b9f
 
     public List<User> getUsers() {
         return users2;
