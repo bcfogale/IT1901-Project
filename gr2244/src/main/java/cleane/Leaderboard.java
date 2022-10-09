@@ -7,6 +7,8 @@ public class Leaderboard {
 
     private List<User> users = new ArrayList<>();
     
+    public Leaderboard(){}
+
     public Leaderboard(List<User> users) {
         this.users = users;
     }
