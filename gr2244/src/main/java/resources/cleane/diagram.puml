@@ -1,6 +1,8 @@
 @startuml diagram
 
 actor U1
+
+App.fxml -> U1: init()
 U1 -> "~#addButton: Button" as addButton: click
 addButton -> CleanEController: appendTask()
 CleanEController -> "~#assignedUser: TextField" as assignedUser: getText()
