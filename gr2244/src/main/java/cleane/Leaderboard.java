@@ -5,47 +5,41 @@ import java.util.List;
 
 public class Leaderboard {
 
-    private List<User> users2 = new ArrayList<>();
-    
-<<<<<<< HEAD
-    // public Leaderboard(List<User> users) {
-    //     this.users = users;
-    // }
-=======
-    public Leaderboard(){}
+    private List<User> users = new ArrayList<>();
 
-    public Leaderboard(List<User> users) {
+
+    public Leaderboard(List<User>users) {
         this.users = users;
     }
->>>>>>> 77b5a4aa411af276efd60ecd39f1442abd3e8b9f
+
 
     public List<User> getUsers() {
-        return users2;
+        return users;
     }    
 
    
-    //TODO: metode som finner users med completed tasks og legger til dem i leaderboard
-    public void addToUsers2() {
+/*     //TODO: metode som finner users med completed tasks og legger til dem i leaderboard
+    public void addToUsers() {
         for (User user : User.users) {
             for (Task task : user.getTasks()) {
                 if (task.isCompleted()) {
-                    if (!users2.contains(user)) {
-                        users2.add(user);
+                    if (!users.contains(user)) {
+                        users.add(user);
                     }
                 }
             }
         }
         // System.out.println(users2.toString());
-    }     
+    }      */
 
     
     public void sortList() {
-        users2.sort((u1, u2) -> u1.getPoints() - u2.getPoints());
+        users.sort((u1, u2) -> u1.getPoints() - u2.getPoints());
     }
 
 
     public void printLeaderboardStats() {
-        for (User user : users2) {
+        for (User user : users) {
             // System.out.println("Oppgave(r) har blitt utført");
            System.out.println(user.getName() +" har " + user.getPoints() + " poeng.");
         }

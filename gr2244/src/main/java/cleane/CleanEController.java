@@ -26,7 +26,7 @@ public class CleanEController {
 
     private FileManagement manager = new FileManagement();
 
-    private Leaderboard leaderboard = new Leaderboard();
+    private Leaderboard leaderboard = new Leaderboard(null);
 
     @FXML
     Button newTaskButton, calendarButton, scoreBoardButton;
@@ -163,7 +163,7 @@ public class CleanEController {
         checkMonday();
     
         
-        leaderboard.addToUsers2();
+        // leaderboard.addToUsers();
         leaderboard.printLeaderboardStats();
         leaderboard.sortList();
         System.out.println(leaderboard.getUsers());
