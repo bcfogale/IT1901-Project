@@ -108,21 +108,18 @@ public class CleanEController {
     
 
     //hjelpemetode
-    private User userTextToObject(String assignedUser){
+     private User userTextToObject(String assignedUser) {
         if (leaderboard.getUsers().isEmpty()) {
             return new User(assignedUser);
         }
         else {
             for (User user : leaderboard.getUsers()) {
-                if (user.getName().equals(assignedUser)) {
+                if(user.getName().equals(assignedUser)) {
                     return user;
-                } else {
-                    return new User(assignedUser);
                 }
-    
             }
         }
-        return null;
+        return new User(assignedUser);
     }
 
     @FXML
@@ -130,10 +127,6 @@ public class CleanEController {
         User u = userTextToObject(assignedUser.getText());
         new Task(u, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
         leaderboard.addUser(u);
-        System.out.println(u);
-        System.out.println(u.getPoints());
-        System.out.println( "tasks: "+ u.getTasks().toString());
-        System.out.println(leaderboard);
         updateListViews();
         clearTask();
     }
@@ -156,10 +149,7 @@ public class CleanEController {
         // leaderboard.getUsers();
         checkMonday();
 
-        
-        
-        System.out.println(leaderboard.getUsers());
-        leaderboard.printLeaderboardStats();
+
         leaderboard.sortList();
         System.out.println(leaderboard.getUsers());        
     }
@@ -176,9 +166,9 @@ public class CleanEController {
         // System.out.println(selectedTaskMon.getAssignedUser().getPoints() + " poeng har du");
         selectedTaskMon.setTrue();
         
-        System.out.println(selectedTaskMon.getAssignedUser() + " har");
-        System.out.println(selectedTaskMon.getAssignedUser().getTasks().size() + " oppgaver");
-        System.out.println(selectedTaskMon.getPointsValue() + " poeng er oppgaven verdt");
+        // System.out.println(selectedTaskMon.getAssignedUser() + " har");
+        // System.out.println(selectedTaskMon.getAssignedUser().getTasks().size() + " oppgaver");
+        // System.out.println("og " + selectedTaskMon.getAssignedUser().getPoints() + " poeng");
         // System.out.println(selectedTaskMon.getAssignedUser().getPoints() + " poeng fikk du");
 
         monday.getItems().remove(selectedTaskMon);   //fjerner valgt oppgave fra view

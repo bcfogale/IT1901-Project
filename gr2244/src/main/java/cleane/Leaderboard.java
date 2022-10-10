@@ -17,6 +17,7 @@ public class Leaderboard {
     public void addUser(User user) {
         if (!users.contains(user)) {
             users.add(user);
+            System.out.println(user.getName() + " was added to list.");
         }
         else {
             
@@ -28,14 +29,6 @@ public class Leaderboard {
     
     public void sortList() {
         users.sort((u1, u2) -> u1.getPoints() - u2.getPoints());
-    }
-
-
-    public void printLeaderboardStats() {
-        for (User user : users) {
-            // System.out.println("Oppgave(r) har blitt utført");
-           System.out.println(user.getName() +" har " + user.getPoints() + " poeng.");
-        }
     }
 
 
