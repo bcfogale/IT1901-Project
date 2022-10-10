@@ -21,6 +21,7 @@ public class Task {
         this.pointsValue = pointsValue;
         if (days.contains(dueDay.toLowerCase())) {
             this.dueDay = dueDay;
+
         }
         else {
             throw new IllegalArgumentException("Choose a valid day.");

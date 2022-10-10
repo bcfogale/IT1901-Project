@@ -8,29 +8,22 @@ public class Leaderboard {
     private List<User> users = new ArrayList<>();
 
 
-    public Leaderboard(List<User>users) {
-        this.users = users;
-    }
-
 
     public List<User> getUsers() {
         return users;
     }    
 
    
-/*     //TODO: metode som finner users med completed tasks og legger til dem i leaderboard
-    public void addToUsers() {
-        for (User user : User.users) {
-            for (Task task : user.getTasks()) {
-                if (task.isCompleted()) {
-                    if (!users.contains(user)) {
-                        users.add(user);
-                    }
-                }
-            }
+    public void addUser(User user) {
+        if (!users.contains(user)) {
+            users.add(user);
         }
-        // System.out.println(users2.toString());
-    }      */
+        else {
+            
+             System.out.println("User already in list.");
+        }
+        
+    }     
 
     
     public void sortList() {
@@ -45,9 +38,12 @@ public class Leaderboard {
         }
     }
 
-    
 
-    //TODO: skriv toString som viser navn og poeng for alle users
+    @Override
+    public String toString() {
+        return "Leaderboard [users=" + users + "]";
+    }
+
     
     
 }

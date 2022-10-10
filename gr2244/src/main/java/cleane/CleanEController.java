@@ -3,20 +3,11 @@ package cleane;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import java.io.IOException;
-
-/* import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene; */
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-// import javafx.stage.Stage;
 
-
-//source: https://www.youtube.com/watch?v=hcM-R-YOKkQ&ab_channel=BroCode
 
 public class CleanEController {
 
@@ -26,7 +17,7 @@ public class CleanEController {
 
     private FileManagement manager = new FileManagement();
 
-    private Leaderboard leaderboard = new Leaderboard(null);
+    private Leaderboard leaderboard = new Leaderboard();
 
     @FXML
     Button newTaskButton, calendarButton, scoreBoardButton;
@@ -68,7 +59,7 @@ public class CleanEController {
         this.saturday.getItems().clear();
         this.sunday.getItems().clear();
 
-        for (User user : User.users) {
+        for (User user : leaderboard.getUsers()) {
             for (Task task : user.getTasks()) {
                 if (task.getDueDay().equals("monday")) {
                     this.monday.getItems().add(task);
@@ -99,11 +90,9 @@ public class CleanEController {
 
     @FXML
     private void handleSaveButton() throws IOException {
-        manager.writeUser(User.users);
+        //manager.writeUser(User.users);
     }
 
-
-    //For scene: newTask
 
     @FXML
     private TextField assignedUser;
@@ -120,11 +109,11 @@ public class CleanEController {
 
     //hjelpemetode
     private User userTextToObject(String assignedUser){
-        if (User.users.isEmpty()) {
+        if (leaderboard.getUsers().isEmpty()) {
             return new User(assignedUser);
         }
         else {
-            for (User user : User.users) {
+            for (User user : leaderboard.getUsers()) {
                 if (user.getName().equals(assignedUser)) {
                     return user;
                 } else {
@@ -138,9 +127,13 @@ public class CleanEController {
 
     @FXML
     private void appendTask() throws IOException {
-        new Task(userTextToObject(assignedUser.getText()), taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
-        // getAssignedUser().getTasks().add(this);
-
+        User u = userTextToObject(assignedUser.getText());
+        new Task(u, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
+        leaderboard.addUser(u);
+        System.out.println(u);
+        System.out.println(u.getPoints());
+        System.out.println( "tasks: "+ u.getTasks().toString());
+        System.out.println(leaderboard);
         updateListViews();
         clearTask();
     }
@@ -160,16 +153,15 @@ public class CleanEController {
 
     @FXML
     private void handleCompletedTask() throws IOException {
+        // leaderboard.getUsers();
         checkMonday();
-    
+
         
-        // leaderboard.addToUsers();
+        
+        System.out.println(leaderboard.getUsers());
         leaderboard.printLeaderboardStats();
         leaderboard.sortList();
-        System.out.println(leaderboard.getUsers());
-
-        // getAssignedUser().getTasks().remove(monday.getSelectionModel().getSelectedItem());
-        // updateListViews();
+        System.out.println(leaderboard.getUsers());        
     }
 
 //hjelpemetoder for alle ukedager/handleCompletedTask
