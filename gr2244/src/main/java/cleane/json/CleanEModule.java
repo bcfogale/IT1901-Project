@@ -20,7 +20,7 @@ public class CleanEModule extends SimpleModule{
         super(NAME, VERSION_UTIL.version());
         //We don't have custom serializers for User and Task
         //Because of cyclic referencing this would cause issues
-        //The cyclic referencing is easily resolved with the automatic serialization and the use of @JsonIdentityInfo in the User class
+        //The issues are easily resolved with the automatic serialization and the use of @JsonIdentityInfo in the User class
         addSerializer(Leaderboard.class, new LeaderboardSerializer());
         addDeserializer(Leaderboard.class, new LeaderboardDeserializer());
         addDeserializer(User.class, new UserDeserializer());
