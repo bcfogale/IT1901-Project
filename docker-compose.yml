@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  gr2244:
+    image: gr2244
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 6080:6080

@@ -22,7 +22,7 @@ public class CleanEController {
     @FXML
     private ListView<Task> monday, tuesday, wednesday, thursday, friday, saturday, sunday;
 
-    private FileManagement manager = new FileManagement();
+   
 
 //TODO: metode for switching mellom scenes
     // private Stage stage;
@@ -65,7 +65,7 @@ public class CleanEController {
     
     @FXML
     private void loadFromFile() throws IOException {
-        manager.readUser();
+        //TODO: IMPLEMENT JSON FILE LOADING
         
         updateListViews();
     }
@@ -123,7 +123,7 @@ public class CleanEController {
 
     @FXML
     private void handleSaveButton() throws IOException {
-        manager.writeUser(User.users);
+        //TODO: IMPLEMENT JSON FILE SAVING
     }
 
 
@@ -162,7 +162,7 @@ public class CleanEController {
 
     @FXML
     private void appendTask() throws IOException {
-        new Task(userTextToObject(assignedUser.getText()), taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
+        new Task(userTextToObject(assignedUser.toString()), taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
         switchToCalendar();
         updateListViews();
     }

@@ -3,15 +3,23 @@ package cleane;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+
+@JsonIdentityInfo(
+  generator = ObjectIdGenerators.IntSequenceGenerator.class, 
+  property = "id")
 public class User {
 
     public static List<User> users = new ArrayList<>();
-    
+
+
+
     private int points;
-
-    private List<Task> tasks = new ArrayList<>();
-
     private String name;
+    private List<Task> tasks = new ArrayList<>();
+    
 
     public User(String name) {
         this.name = name;
@@ -44,8 +52,10 @@ public class User {
 
     @Override
     public String toString() {
-        return ""+ name;
+        return "User [points=" + points + ", name=" + name + ", tasks=" + tasks + "]";
     }
+
+    
 
 
 

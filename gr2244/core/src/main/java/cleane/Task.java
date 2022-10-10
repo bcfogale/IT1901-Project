@@ -7,16 +7,16 @@ public class Task {
 
     final private List<String> days =Arrays.asList("monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday");
     
-    private User assignedUser;
     private String taskName;
     private int pointsValue;
     private boolean completed = false;
     private String dueDay;
-
-    
+    private User assignedUser;
+  
     public Task(User assignedUser, String taskName, int pointsValue, String dueDay) {
         this.assignedUser = assignedUser;
-        assignedUser.addTask(this); // Adds this task to the assigned users task list
+         // Adds this task to the assigned users task list
+        assignedUser.addTask(this);;
         this.taskName = taskName;
         this.pointsValue = pointsValue;
         if (days.contains(dueDay.toLowerCase())) {
@@ -25,6 +25,17 @@ public class Task {
         else {
             throw new IllegalArgumentException("Choose a valid day.");
         }
+    }
+
+    // This constructor is only used for deserialization purposes
+    public Task(String taskName, int pointsValue, String dueDay) {
+        this.taskName = taskName;
+        this.pointsValue = pointsValue;
+        this.dueDay = dueDay;
+    }
+
+    public void setAssignedUser(User assignedUser) {
+        this.assignedUser = assignedUser;
     }
 
     public void setTrue() {
@@ -51,18 +62,10 @@ public class Task {
         return dueDay;
     }
 
+
     @Override
     public String toString() {
-        return "Taskname: " + taskName + "   " + "AssignedUser: " + assignedUser + "   " + "Points: " + pointsValue + "   " + "Dueday: " + dueDay;
+        return "Task [taskName=" + taskName + ", pointsValue=" + pointsValue + ", completed=" + completed + ", dueDay="
+                + dueDay + ", assignedUser=" + assignedUser.getName() + "]";
     }
-    
-
-    
-
-    
-
-    
-
-
-
 }
