@@ -28,7 +28,7 @@ public class UserTest {
 
     @Test
     public void testAddTask(){
-        Task t = new Task(s, "taskName", 5, "monday");
+        s.addTask(new Task("taskName", 5, "monday"));;
         assertEquals(1, s.getTasks().size());
     }
 
