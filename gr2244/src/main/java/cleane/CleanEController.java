@@ -3,7 +3,8 @@ package cleane;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import java.io.IOException;
-
+import java.util.ArrayList;
+import java.util.List;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -129,6 +130,7 @@ public class CleanEController {
         new Task(u, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
         leaderboard.addUser(u);
         updateListViews();
+        System.out.println(u.getTasks());
         clearTask();
     }
 
@@ -149,98 +151,30 @@ public class CleanEController {
 
     @FXML
     private void handleCompletedTask() throws IOException {
-        checkMonday();
-        // checkTuesday();
-        // checkWednesday();
-        // checkThursday();
-        // checkFriday();
-        // checkSaturday();
-        // checkSunday();
-    }
+        List<ListView<Task>> listviews = new ArrayList<>();
 
-    //hjelpemetoder for alle ukedager som kalles i handleCompletedTask
-    private void checkMonday() {
-        if (monday.getSelectionModel().isEmpty()) {
-            System.out.println("No tasks this Monday");
+        listviews.add(this.monday);
+        listviews.add(this.tuesday);
+        listviews.add(this.wednesday);
+        listviews.add(this.thursday);
+        listviews.add(this.friday);
+        listviews.add(this.saturday);
+        listviews.add(this.sunday);
+
+        for (ListView<Task> list : listviews) {
+            for (Task task : list.getItems()) {
+                if (task.equals(list.getSelectionModel().getSelectedItem())) {
+                    task.setTrue();
+                    scoreList.getItems().add(task.getAssignedUser());
+                    task.getAssignedUser().removeTask(task);   
+                }
+            }
         }
-        Task selectedTaskMon = monday.getSelectionModel().getSelectedItem();
-        selectedTaskMon.setTrue();                                  //endrer completed = true
-        scoreList.getItems().add(selectedTaskMon.getAssignedUser());//legger til user i leaderboard
-                    //fjerner valgt oppgave fra view
         
-        // System.out.println("för clear");
-        // System.out.println( this.monday.getItems());
-        this.monday.getItems().remove(selectedTaskMon); 
-        // // this.monday.getItems().clear();
-        // System.out.println("etter clear");
-        // System.out.println(monday.getItems());
-        // System.out.println("scorelist:");
-        // System.out.println(scoreList.getItems());
-        
+        updateListViews();
     }
 
 
-    // private void checkTuesday() {
-    //     if (tuesday.getSelectionModel().isEmpty()) {
-    //         System.out.println("No tasks this Tuesday");
-    //     }
-    //     Task selectedTaskTue = tuesday.getSelectionModel().getSelectedItem();
-    //     selectedTaskTue.setTrue();                                 
-    //     scoreList.getItems().add(selectedTaskTue.getAssignedUser());
-    //     monday.getItems().remove(selectedTaskTue);   
-    // }
-
-    // private void checkWednesday() {
-    //     if (wednesday.getSelectionModel().isEmpty()) {
-    //         System.out.println("No tasks this Wednesday");
-    //     }
-    //     Task selectedTaskWed = wednesday.getSelectionModel().getSelectedItem();
-    //     selectedTaskWed.setTrue();                                  
-    //     scoreList.getItems().add(selectedTaskWed.getAssignedUser());
-    //     monday.getItems().remove(selectedTaskWed);                  
-    // }
-
-    // private void checkThursday() {
-    //     if (thursday.getSelectionModel().isEmpty()) {
-    //         System.out.println("No tasks this Thursday");
-    //     }
-    //     Task selectedTaskThu = thursday.getSelectionModel().getSelectedItem();
-    //     selectedTaskThu.setTrue();                                 
-    //     scoreList.getItems().add(selectedTaskThu.getAssignedUser());
-    //     monday.getItems().remove(selectedTaskThu);
-    // }
-
-    // private void checkFriday() {
-    //     if (friday.getSelectionModel().isEmpty()) {
-    //         System.out.println("No tasks this Friday");
-    //     }
-    //     Task selectedTaskFri = friday.getSelectionModel().getSelectedItem();
-    //     selectedTaskFri.setTrue();                                 
-    //     scoreList.getItems().add(selectedTaskFri.getAssignedUser());
-    //     friday.getItems().remove(selectedTaskFri);   
-    // }
-
-    // private void checkSaturday() {
-    //     if (saturday.getSelectionModel().isEmpty()) {
-    //         System.out.println("No tasks this Saturday");
-    //     }
-    //     Task selectedTaskSat = saturday.getSelectionModel().getSelectedItem();
-    //     selectedTaskSat.setTrue();                                 
-    //     scoreList.getItems().add(selectedTaskSat.getAssignedUser());
-    //     monday.getItems().remove(selectedTaskSat); 
-    // }
-
-    // private void checkSunday() {
-    //     if (sunday.getSelectionModel().isEmpty()) {
-    //         System.out.println("No tasks this Sunday");
-    //     }
-    //     Task selectedTaskSun = sunday.getSelectionModel().getSelectedItem();
-    //     selectedTaskSun.setTrue();                                 
-    //     scoreList.getItems().add(selectedTaskSun.getAssignedUser());
-    //     monday.getItems().remove(selectedTaskSun); 
-    // }
-
-    
     @FXML
     private void clearTask() throws IOException{
         this.assignedUser.clear();
