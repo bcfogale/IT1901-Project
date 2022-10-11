@@ -140,7 +140,10 @@ public class CleanEController {
 
     @FXML
     private void leaderBoardList() throws IOException { //listen blir sortert når man trykker på update-knapp
+        
+        
         leaderboard.sortList();
+        scoreList.getItems().setAll(leaderboard.getUsers());
     }
     
 

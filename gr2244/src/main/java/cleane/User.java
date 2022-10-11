@@ -47,7 +47,7 @@ public class User {
 
     @Override
     public String toString() {
-        return ""+ name;
+        return ""+ name + ": " + points + " poeng";
     }
 
 

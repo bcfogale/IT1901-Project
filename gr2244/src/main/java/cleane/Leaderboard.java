@@ -8,7 +8,6 @@ public class Leaderboard {
     private List<User> users = new ArrayList<>();
 
 
-
     public List<User> getUsers() {
         return users;
     }    
@@ -20,15 +19,14 @@ public class Leaderboard {
             System.out.println(user.getName() + " was added to list.");
         }
         else {
-            
              System.out.println("User already in list.");
         }
-        
     }     
 
     
     public void sortList() {
-        users.sort((u1, u2) -> u1.getPoints() - u2.getPoints());
+        users.sort((u1, u2) -> u2.getPoints() - u1.getPoints());
+        System.out.println("sorted users: " + users);
     }
 
 
