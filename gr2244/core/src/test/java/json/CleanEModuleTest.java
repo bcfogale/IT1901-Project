@@ -3,14 +3,12 @@ package json;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.io.File;
-import java.io.IOException;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import cleane.Leaderboard;
@@ -46,9 +44,18 @@ public class CleanEModuleTest {
     }
     
     @Test
-    public void testDeserializers() throws IOException{
+    public void testDeserializers() throws JsonMappingException, JsonProcessingException{
         Leaderboard leaderboardFromFile = mapper.readerFor(Leaderboard.class).readValue(jsonString);
+        //this test checks field by field that the two comparing objects have the same field values.
         assertThat(leaderboardFromFile).usingRecursiveComparison().isEqualTo(l);
+        
+    }
+
+    @Test
+    public void testSerializersDeserializers() throws JsonProcessingException{
+        String mapperString2 = mapper.writeValueAsString(l);
+        Leaderboard leaderboardFromMapper = mapper.readerFor(Leaderboard.class).readValue(mapperString2);
+        assertThat(leaderboardFromMapper).usingRecursiveComparison().isEqualTo(l);
         
     }
   
