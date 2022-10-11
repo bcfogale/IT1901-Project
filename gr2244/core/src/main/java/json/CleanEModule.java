@@ -37,6 +37,7 @@ public class CleanEModule extends SimpleModule{
 
         Leaderboard l = mapper.readerFor(Leaderboard.class).readValue(new File("gr2244/savestates/savefile.json"));
         System.out.println(l);
+        System.out.println(new File(".").getAbsolutePath());
         
         
 
