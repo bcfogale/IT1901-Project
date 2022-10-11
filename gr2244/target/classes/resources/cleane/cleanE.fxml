@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="894.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18">
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="894.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cleane.CleanEController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -40,6 +40,7 @@
             <RowConstraints maxHeight="57.5" minHeight="57.5" prefHeight="57.5" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="57.5" minHeight="57.5" prefHeight="57.5" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="57.5" minHeight="57.5" prefHeight="57.5" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="57.5" minHeight="57.5" prefHeight="57.5" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
             <GridPane style="-fx-background-color: ffffff;" GridPane.columnSpan="4">
@@ -52,13 +53,13 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Calendar" textAlignment="CENTER" wrappingWidth="278.3277587890625">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Calendar" textAlignment="CENTER" wrappingWidth="280.3277587890625">
                      <font>
                         <Font size="40.0" />
                      </font>
                   </Text>
-                  <Button mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="24.0" prefWidth="87.0" text="Save" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" onAction="#loadFromFile" prefHeight="26.0" prefWidth="88.0" text="Load" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="24.0" prefWidth="87.0" text="Save" textAlignment="CENTER" GridPane.rowIndex="1" />
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#loadFromFile" prefHeight="26.0" prefWidth="88.0" text="Load" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Monday" wrappingWidth="99.57619857788086" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
@@ -122,6 +123,7 @@
                   <ListView fx:id="sunday" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="6" />
                </children>
             </GridPane>
+            <Button mnemonicParsing="false" onAction="#handleCompletedTask" prefHeight="26.0" prefWidth="129.0" text="Completed" GridPane.columnIndex="2" GridPane.rowIndex="8" />
          </children>
       </GridPane>
       <GridPane prefWidth="198.0" style="-fx-padding: 10; -fx-background-color: c8c9d4;" GridPane.rowIndex="1">
@@ -198,12 +200,12 @@
                   </HBox>
                   <HBox alignment="TOP_RIGHT">
                      <children>
-                        <Button fx:id="addButton" mnemonicParsing="false" onAction="#appendTask" prefHeight="26.0" prefWidth="76.0" text="Add task">
+                        <Button fx:id="addButton" alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#appendTask" prefHeight="26.0" prefWidth="96.0" text="Add task">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="cancelButton" mnemonicParsing="false" prefWidth="63.0" text="Cancel">
+                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#clearTask" prefWidth="63.0" text="Cancel">
                            <HBox.margin>
                               <Insets left="10.0" right="54.0" />
                            </HBox.margin>
@@ -223,7 +225,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add new task" textAlignment="CENTER" wrappingWidth="276.68944549560547">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add new task" textAlignment="CENTER" wrappingWidth="279.68944549560547">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -268,7 +270,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <Button fx:id="updateBoardList" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#leaderBoardList" text="Update !" />
+                  <Button fx:id="updateBoardList" mnemonicParsing="false" onAction="#leaderBoardList" text="Update !" />
                   <HBox alignment="CENTER">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -297,7 +299,7 @@
             </GridPane>
          </children>
       </GridPane>
-      <Label text="Clean-E" textAlignment="CENTER" GridPane.columnIndex="1">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="101.0" prefWidth="478.0" text="Clean-E" textAlignment="CENTER" underline="true" GridPane.columnIndex="1">
          <font>
             <Font size="81.0" />
          </font>

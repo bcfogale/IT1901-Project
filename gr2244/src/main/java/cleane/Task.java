@@ -29,6 +29,7 @@ public class Task {
 
     public void setTrue() {
         this.completed = true;
+        getAssignedUser().addPoints(pointsValue);
     }
 
     public User getAssignedUser() {
