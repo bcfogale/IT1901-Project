@@ -3,6 +3,7 @@ package cleane;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import java.io.IOException;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -137,73 +138,106 @@ public class CleanEController {
     @FXML
     private ListView<User> scoreList;
 
-//metode for å laste inn users og points i leaderBoard
-
     @FXML
-    private void leaderBoardList() throws IOException{
-
+    private void leaderBoardList() throws IOException { //listen blir sortert når man trykker på update-knapp
+        leaderboard.sortList();
     }
+    
 
     @FXML
     private void handleCompletedTask() throws IOException {
-        // leaderboard.getUsers();
         checkMonday();
-
-
-        leaderboard.sortList();
-        System.out.println(leaderboard.getUsers());        
+        // checkTuesday();
+        // checkWednesday();
+        // checkThursday();
+        // checkFriday();
+        // checkSaturday();
+        // checkSunday();
     }
 
-//hjelpemetoder for alle ukedager/handleCompletedTask
+    //hjelpemetoder for alle ukedager som kalles i handleCompletedTask
     private void checkMonday() {
-        //sjekk om listview monday er tom eller ikke
-
         if (monday.getSelectionModel().isEmpty()) {
-            System.out.println("No tasks this monday");
+            System.out.println("No tasks this Monday");
         }
-
         Task selectedTaskMon = monday.getSelectionModel().getSelectedItem();
-        // System.out.println(selectedTaskMon.getAssignedUser().getPoints() + " poeng har du");
-        selectedTaskMon.setTrue();
+        selectedTaskMon.setTrue();                                  //endrer completed = true
+        scoreList.getItems().add(selectedTaskMon.getAssignedUser());//legger til user i leaderboard
+                    //fjerner valgt oppgave fra view
         
-        // System.out.println(selectedTaskMon.getAssignedUser() + " har");
-        // System.out.println(selectedTaskMon.getAssignedUser().getTasks().size() + " oppgaver");
-        // System.out.println("og " + selectedTaskMon.getAssignedUser().getPoints() + " poeng");
-        // System.out.println(selectedTaskMon.getAssignedUser().getPoints() + " poeng fikk du");
-
-        monday.getItems().remove(selectedTaskMon);   //fjerner valgt oppgave fra view
+        // System.out.println("för clear");
+        // System.out.println( this.monday.getItems());
+        this.monday.getItems().remove(selectedTaskMon); 
+        // // this.monday.getItems().clear();
+        // System.out.println("etter clear");
+        // System.out.println(monday.getItems());
+        // System.out.println("scorelist:");
+        // System.out.println(scoreList.getItems());
+        
     }
-/* 
-    //tuesday
-
-        tuesday.getSelectionModel().getSelectedItem().isCompleted();     //endrer boolean completed til true
-        // tuesday.getItems().remove(monday.getSelectionModel().getSelectedItem()); //fjerner valgt oppgave fra view
-        
-        // tuesday.getSelectionModel().getSelectedItem().
-        // getAssignedUser().getTasks().remove(tuesday.getSelectionModel().getSelectedItem());
-
-        
-    //wednesday
-
-        wednesday.getSelectionModel().getSelectedItem().isCompleted();     //endrer boolean completed til true
-        // wednesday.getItems().remove(monday.getSelectionModel().getSelectedItem()); //fjerner valgt oppgave fra view
-        
-        wednesday.getSelectionModel().getSelectedItem().
-        getAssignedUser().getTasks().remove(wednesday.getSelectionModel().getSelectedItem());
-
-    //thursday
-
-        thursday.getSelectionModel().getSelectedItem().isCompleted();     //endrer boolean completed til true
-        // thursday.getItems().remove(monday.getSelectionModel().getSelectedItem()); //fjerner valgt oppgave fra view
-        
-        thursday.getSelectionModel().getSelectedItem().
-        getAssignedUser().getTasks().remove(thursday.getSelectionModel().getSelectedItem());
 
 
-        //fjern task fra listview
-        //oppdater leaderboardview
-    }
- */
+    // private void checkTuesday() {
+    //     if (tuesday.getSelectionModel().isEmpty()) {
+    //         System.out.println("No tasks this Tuesday");
+    //     }
+    //     Task selectedTaskTue = tuesday.getSelectionModel().getSelectedItem();
+    //     selectedTaskTue.setTrue();                                 
+    //     scoreList.getItems().add(selectedTaskTue.getAssignedUser());
+    //     monday.getItems().remove(selectedTaskTue);   
+    // }
+
+    // private void checkWednesday() {
+    //     if (wednesday.getSelectionModel().isEmpty()) {
+    //         System.out.println("No tasks this Wednesday");
+    //     }
+    //     Task selectedTaskWed = wednesday.getSelectionModel().getSelectedItem();
+    //     selectedTaskWed.setTrue();                                  
+    //     scoreList.getItems().add(selectedTaskWed.getAssignedUser());
+    //     monday.getItems().remove(selectedTaskWed);                  
+    // }
+
+    // private void checkThursday() {
+    //     if (thursday.getSelectionModel().isEmpty()) {
+    //         System.out.println("No tasks this Thursday");
+    //     }
+    //     Task selectedTaskThu = thursday.getSelectionModel().getSelectedItem();
+    //     selectedTaskThu.setTrue();                                 
+    //     scoreList.getItems().add(selectedTaskThu.getAssignedUser());
+    //     monday.getItems().remove(selectedTaskThu);
+    // }
+
+    // private void checkFriday() {
+    //     if (friday.getSelectionModel().isEmpty()) {
+    //         System.out.println("No tasks this Friday");
+    //     }
+    //     Task selectedTaskFri = friday.getSelectionModel().getSelectedItem();
+    //     selectedTaskFri.setTrue();                                 
+    //     scoreList.getItems().add(selectedTaskFri.getAssignedUser());
+    //     friday.getItems().remove(selectedTaskFri);   
+    // }
+
+    // private void checkSaturday() {
+    //     if (saturday.getSelectionModel().isEmpty()) {
+    //         System.out.println("No tasks this Saturday");
+    //     }
+    //     Task selectedTaskSat = saturday.getSelectionModel().getSelectedItem();
+    //     selectedTaskSat.setTrue();                                 
+    //     scoreList.getItems().add(selectedTaskSat.getAssignedUser());
+    //     monday.getItems().remove(selectedTaskSat); 
+    // }
+
+    // private void checkSunday() {
+    //     if (sunday.getSelectionModel().isEmpty()) {
+    //         System.out.println("No tasks this Sunday");
+    //     }
+    //     Task selectedTaskSun = sunday.getSelectionModel().getSelectedItem();
+    //     selectedTaskSun.setTrue();                                 
+    //     scoreList.getItems().add(selectedTaskSun.getAssignedUser());
+    //     monday.getItems().remove(selectedTaskSun); 
+    // }
+
+    
     @FXML
     private void clearTask() throws IOException{
         this.assignedUser.clear();
