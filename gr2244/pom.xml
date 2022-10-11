@@ -58,6 +58,9 @@
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.22.1</version>
+          <configuration>
+            <argLine>${argLine}</argLine>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
@@ -86,13 +89,15 @@
           <version>0.8.8</version>
           <executions>
             <execution>
+              <id>jacoco-prepare-agent</id>
+              <phase>process-test-classes</phase>
               <goals>
                   <goal>prepare-agent</goal>
               </goals>
             </execution>
             <execution>
-              <id>report</id>
-              <phase>prepare-package</phase>
+              <id>jacoco-report</id>
+              <phase>verify</phase>
               <goals>
                 <goal>report</goal>
               </goals>
