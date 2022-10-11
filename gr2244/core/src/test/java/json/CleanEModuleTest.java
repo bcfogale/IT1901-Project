@@ -48,7 +48,6 @@ public class CleanEModuleTest {
         Leaderboard leaderboardFromFile = mapper.readerFor(Leaderboard.class).readValue(jsonString);
         //this test checks field by field that the two comparing objects have the same field values.
         assertThat(leaderboardFromFile).usingRecursiveComparison().isEqualTo(l);
-        
     }
 
     @Test
@@ -56,7 +55,6 @@ public class CleanEModuleTest {
         String mapperString2 = mapper.writeValueAsString(l);
         Leaderboard leaderboardFromMapper = mapper.readerFor(Leaderboard.class).readValue(mapperString2);
         assertThat(leaderboardFromMapper).usingRecursiveComparison().isEqualTo(l);
-        
     }
   
 }
