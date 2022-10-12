@@ -6,18 +6,35 @@ import java.util.List;
 public class Leaderboard {
 
     private List<User> users = new ArrayList<>();
-    
-    public Leaderboard(){}
 
-    public Leaderboard(List<User> users) {
-        this.users = users;
-    }
 
     public List<User> getUsers() {
         return users;
+    }    
+
+   
+    public void addUser(User user) {
+        if (!users.contains(user)) {
+            users.add(user);
+            System.out.println(user.getName() + " was added to list.");
+        }
+        else {
+             System.out.println("User already in list.");
+        }
+    }     
+
+    
+    public void sortList() {
+        users.sort((u1, u2) -> u2.getPoints() - u1.getPoints());
+        System.out.println("sorted users: " + users);
     }
 
-    public void sortList(){
-        users.sort((u1, u2) -> u1.getPoints() - u2.getPoints());
+
+    @Override
+    public String toString() {
+        return "Leaderboard [users=" + users + "]";
     }
+
+    
+    
 }

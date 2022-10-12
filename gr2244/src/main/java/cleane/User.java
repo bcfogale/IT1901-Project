@@ -5,7 +5,7 @@ import java.util.List;
 
 public class User {
 
-    public static List<User> users = new ArrayList<>();
+    // public static List<User> users = new ArrayList<>();
     
     private int points;
 
@@ -15,7 +15,6 @@ public class User {
 
     public User(String name) {
         this.name = name;
-        users.add(this);
     }
 
     public int getPoints() {
@@ -48,11 +47,8 @@ public class User {
 
     @Override
     public String toString() {
-        return ""+ name;
+        return ""+ name + ": " + points + " poeng";
     }
-
-
-
 
 
     
