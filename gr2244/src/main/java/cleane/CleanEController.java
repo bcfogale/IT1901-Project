@@ -130,6 +130,8 @@ public class CleanEController {
         new Task(u, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
         leaderboard.addUser(u);
         updateListViews();
+        scoreList.getItems().clear();
+        scoreList.getItems().setAll(leaderboard.getUsers());
         System.out.println(u.getTasks());
         clearTask();
     }
@@ -151,6 +153,8 @@ public class CleanEController {
 
     @FXML
     private void handleCompletedTask() throws IOException {
+        scoreList.getItems().clear();
+
         List<ListView<Task>> listviews = new ArrayList<>();
 
         listviews.add(this.monday);
@@ -161,16 +165,18 @@ public class CleanEController {
         listviews.add(this.saturday);
         listviews.add(this.sunday);
 
-        for (ListView<Task> list : listviews) {
-            for (Task task : list.getItems()) {
-                if (task.equals(list.getSelectionModel().getSelectedItem())) {
+        for (ListView<Task> day : listviews) {
+            for (Task task : day.getItems()) {
+                if (task.equals(day.getSelectionModel().getSelectedItem())) {
                     task.setTrue();
-                    scoreList.getItems().add(task.getAssignedUser());
+                    if (!leaderboard.getUsers().contains(task.getAssignedUser())) {
+                        leaderboard.getUsers().add(task.getAssignedUser());
+                    }
                     task.getAssignedUser().removeTask(task);   
                 }
             }
         }
-        
+        scoreList.getItems().setAll(leaderboard.getUsers());
         updateListViews();
     }
 
