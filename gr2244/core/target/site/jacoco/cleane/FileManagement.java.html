@@ -16,8 +16,8 @@ import java.util.Scanner;
 <span class="nc" id="L16">                writer.println(&quot;$&quot; + user.getName() + &quot;&amp;&quot; + user.getPoints());</span>
 <span class="nc bnc" id="L17" title="All 2 branches missed.">                for (Task task : user.getTasks()) {</span>
 <span class="nc" id="L18">                    writer.println(&quot;¥&quot; + task.getTaskName() + &quot;~&quot; + task.getPointsValue() + &quot;~&quot; + task.getDueDay());</span>
-                }
-            }
+<span class="nc" id="L19">                }</span>
+<span class="nc" id="L20">            }</span>
         }
 <span class="nc" id="L22">    }</span>
 
@@ -43,7 +43,7 @@ import java.util.Scanner;
 <span class="nc" id="L43">                    new Task(user, taskName, pointsValue, dueDay);</span>
                 }
 
-            }
+<span class="nc" id="L46">            }</span>
 
         }
 <span class="nc" id="L49">    }</span>
@@ -62,9 +62,9 @@ import java.util.Scanner;
 <span class="nc bnc" id="L62" title="All 2 branches missed.">        for (User user : User.users) {</span>
 <span class="nc bnc" id="L63" title="All 2 branches missed.">            for (Task task : user.getTasks()) {</span>
 <span class="nc" id="L64">                System.out.println(task);</span>
-            }
+<span class="nc" id="L65">            }</span>
 
-        }
+<span class="nc" id="L67">        }</span>
 <span class="nc" id="L68">    }</span>
 
 }

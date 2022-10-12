@@ -6,7 +6,7 @@ import java.util.List;
 public class Task {
 
 <span class="fc" id="L8">    final private List&lt;String&gt; days = Arrays.asList(&quot;monday&quot;, &quot;tuesday&quot;, &quot;wednesday&quot;, &quot;thursday&quot;, &quot;friday&quot;, &quot;saturday&quot;,</span>
-<span class="fc" id="L9">            &quot;sunday&quot;);</span>
+            &quot;sunday&quot;);
 
     private User assignedUser;
     private String taskName;
@@ -21,7 +21,7 @@ public class Task {
 <span class="fc" id="L21">        this.pointsValue = pointsValue;</span>
 <span class="fc bfc" id="L22" title="All 2 branches covered.">        if (days.contains(dueDay.toLowerCase())) {</span>
 <span class="fc" id="L23">            this.dueDay = dueDay;</span>
-<span class="fc" id="L24">        } else {</span>
+        } else {
 <span class="fc" id="L25">            throw new IllegalArgumentException(&quot;Choose a valid day.&quot;);</span>
         }
 <span class="fc" id="L27">    }</span>
@@ -53,7 +53,7 @@ public class Task {
     @Override
     public String toString() {
 <span class="nc" id="L55">        return &quot;Taskname: &quot; + taskName + &quot;   &quot; + &quot;AssignedUser: &quot; + assignedUser + &quot;   &quot; + &quot;Points: &quot; + pointsValue</span>
-<span class="nc" id="L56">                + &quot;   &quot; + &quot;Dueday: &quot; + dueDay;</span>
+                + &quot;   &quot; + &quot;Dueday: &quot; + dueDay;
     }
 
 }
