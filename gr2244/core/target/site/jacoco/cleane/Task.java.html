@@ -5,15 +5,15 @@ import java.util.List;
 
 public class Task {
 
-<span class="fc" id="L8">    final private List&lt;String&gt; days =Arrays.asList(&quot;monday&quot;, &quot;tuesday&quot;, &quot;wednesday&quot;, &quot;thursday&quot;, &quot;friday&quot;, &quot;saturday&quot;, &quot;sunday&quot;);</span>
-    
+<span class="fc" id="L8">    final private List&lt;String&gt; days = Arrays.asList(&quot;monday&quot;, &quot;tuesday&quot;, &quot;wednesday&quot;, &quot;thursday&quot;, &quot;friday&quot;, &quot;saturday&quot;,</span>
+<span class="fc" id="L9">            &quot;sunday&quot;);</span>
+
     private User assignedUser;
     private String taskName;
     private int pointsValue;
-<span class="fc" id="L13">    private boolean completed = false;</span>
+<span class="fc" id="L14">    private boolean completed = false;</span>
     private String dueDay;
 
-    
 <span class="fc" id="L17">    public Task(User assignedUser, String taskName, int pointsValue, String dueDay) {</span>
 <span class="fc" id="L18">        this.assignedUser = assignedUser;</span>
 <span class="fc" id="L19">        assignedUser.addTask(this); // Adds this task to the assigned users task list</span>
@@ -21,49 +21,40 @@ public class Task {
 <span class="fc" id="L21">        this.pointsValue = pointsValue;</span>
 <span class="fc bfc" id="L22" title="All 2 branches covered.">        if (days.contains(dueDay.toLowerCase())) {</span>
 <span class="fc" id="L23">            this.dueDay = dueDay;</span>
+<span class="fc" id="L24">        } else {</span>
+<span class="fc" id="L25">            throw new IllegalArgumentException(&quot;Choose a valid day.&quot;);</span>
         }
-        else {
-<span class="fc" id="L26">            throw new IllegalArgumentException(&quot;Choose a valid day.&quot;);</span>
-        }
-<span class="fc" id="L28">    }</span>
+<span class="fc" id="L27">    }</span>
 
     public void setTrue() {
-<span class="fc" id="L31">        this.completed = true;</span>
-<span class="fc" id="L32">    }</span>
+<span class="fc" id="L30">        this.completed = true;</span>
+<span class="fc" id="L31">    }</span>
 
     public User getAssignedUser() {
-<span class="fc" id="L35">        return assignedUser;</span>
+<span class="fc" id="L34">        return assignedUser;</span>
     }
 
     public String getTaskName() {
-<span class="fc" id="L39">        return taskName;</span>
+<span class="fc" id="L38">        return taskName;</span>
     }
 
     public int getPointsValue() {
-<span class="fc" id="L43">        return pointsValue;</span>
+<span class="fc" id="L42">        return pointsValue;</span>
     }
 
     public boolean isCompleted() {
-<span class="fc" id="L47">        return completed;</span>
+<span class="fc" id="L46">        return completed;</span>
     }
 
     public String getDueDay() {
-<span class="fc" id="L51">        return dueDay;</span>
+<span class="fc" id="L50">        return dueDay;</span>
     }
 
     @Override
     public String toString() {
-<span class="nc" id="L56">        return &quot;Taskname: &quot; + taskName + &quot;   &quot; + &quot;AssignedUser: &quot; + assignedUser + &quot;   &quot; + &quot;Points: &quot; + pointsValue + &quot;   &quot; + &quot;Dueday: &quot; + dueDay;</span>
+<span class="nc" id="L55">        return &quot;Taskname: &quot; + taskName + &quot;   &quot; + &quot;AssignedUser: &quot; + assignedUser + &quot;   &quot; + &quot;Points: &quot; + pointsValue</span>
+<span class="nc" id="L56">                + &quot;   &quot; + &quot;Dueday: &quot; + dueDay;</span>
     }
-    
-
-    
-
-    
-
-    
-
-
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

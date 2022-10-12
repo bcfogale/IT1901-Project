@@ -6,7 +6,7 @@ import java.util.List;
 public class User {
 
     public static List<User> users = new ArrayList<>();
-    
+
     private int points;
 
     private List<Task> tasks = new ArrayList<>();
@@ -44,12 +44,7 @@ public class User {
 
     @Override
     public String toString() {
-        return ""+ name;
+        return "" + name;
     }
 
-
-
-
-
-    
 }

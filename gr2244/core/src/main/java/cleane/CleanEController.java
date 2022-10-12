@@ -13,21 +13,19 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
-
 //source: https://www.youtube.com/watch?v=hcM-R-YOKkQ&ab_channel=BroCode
 
 public class CleanEController {
-
 
     @FXML
     private ListView<Task> monday, tuesday, wednesday, thursday, friday, saturday, sunday;
 
     private FileManagement manager = new FileManagement();
 
-//TODO: metode for switching mellom scenes
+    // TODO: metode for switching mellom scenes
     // private Stage stage;
     // private Scene scene;
-    //private Parent root; //usikker på hva denne skal gjøre enda...
+    // private Parent root; //usikker på hva denne skal gjøre enda...
 
     @FXML
     Button newTaskButton, adButton;
@@ -39,7 +37,6 @@ public class CleanEController {
             // TODO: handle exception
         }
     }
-
 
     public void switchToTask(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("fxui/src/main/java/resources/cleane/App.fxml"));
@@ -55,32 +52,26 @@ public class CleanEController {
         Parent root = FXMLLoader.load(getClass().getResource("fxui/src/main/java/resources/cleane/App.fxml"));
 
         Stage stage = (Stage) adButton.getScene().getWindow();
-        
+
         stage.setScene(new Scene(root));
-        
+
     }
-    
 
-
-    
     @FXML
     private void loadFromFile() throws IOException {
         manager.readUser();
-        
+
         updateListViews();
     }
 
-
     @FXML
-    private void handleTest(){
+    private void handleTest() {
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Error message");
         alert.setHeaderText("Something went wrong");
         alert.setContentText("Hallo");
         alert.showAndWait();
     }
-
-
 
     @FXML
     private void updateListViews() {
@@ -94,40 +85,32 @@ public class CleanEController {
 
         for (User user : User.users) {
             for (Task task : user.getTasks()) {
-                
+
                 if (task.getDueDay().equals("monday")) {
                     this.monday.getItems().add(task);
-                }
-                else if (task.getDueDay().equals("tuesday")  ) {
+                } else if (task.getDueDay().equals("tuesday")) {
                     this.tuesday.getItems().add(task);
-                }
-                else if (task.getDueDay().equals("wednesday")) {
+                } else if (task.getDueDay().equals("wednesday")) {
                     this.wednesday.getItems().add(task);
-                }
-                else if (task.getDueDay().equals("thursday") ) {
+                } else if (task.getDueDay().equals("thursday")) {
                     this.thursday.getItems().add(task);
-                }
-                else if (task.getDueDay().equals("friday")) {
+                } else if (task.getDueDay().equals("friday")) {
                     this.friday.getItems().add(task);
-                }
-                else if (task.getDueDay().equals("saturday")) {
+                } else if (task.getDueDay().equals("saturday")) {
                     this.saturday.getItems().add(task);
-                }
-                else if (task.getDueDay().equals("sunday")) {
+                } else if (task.getDueDay().equals("sunday")) {
                     this.sunday.getItems().add(task);
                 }
             }
         }
     }
 
-
     @FXML
     private void handleSaveButton() throws IOException {
         manager.writeUser(User.users);
     }
 
-
-    //For scene: newTask
+    // For scene: newTask
 
     @FXML
     private TextField assignedUser;
@@ -140,21 +123,19 @@ public class CleanEController {
 
     @FXML
     private TextField dueDay;
-    
 
-    //hjelpemetode
-    private User userTextToObject(String assignedUser){
+    // hjelpemetode
+    private User userTextToObject(String assignedUser) {
         if (User.users.isEmpty()) {
             return new User(assignedUser);
-        }
-        else {
+        } else {
             for (User user : User.users) {
                 if (user.getName().equals(assignedUser)) {
                     return user;
                 } else {
                     return new User(assignedUser);
                 }
-    
+
             }
         }
         return null;
@@ -162,7 +143,8 @@ public class CleanEController {
 
     @FXML
     private void appendTask() throws IOException {
-        new Task(userTextToObject(assignedUser.getText()), taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
+        new Task(userTextToObject(assignedUser.getText()), taskName.getText(), Integer.parseInt(pointsValue.getText()),
+                dueDay.getText());
         switchToCalendar();
         updateListViews();
     }

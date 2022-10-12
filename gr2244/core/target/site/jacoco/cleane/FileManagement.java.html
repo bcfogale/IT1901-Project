@@ -11,21 +11,21 @@ import java.util.Scanner;
 
     public void writeUser(List&lt;User&gt; users) throws IOException {
 <span class="nc" id="L13">        Files.createDirectories(getFolderPath());</span>
-<span class="nc" id="L14">        try(PrintWriter writer = new PrintWriter(getFilePath().toFile())){</span>
+<span class="nc" id="L14">        try (PrintWriter writer = new PrintWriter(getFilePath().toFile())) {</span>
 <span class="nc bnc" id="L15" title="All 2 branches missed.">            for (User user : users) {</span>
 <span class="nc" id="L16">                writer.println(&quot;$&quot; + user.getName() + &quot;&amp;&quot; + user.getPoints());</span>
 <span class="nc bnc" id="L17" title="All 2 branches missed.">                for (Task task : user.getTasks()) {</span>
-<span class="nc" id="L18">                    writer.println(&quot;¥&quot; + task.getTaskName()+&quot;~&quot;+task.getPointsValue() +&quot;~&quot;+task.getDueDay());</span>
-<span class="nc" id="L19">                } </span>
-<span class="nc" id="L20">            } </span>
+<span class="nc" id="L18">                    writer.println(&quot;¥&quot; + task.getTaskName() + &quot;~&quot; + task.getPointsValue() + &quot;~&quot; + task.getDueDay());</span>
+                }
+            }
         }
 <span class="nc" id="L22">    }</span>
 
     public void readUser() throws IOException {
 <span class="nc" id="L25">        User user = null;</span>
-        
-<span class="nc" id="L27">        try(Scanner scanner = new Scanner(getFilePath().toFile())){</span>
-<span class="nc bnc" id="L28" title="All 2 branches missed.">            while (scanner.hasNextLine()) { </span>
+
+<span class="nc" id="L27">        try (Scanner scanner = new Scanner(getFilePath().toFile())) {</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">            while (scanner.hasNextLine()) {</span>
 <span class="nc" id="L29">                String scannedLine = scanner.nextLine();</span>
 <span class="nc bnc" id="L30" title="All 2 branches missed.">                if (scannedLine.substring(0, 1).equals(&quot;$&quot;)) {</span>
 <span class="nc" id="L31">                    String[] userProperties = scannedLine.split(&quot;&amp;&quot;);</span>
@@ -33,7 +33,7 @@ import java.util.Scanner;
 <span class="nc" id="L33">                    int points = Integer.parseInt(userProperties[1]);</span>
 <span class="nc" id="L34">                    user = new User(userID);</span>
 <span class="nc" id="L35">                    user.addPoints(points);</span>
-                    
+
 <span class="nc bnc" id="L37" title="All 2 branches missed.">                } else if (scannedLine.substring(0, 1).equals(&quot;¥&quot;)) {</span>
 <span class="nc" id="L38">                    String[] taskProperties = scannedLine.split(&quot;~&quot;);</span>
 <span class="nc" id="L39">                    String taskName = taskProperties[0].substring(1);</span>
@@ -43,32 +43,29 @@ import java.util.Scanner;
 <span class="nc" id="L43">                    new Task(user, taskName, pointsValue, dueDay);</span>
                 }
 
-                
-<span class="nc" id="L47">                }</span>
-                
             }
-<span class="nc" id="L50">        } </span>
 
-    
+        }
+<span class="nc" id="L49">    }</span>
+
     public Path getFilePath() {
-<span class="nc" id="L54">        return getFolderPath().resolve(&quot;cleane.txt&quot;);</span>
+<span class="nc" id="L52">        return getFolderPath().resolve(&quot;cleane.txt&quot;);</span>
     }
 
     public Path getFolderPath() {
-<span class="nc" id="L58">        return Path.of(System.getProperty(&quot;user.dir&quot;), &quot;savestates&quot;);</span>
+<span class="nc" id="L56">        return Path.of(System.getProperty(&quot;user.dir&quot;), &quot;savestates&quot;);</span>
     }
 
     public static void main(String[] args) throws IOException {
-<span class="nc" id="L62">        FileManagement f = new FileManagement();</span>
-<span class="nc" id="L63">        f.readUser();</span>
-<span class="nc bnc" id="L64" title="All 2 branches missed.">        for (User user : User.users) {</span>
-<span class="nc bnc" id="L65" title="All 2 branches missed.">            for (Task task : user.getTasks()) {</span>
-<span class="nc" id="L66">                System.out.println(task);</span>
-<span class="nc" id="L67">            }</span>
-            
-<span class="nc" id="L69">        }</span>
-<span class="nc" id="L70">    }</span>
+<span class="nc" id="L60">        FileManagement f = new FileManagement();</span>
+<span class="nc" id="L61">        f.readUser();</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">        for (User user : User.users) {</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">            for (Task task : user.getTasks()) {</span>
+<span class="nc" id="L64">                System.out.println(task);</span>
+            }
 
-    
+        }
+<span class="nc" id="L68">    }</span>
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
