@@ -8,9 +8,9 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
-import cleane.Leaderboard;
-import cleane.Task;
-import cleane.User;
+import core.Leaderboard;
+import core.Task;
+import core.User;
 
 public class CleanEModule extends SimpleModule{
     private static final String NAME = "CleanEModule";

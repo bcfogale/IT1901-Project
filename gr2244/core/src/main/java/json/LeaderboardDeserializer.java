@@ -11,8 +11,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import cleane.Leaderboard;
-import cleane.User;
+import core.Leaderboard;
+import core.User;
 
 public class LeaderboardDeserializer extends JsonDeserializer<Leaderboard>{
 
