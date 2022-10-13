@@ -1,3 +1,3 @@
-core\LeaderboardTest.class
-core\TaskTest.class
-core\UserTest.class
+core/LeaderboardTest.class
+core/UserTest.class
+core/TaskTest.class
