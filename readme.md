@@ -32,5 +32,5 @@ _Brukergrensesnitt_
 
 _Lagringfiler_
 
-- [JSON](gr2244/gr2244/core/src/main/java/json) => Fillagring kjer i JSON sin mappe, ingen lokalt.
+- [JSON](gr2244/core/src/main/java/json) => Fillagring kjer i JSON sin mappe, ingen lokalt.
 
