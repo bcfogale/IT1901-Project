@@ -6,7 +6,7 @@
 Prosjektet bruker maven til bygging og kjøring.
 
 For å bygge, kjør "mvn install".
-Prosjektet må kjøres fra den innerste gr2244 mappen (gr2244/gr244). Derfra må man kjøre "mvn javafx:run". 
+Prosjektet må kjøres fra den innerste gr2244 mappen (gr2244/gr244). Derfra må man kjøre "mvn javafx:run -f fxui/pom.xml". 
 
 <h1>Innhold</h1>
 
