@@ -42,15 +42,6 @@ public class CleanEController {
     }
 
 
-    @FXML
-    private void handleTest(){
-        Alert alert = new Alert(AlertType.ERROR);
-        alert.setTitle("Error message");
-        alert.setHeaderText("Something went wrong");
-        alert.setContentText("Hallo");
-        alert.showAndWait();
-    }
-
 
     @FXML
     private void updateListViews() {
@@ -189,5 +180,9 @@ public class CleanEController {
         this.taskName.clear();
         this.pointsValue.clear();
         this.dueDay.clear();
+    }
+
+    public Leaderboard getLeaderboard() {
+        return this.leaderboard;
     }
 }

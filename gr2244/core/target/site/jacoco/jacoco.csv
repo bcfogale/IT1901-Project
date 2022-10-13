@@ -1,0 +1,10 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+core,core,Task,13,142,0,2,2,26,1,10,1,9
+core,core,Leaderboard,7,44,1,1,2,10,2,5,1,5
+core,core,User,10,39,0,0,4,12,2,7,2,7
+core,json,UserDeserializer,12,74,5,7,3,19,6,3,1,2
+core,json,CleanEModule,38,39,0,0,8,7,1,2,1,2
+core,json,CleanEModule.new VersionUtil() {...},0,3,0,0,0,1,0,1,0,1
+core,json,LeaderboardSerializer,0,28,0,2,0,9,0,3,0,2
+core,json,TaskDeserializer,14,62,6,6,4,14,7,2,1,2
+core,json,LeaderboardDeserializer,2,53,3,5,1,14,3,3,0,2
