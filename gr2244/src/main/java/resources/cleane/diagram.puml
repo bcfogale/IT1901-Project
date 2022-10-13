@@ -2,17 +2,18 @@
 
 actor U1
 
-App.fxml -> U1: init()
-U1 -> "~#addButton: Button" as addButton: click
-addButton -> CleanEController: appendTask()
-CleanEController -> "~#assignedUser: TextField" as assignedUser: getText()
-CleanEController -> "~#taskName: TextField" as taskName: getText()
-CleanEController -> "~#pointsValue: TextField" as pointsValue: getText()
-CleanEController -> "~#dueDay: TextField" as dueDay: getText()
-CleanEController -> Task: new Task()
-Task -> User: assignedUser.addTask(this) 
-CleanEController -> App.fxml: switchToCalendar()
-App.fxml -> U1: setScene()
-CleanEController -> App.fxml : updateListviews()
+U1 -> fxui: cleanE.fxml
+fxui -> core: appendTask()
+core -> fxui: updateListViews()
+fxui -> core: handleSaveButton()
+core -> savestates: Json
+fxui -> core: loadFromFile()
+core -> savestates: Json
+savestates -> core: Json
+core -> fxui: updateListViews()
+fxui-> core: handleCompletedTask()
+core -> fxui: updateListViews()
+fxui -> core: leaderBoardList()
+core -> fxui: scoreList
 
 @enduml
