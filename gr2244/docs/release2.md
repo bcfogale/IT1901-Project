@@ -6,8 +6,7 @@ I forrige iterasjon hadde vi to forskjellige FXML filer. Vi har valgt å slå sa
 
 Når en bruker tildeles en oppgave, blir brukeren lagt til i listen users i leaderboard. Når oppgaven blir utført, oppdateres listen med brukere, og vises  i GUI. Når man så trykker på update-knappen i GUI, blir poengtavlen oppdatert og sortert i synkende rekkefølge.
 
-Filemanagement klassen er forandret fra å benytte lokal fillagring til JSON.
-
+Fillagring er oppdatert med JSON. Siden vi ikke lenger benytter lokal fillagring er Filemanagement.java fjernet.
  <!--
  TODO: Skrive mer om JSON, serlializing...
  >
