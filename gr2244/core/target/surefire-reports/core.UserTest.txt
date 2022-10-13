@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: core.UserTest
+-------------------------------------------------------------------------------
+<<<<<<< HEAD:gr2244/core/target/surefire-reports/cleanE.UserTest.txt
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in cleanE.UserTest
+=======
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s - in core.UserTest
+>>>>>>> 2a180b88d58bb69bd36949017997a7496186f240:gr2244/core/target/surefire-reports/core.UserTest.txt

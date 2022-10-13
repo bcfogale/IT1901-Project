@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 /Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244/core/src/test/java/cleanE/UserTest.java
 /Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244/core/src/test/java/cleanE/LeaderboardTest.java
 /Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244/core/src/test/java/cleanE/TaskTest.java
+=======
+/Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244/core/src/test/java/core/LeaderboardTest.java
+/Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244/core/src/test/java/core/TaskTest.java
+/Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244/core/src/test/java/core/UserTest.java
+>>>>>>> 2a180b88d58bb69bd36949017997a7496186f240

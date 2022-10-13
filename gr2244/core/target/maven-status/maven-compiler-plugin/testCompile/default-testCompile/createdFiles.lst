@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 cleanE/UserTest.class
 cleanE/TaskTest.class
 cleanE/LeaderboardTest.class
+=======
+core/LeaderboardTest.class
+core/UserTest.class
+core/TaskTest.class
+>>>>>>> 2a180b88d58bb69bd36949017997a7496186f240
