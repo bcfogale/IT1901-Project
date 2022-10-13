@@ -35,8 +35,12 @@ public class CleanEModule extends SimpleModule{
         mapper.registerModule(c);
         mapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES,false);
 
-        Leaderboard l = mapper.readerFor(Leaderboard.class).readValue(new File("gr2244/savestates/savefile.json"));
-        System.out.println(l);
+        //Leaderboard l = mapper.readerFor(Leaderboard.class).readValue(new File("savefile.json"));
+        File file = new File("gr2244/savestates/savefile.json");
+        System.out.println(file.exists());
+        System.out.println(file.canRead());
+        System.out.println(file.isFile());
+        System.out.println(file.getAbsolutePath());
         
         
 
