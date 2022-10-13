@@ -20,8 +20,6 @@ _Applikasjonfiler_
 
 - [Clean-E Controller](gr2244/src/main/java/cleane/CleanEController.java) => Filen inneholder kontrolleren.
 
-- [Clean-E File Management](gr2244/src/main/java/cleane/FileManagement.java) => Filen håndterer skriving fra og lesing til fil.
-
 - [Clean-E Leaderboard](gr2244/src/main/java/cleane/Leaderboard.java) => Filen inneholder kode hvor brukere blir sorteres i en liste i følge poengene sine. (Ikke implementert i innlevering 1)
 
 - [Clean-E Task](gr2244/src/main/java/cleane/Task.java) => Filen inneholder koden for task klassen.
@@ -30,15 +28,9 @@ _Applikasjonfiler_
 
 _Brukergrensesnitt_
 
-- [Clean-E App](gr2244/src/main/java/resources/App.fxml) => Filen inneholder GUI til hovedsiden med kalenderen.
-
-- [NewTask](gr2244/src/main/java/resources/newTask.fxml) => Filen inneholder GUI til siden der man lager nye oppgaver.
+- [Clean-E App](gr2244/fxui/src/main/resources/ui/cleanE.fxml) => Filen inneholder hovedsiden GUI til alle : AddTask, Kalenderen, Fillagring /Loading & Leaderboard.
 
 _Lagringfiler_
 
-- [cleane.txt](gr2244/savestates/cleane.txt) => Filen inneholder den lagrede tilstanden på et txt format.
-
-
-
-
+- [JSON](gr2244/gr2244/core/src/main/java/json) => Fillagring kjer i JSON sin mappe, ingen lokalt.
 
