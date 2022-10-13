@@ -21,6 +21,7 @@ public class Task {
         this.pointsValue = pointsValue;
         if (days.contains(dueDay.toLowerCase())) {
             this.dueDay = dueDay;
+
         }
         else {
             throw new IllegalArgumentException("Choose a valid day.");
@@ -40,6 +41,7 @@ public class Task {
 
     public void setTrue() {
         this.completed = true;
+        getAssignedUser().addPoints(pointsValue);
     }
 
     public User getAssignedUser() {

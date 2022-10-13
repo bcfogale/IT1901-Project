@@ -12,10 +12,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
   property = "id")
 public class User {
 
-    public static List<User> users = new ArrayList<>();
-
-
-
+    // public static List<User> users = new ArrayList<>();
+    
     private int points;
     private String name;
     private List<Task> tasks = new ArrayList<>();
@@ -23,7 +21,6 @@ public class User {
 
     public User(String name) {
         this.name = name;
-        users.add(this);
     }
 
     public int getPoints() {
@@ -50,15 +47,14 @@ public class User {
         getTasks().add(task);
     }
 
-    @Override
-    public String toString() {
-        return "User [points=" + points + ", name=" + name + ", tasks=" + tasks + "]";
+    public void removeTask(Task task) {
+        getTasks().remove(task);
     }
 
-    
-
-
-
+    @Override
+    public String toString() {
+        return ""+ name + ": " + points + " poeng";
+    }
 
 
     

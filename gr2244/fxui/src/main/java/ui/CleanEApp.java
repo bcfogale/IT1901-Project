@@ -20,7 +20,7 @@ public class CleanEApp extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         primaryStage.setTitle("CleanE");
-        primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("App.fxml"))));
+        primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("cleanE.fxml"))));
         primaryStage.show();
     }
 
