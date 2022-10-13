@@ -1,11 +1,10 @@
+core\Leaderboard.class
 json\LeaderboardSerializer.class
 json\UserDeserializer.class
 json\CleanEModule$1.class
-cleane\CleanEApp.class
+module-info.class
+core\User.class
 json\CleanEModule.class
 json\LeaderboardDeserializer.class
-cleane\Task.class
-cleane\CleanEController.class
+core\Task.class
 json\TaskDeserializer.class
-cleane\Leaderboard.class
-cleane\User.class

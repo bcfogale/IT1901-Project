@@ -1,4 +1,4 @@
-cleanE\LeaderboardTest.class
+core\LeaderboardTest.class
+core\TaskTest.class
+core\UserTest.class
 json\CleanEModuleTest.class
-cleanE\TaskTest.class
-cleanE\UserTest.class

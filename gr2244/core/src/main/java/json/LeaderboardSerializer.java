@@ -6,8 +6,8 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 
-import cleane.Leaderboard;
-import cleane.User;
+import core.Leaderboard;
+import core.User;
 
 public class LeaderboardSerializer extends JsonSerializer<Leaderboard> {
 

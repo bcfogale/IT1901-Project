@@ -13,8 +13,8 @@ import com.fasterxml.jackson.databind.node.IntNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 
-import cleane.Task;
-import cleane.User;
+import core.Task;
+import core.User;
 
 public class UserDeserializer extends JsonDeserializer<User> {
     TaskDeserializer taskDeserializer = new TaskDeserializer();

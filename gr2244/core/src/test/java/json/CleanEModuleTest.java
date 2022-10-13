@@ -11,9 +11,9 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import cleane.Leaderboard;
-import cleane.Task;
-import cleane.User;
+import core.Leaderboard;
+import core.Task;
+import core.User;
 
 public class CleanEModuleTest {
 
