@@ -34,6 +34,27 @@
             <version>17.0.2 </version>
         </dependency>
 
+        <!-- junit testing with jupiter -->
+        <dependency>
+          <groupId>org.junit.jupiter</groupId>
+          <artifactId>junit-jupiter-api</artifactId>
+          <version>5.7.2</version>
+          <scope>test</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.7.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>5.7.2</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
   </dependencyManagement>
 
@@ -86,13 +107,15 @@
           <version>0.8.8</version>
           <executions>
             <execution>
+              <id>jacoco-prepare-agent</id>
+              <phase>process-test-classes</phase>
               <goals>
                   <goal>prepare-agent</goal>
               </goals>
             </execution>
             <execution>
-              <id>report</id>
-              <phase>prepare-package</phase>
+              <id>jacoco-report</id>
+              <phase>verify</phase>
               <goals>
                 <goal>report</goal>
               </goals>
