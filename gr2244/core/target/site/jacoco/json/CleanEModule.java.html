@@ -7,21 +7,22 @@ import core.Leaderboard;
 import core.Task;
 import core.User;
 
-public class CleanEModule extends SimpleModule{
+public class CleanEModule extends SimpleModule {
     private static final String NAME = &quot;CleanEModule&quot;;
-<span class="fc" id="L12">    private static final VersionUtil VERSION_UTIL = new VersionUtil(){};</span>
-    
-    public CleanEModule() {
-<span class="fc" id="L15">        super(NAME, VERSION_UTIL.version());</span>
-        //We don't have custom serializers for User and Task
-        //Because of cyclic referencing this would cause issues
-        //The issues are easily resolved with the automatic serialization and the use of @JsonIdentityInfo in the User class
-<span class="fc" id="L19">        addSerializer(Leaderboard.class, new LeaderboardSerializer());</span>
-<span class="fc" id="L20">        addDeserializer(Leaderboard.class, new LeaderboardDeserializer());</span>
-<span class="fc" id="L21">        addDeserializer(User.class, new UserDeserializer());</span>
-<span class="fc" id="L22">        addDeserializer(Task.class, new TaskDeserializer());</span>
-<span class="fc" id="L23">    }</span>
+<span class="fc" id="L12">    private static final VersionUtil VERSION_UTIL = new VersionUtil() {</span>
+    };
 
-    
+    public CleanEModule() {
+<span class="fc" id="L16">        super(NAME, VERSION_UTIL.version());</span>
+        // We don't have custom serializers for User and Task
+        // Because of cyclic referencing this would cause issues
+        // The issues are easily resolved with the automatic serialization and the use
+        // of @JsonIdentityInfo in the User class
+<span class="fc" id="L21">        addSerializer(Leaderboard.class, new LeaderboardSerializer());</span>
+<span class="fc" id="L22">        addDeserializer(Leaderboard.class, new LeaderboardDeserializer());</span>
+<span class="fc" id="L23">        addDeserializer(User.class, new UserDeserializer());</span>
+<span class="fc" id="L24">        addDeserializer(Task.class, new TaskDeserializer());</span>
+<span class="fc" id="L25">    }</span>
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -8,18 +8,17 @@ import java.io.PrintStream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
 public class LeaderboardTest {
 
     Leaderboard l;
-    
+
     @BeforeEach
-    public void setup(){
+    public void setup() {
         l = new Leaderboard();
     }
 
     @Test
-    public void testConstructor(){
+    public void testConstructor() {
         assertEquals(0, l.getUsers().size());
     }
 
@@ -47,22 +46,23 @@ public class LeaderboardTest {
         assertEquals(i, l.getUsers().get(1));
         assertEquals(u, l.getUsers().get(2));
 
-
     }
 
-    /* @Test
-    public void testAddUser() {
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        final PrintStream originalOut = System.out;
-        System.setOut(new PrintStream(outContent));
-
-        User u = new User("Sander");
-
-        l.addUser(u);
-        l.addUser(u);
-
-        assertEquals("User already in list.\r\n", outContent.toString());
-
-        System.setOut(originalOut);
-    } */
+    /*
+     * @Test
+     * public void testAddUser() {
+     * final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+     * final PrintStream originalOut = System.out;
+     * System.setOut(new PrintStream(outContent));
+     * 
+     * User u = new User("Sander");
+     * 
+     * l.addUser(u);
+     * l.addUser(u);
+     * 
+     * assertEquals("User already in list.\r\n", outContent.toString());
+     * 
+     * System.setOut(originalOut);
+     * }
+     */
 }

@@ -18,9 +18,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import json.CleanEModule;
 
-
 public class CleanEController {
-
 
     @FXML
     private ListView<Task> monday, tuesday, wednesday, thursday, friday, saturday, sunday;
@@ -34,29 +32,24 @@ public class CleanEController {
 
     private final File file = new File("../savestates/savefile.json");
 
-
-
-
     public void initialize() {
         try {
             CleanEModule mod = new CleanEModule();
             mapper.registerModule(mod);
-            mapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES,false);
+            mapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
             updateListViews();
         } catch (Exception e) {
             System.out.println(e);
         }
     }
-    
-    //load list fra cleane.txt
+
+    // load list fra cleane.txt
     @FXML
     private void loadFromFile() throws IOException {
         leaderboard = mapper.readerFor(Leaderboard.class).readValue(file);
-        
+
         updateListViews();
     }
-
-
 
     @FXML
     private void updateListViews() {
@@ -72,36 +65,28 @@ public class CleanEController {
             for (Task task : user.getTasks()) {
                 if (task.getDueDay().equals("monday")) {
                     this.monday.getItems().add(task);
-                }
-                else if (task.getDueDay().equals("tuesday")  ) {
+                } else if (task.getDueDay().equals("tuesday")) {
                     this.tuesday.getItems().add(task);
-                }
-                else if (task.getDueDay().equals("wednesday")) {
+                } else if (task.getDueDay().equals("wednesday")) {
                     this.wednesday.getItems().add(task);
-                }
-                else if (task.getDueDay().equals("thursday") ) {
+                } else if (task.getDueDay().equals("thursday")) {
                     this.thursday.getItems().add(task);
-                }
-                else if (task.getDueDay().equals("friday")) {
+                } else if (task.getDueDay().equals("friday")) {
                     this.friday.getItems().add(task);
-                }
-                else if (task.getDueDay().equals("saturday")) {
+                } else if (task.getDueDay().equals("saturday")) {
                     this.saturday.getItems().add(task);
-                    
-                }
-                else if (task.getDueDay().equals("sunday")) {
+
+                } else if (task.getDueDay().equals("sunday")) {
                     this.sunday.getItems().add(task);
                 }
             }
         }
     }
 
-
     @FXML
     private void handleSaveButton() throws IOException {
         mapper.writeValue(file, leaderboard);
     }
-
 
     @FXML
     private TextField assignedUser;
@@ -114,16 +99,14 @@ public class CleanEController {
 
     @FXML
     private TextField dueDay;
-    
 
-    //hjelpemetode
-     private User userTextToObject(String assignedUser) {
+    // hjelpemetode
+    private User userTextToObject(String assignedUser) {
         if (leaderboard.getUsers().isEmpty()) {
             return new User(assignedUser);
-        }
-        else {
+        } else {
             for (User user : leaderboard.getUsers()) {
-                if(user.getName().equals(assignedUser)) {
+                if (user.getName().equals(assignedUser)) {
                     return user;
                 }
             }
@@ -145,27 +128,23 @@ public class CleanEController {
         clearTask();
     }
 
-
     private void addUserToLeaderboard(User u) {
         if (!leaderboard.getUsers().contains(u)) {
             leaderboard.getUsers().add(u);
         }
     }
 
-
-//Kontrollerlogikk for leaderBoard
+    // Kontrollerlogikk for leaderBoard
 
     @FXML
     private ListView<User> scoreList;
 
     @FXML
-    private void leaderBoardList() throws IOException { //listen blir sortert når man trykker på update-knapp
-        
-        
+    private void leaderBoardList() throws IOException { // listen blir sortert når man trykker på update-knapp
+
         leaderboard.sortList();
         scoreList.getItems().setAll(leaderboard.getUsers());
     }
-    
 
     @FXML
     private void handleCompletedTask() throws IOException {
@@ -188,7 +167,7 @@ public class CleanEController {
                     if (!leaderboard.getUsers().contains(task.getAssignedUser())) {
                         leaderboard.getUsers().add(task.getAssignedUser());
                     }
-                    task.getAssignedUser().removeTask(task);   
+                    task.getAssignedUser().removeTask(task);
                 }
             }
         }
@@ -196,23 +175,21 @@ public class CleanEController {
         updateListViews();
     }
 
-
     @FXML
-    private void clearTask() throws IOException{
+    private void clearTask() throws IOException {
         this.assignedUser.clear();
         this.taskName.clear();
         this.pointsValue.clear();
         this.dueDay.clear();
     }
-    
 
-    //Gettere for testing
+    // Gettere for testing
     public Leaderboard getLeaderboard() {
         return this.leaderboard;
     }
 
     public TextField getTaskName() {
-        return this.taskName; 
+        return this.taskName;
     }
 
     public TextField getAssignesUser() {
@@ -231,6 +208,4 @@ public class CleanEController {
         return this.scoreList;
     }
 
-
-    
 }

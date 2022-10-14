@@ -12,7 +12,8 @@ import core.User;
 public class LeaderboardSerializer extends JsonSerializer<Leaderboard> {
 
     @Override
-    public void serialize(Leaderboard leaderboard, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+    public void serialize(Leaderboard leaderboard, JsonGenerator gen, SerializerProvider serializers)
+            throws IOException {
         gen.writeStartObject();
         gen.writeArrayFieldStart("users");
         for (User user : leaderboard.getUsers()) {
@@ -20,7 +21,7 @@ public class LeaderboardSerializer extends JsonSerializer<Leaderboard> {
         }
         gen.writeEndArray();
         gen.writeEndObject();
-        
+
     }
-    
+
 }

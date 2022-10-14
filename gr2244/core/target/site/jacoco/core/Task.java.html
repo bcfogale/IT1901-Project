@@ -5,26 +5,26 @@ import java.util.List;
 
 public class Task {
 
-<span class="fc" id="L8">    final private List&lt;String&gt; days =Arrays.asList(&quot;monday&quot;, &quot;tuesday&quot;, &quot;wednesday&quot;, &quot;thursday&quot;, &quot;friday&quot;, &quot;saturday&quot;, &quot;sunday&quot;);</span>
-    
+<span class="fc" id="L8">    final private List&lt;String&gt; days = Arrays.asList(&quot;monday&quot;, &quot;tuesday&quot;, &quot;wednesday&quot;, &quot;thursday&quot;, &quot;friday&quot;, &quot;saturday&quot;,</span>
+            &quot;sunday&quot;);
+
     private String taskName;
     private int pointsValue;
-<span class="fc" id="L12">    private boolean completed = false;</span>
+<span class="fc" id="L13">    private boolean completed = false;</span>
     private String dueDay;
     private User assignedUser;
-  
-    
+
 <span class="fc" id="L17">    public Task(User assignedUser, String taskName, int pointsValue, String dueDay) {</span>
 <span class="fc" id="L18">        this.assignedUser = assignedUser;</span>
-         // Adds this task to the assigned users task list
-<span class="fc" id="L20">        assignedUser.addTask(this);;</span>
-<span class="fc" id="L21">        this.taskName = taskName;</span>
-<span class="fc" id="L22">        this.pointsValue = pointsValue;</span>
-<span class="fc bfc" id="L23" title="All 2 branches covered.">        if (days.contains(dueDay.toLowerCase())) {</span>
-<span class="fc" id="L24">            this.dueDay = dueDay;</span>
+        // Adds this task to the assigned users task list
+<span class="fc" id="L20">        assignedUser.addTask(this);</span>
+        ;
+<span class="fc" id="L22">        this.taskName = taskName;</span>
+<span class="fc" id="L23">        this.pointsValue = pointsValue;</span>
+<span class="fc bfc" id="L24" title="All 2 branches covered.">        if (days.contains(dueDay.toLowerCase())) {</span>
+<span class="fc" id="L25">            this.dueDay = dueDay;</span>
 
-        }
-        else {
+        } else {
 <span class="fc" id="L28">            throw new IllegalArgumentException(&quot;Choose a valid day.&quot;);</span>
         }
 <span class="fc" id="L30">    }</span>
@@ -65,11 +65,10 @@ public class Task {
 <span class="fc" id="L65">        return dueDay;</span>
     }
 
-
     @Override
     public String toString() {
-<span class="nc" id="L71">        return &quot;Task [taskName=&quot; + taskName + &quot;, pointsValue=&quot; + pointsValue + &quot;, completed=&quot; + completed + &quot;, dueDay=&quot;</span>
-<span class="nc" id="L72">                + dueDay + &quot;, assignedUser=&quot; + assignedUser.getName() + &quot;]&quot;;</span>
+<span class="nc" id="L70">        return &quot;Task [taskName=&quot; + taskName + &quot;, pointsValue=&quot; + pointsValue + &quot;, completed=&quot; + completed + &quot;, dueDay=&quot;</span>
+<span class="nc" id="L71">                + dueDay + &quot;, assignedUser=&quot; + assignedUser.getName() + &quot;]&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

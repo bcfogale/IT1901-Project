@@ -12,25 +12,26 @@ public class UserTest {
     User s;
 
     @BeforeEach
-    public void setup(){
+    public void setup() {
         s = new User("Sander");
-    }
-    
-    @Test
-    public void testConstructor(){
-        assertEquals(0, s.getPoints());
-        assertEquals("Sander", s.getName());
-        assertTrue(s.getTasks().isEmpty()); 
     }
 
     @Test
-    public void testAddTask(){
-        s.addTask(new Task("taskName", 5, "monday"));;
+    public void testConstructor() {
+        assertEquals(0, s.getPoints());
+        assertEquals("Sander", s.getName());
+        assertTrue(s.getTasks().isEmpty());
+    }
+
+    @Test
+    public void testAddTask() {
+        s.addTask(new Task("taskName", 5, "monday"));
+        ;
         assertEquals(1, s.getTasks().size());
     }
 
     @Test
-    public void testAddPoint(){
+    public void testAddPoint() {
         s.addPoints(10);
         assertEquals(10, s.getPoints());
         s.addPoints(40);
@@ -40,7 +41,7 @@ public class UserTest {
     @Test
     public void testSetName() {
         assertEquals("Sander", s.getName());
-        
+
         s.setName("Benji");
 
         assertEquals("Benji", s.getName());
@@ -55,7 +56,6 @@ public class UserTest {
         s.removeTask(t);
 
         assertEquals(0, s.getTasks().size());
-
 
     }
 }
