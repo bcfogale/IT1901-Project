@@ -1,5 +1,6 @@
 package ui;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.IOException;
@@ -12,9 +13,11 @@ import org.testfx.framework.junit5.ApplicationTest;
 import core.Leaderboard;
 import core.Task;
 import core.User;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 public class CleanEAppTest extends ApplicationTest{
@@ -25,7 +28,7 @@ public class CleanEAppTest extends ApplicationTest{
     private Task task1, task2, task3, task4;
 
 
-    
+    @Override
     public void start(final Stage primaryStage) throws IOException {
         final FXMLLoader loader = new FXMLLoader(getClass().getResource("cleanE.fxml"));
         final Parent parent = loader.load();
@@ -47,11 +50,12 @@ public class CleanEAppTest extends ApplicationTest{
         
         task1 = new Task(user1, "Vaske badet", 10, "monday");
         task2 = new Task(user1, "Vaske rommet", 5, "tuesday");
+        new Task(user1, "Vaske rommet", 5, "saturday");
 
-        task3 = new Task(user2, "Vaske kjøkkenet", 20, "saturday");
-        task4 = new Task(user2, "Ta ut søppelet", 5, "saturday");
-
-        
+        task3 = new Task(user2, "Vaske kjøkkenet", 20, "wednesday");
+        task4 = new Task(user2, "Ta ut søppelet", 5, "friday");
+        new Task(user2, "Vaske bil", 9, "sunday");
+     
     }
 
 
@@ -67,6 +71,59 @@ public class CleanEAppTest extends ApplicationTest{
         clickOn("#assignedUser").write("Sander");
         clickOn("#pointsValue").write("5");
         clickOn("#dueDay").write("thursday");
+        
+        clickOn("#addButton");
+
+        assertEquals("Støvsuge", user1.getTasks().get(3).getTaskName());
+        assertEquals("Sander", user1.getTasks().get(3).getAssignedUser().getName());
+        assertEquals(5, user1.getTasks().get(3).getPointsValue());
+        assertEquals("thursday", user1.getTasks().get(3).getDueDay());
+        
+    }
+
+
+    @Test
+    public void testClearTask() {
+        clickOn("#taskName").write("Støvsuge");
+        clickOn("#assignedUser").write("Sander");
+        clickOn("#pointsValue").write("5");
+        clickOn("#dueDay").write("sunday");
+
+        clickOn("#cancelButton");
+
+        assertEquals("", controller.getAssignesUser().getText());
+        assertEquals("", controller.getTaskName().getText());
+        assertEquals("", controller.getPointsValue().getText());
+        assertEquals("", controller.getDueDay().getText());
+
+    }
+
+    
+    @Test
+    public void testHandleCompletedTask() {
+        this.controller.getMonday().getSelectionModel().selectFirst();
+        clickOn("#completedButton");
+        
+    }
+
+    @Test
+    public void testSortList() {
+        task1.setTrue();
+        task4.setTrue();
+
+        clickOn("#taskName").write("Støvsuge");
+        clickOn("#assignedUser").write("Sander");
+        clickOn("#pointsValue").write("5");
+        clickOn("#dueDay").write("thursday");
+        
+        clickOn("#addButton");
+
+        clickOn("#updateBoardList");
+
+        ObservableList<User> temp = this.controller.getScoreList().getItems();
+
+        assertEquals(user1, temp.get(0));
+
     }
 
     // taskName
