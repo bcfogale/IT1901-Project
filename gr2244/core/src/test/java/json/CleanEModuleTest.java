@@ -24,37 +24,38 @@ public class CleanEModuleTest {
     private final String jsonString = "{\"users\":[{\"id\":1,\"points\":10,\"name\":\"Sander\",\"tasks\":[{\"taskName\":\"wash stuff\",\"pointsValue\":5,\"completed\":false,\"dueDay\":\"monday\",\"assignedUser\":1}]}]}";
 
     @BeforeEach
-    public void setup(){
+    public void setup() {
         mod = new CleanEModule();
         mapper = new ObjectMapper();
         mapper.registerModule(mod);
-        mapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES,false);
+        mapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
 
         l = new Leaderboard();
         u = new User("Sander");
         l.addUser(u);
         u.addPoints(10);
-        new Task(u, "wash stuff", 5, "monday");  
+        new Task(u, "wash stuff", 5, "monday");
     }
 
     @Test
-    public void testSerializers() throws JsonProcessingException{
+    public void testSerializers() throws JsonProcessingException {
         String mapperString = mapper.writeValueAsString(l);
         assertEquals(jsonString, mapperString);
     }
-    
+
     @Test
-    public void testDeserializers() throws JsonMappingException, JsonProcessingException{
+    public void testDeserializers() throws JsonMappingException, JsonProcessingException {
         Leaderboard leaderboardFromFile = mapper.readerFor(Leaderboard.class).readValue(jsonString);
-        //this test checks field by field that the two comparing objects have the same field values.
+        // this test checks field by field that the two comparing objects have the same
+        // field values.
         assertThat(leaderboardFromFile).usingRecursiveComparison().isEqualTo(l);
     }
 
     @Test
-    public void testSerializersDeserializers() throws JsonProcessingException{
+    public void testSerializersDeserializers() throws JsonProcessingException {
         String mapperString2 = mapper.writeValueAsString(l);
         Leaderboard leaderboardFromMapper = mapper.readerFor(Leaderboard.class).readValue(mapperString2);
         assertThat(leaderboardFromMapper).usingRecursiveComparison().isEqualTo(l);
     }
-  
+
 }

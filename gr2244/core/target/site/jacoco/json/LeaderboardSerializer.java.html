@@ -12,16 +12,17 @@ import core.User;
 <span class="fc" id="L12">public class LeaderboardSerializer extends JsonSerializer&lt;Leaderboard&gt; {</span>
 
     @Override
-    public void serialize(Leaderboard leaderboard, JsonGenerator gen, SerializerProvider serializers) throws IOException {
-<span class="fc" id="L16">        gen.writeStartObject();</span>
-<span class="fc" id="L17">        gen.writeArrayFieldStart(&quot;users&quot;);</span>
-<span class="fc bfc" id="L18" title="All 2 branches covered.">        for (User user : leaderboard.getUsers()) {</span>
-<span class="fc" id="L19">            gen.writeObject(user);</span>
-<span class="fc" id="L20">        }</span>
-<span class="fc" id="L21">        gen.writeEndArray();</span>
-<span class="fc" id="L22">        gen.writeEndObject();</span>
-        
-<span class="fc" id="L24">    }</span>
-    
+    public void serialize(Leaderboard leaderboard, JsonGenerator gen, SerializerProvider serializers)
+            throws IOException {
+<span class="fc" id="L17">        gen.writeStartObject();</span>
+<span class="fc" id="L18">        gen.writeArrayFieldStart(&quot;users&quot;);</span>
+<span class="fc bfc" id="L19" title="All 2 branches covered.">        for (User user : leaderboard.getUsers()) {</span>
+<span class="fc" id="L20">            gen.writeObject(user);</span>
+<span class="fc" id="L21">        }</span>
+<span class="fc" id="L22">        gen.writeEndArray();</span>
+<span class="fc" id="L23">        gen.writeEndObject();</span>
+
+<span class="fc" id="L25">    }</span>
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

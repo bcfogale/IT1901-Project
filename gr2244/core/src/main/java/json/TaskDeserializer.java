@@ -15,18 +15,19 @@ import com.fasterxml.jackson.databind.node.TextNode;
 
 import core.Task;
 
-public class TaskDeserializer extends JsonDeserializer<Task>{
+public class TaskDeserializer extends JsonDeserializer<Task> {
 
     public Task deserialize(JsonNode jsonNode) {
         if (jsonNode instanceof ObjectNode) {
             ObjectNode objectNode = (ObjectNode) jsonNode;
-        
+
             JsonNode taskNameNode = objectNode.get("taskName");
             JsonNode pointsValueNode = objectNode.get("pointsValue");
             JsonNode completedNode = objectNode.get("completed");
             JsonNode dueDayNode = objectNode.get("dueDay");
-            
-            if (taskNameNode instanceof TextNode && pointsValueNode instanceof IntNode && completedNode instanceof BooleanNode && dueDayNode instanceof TextNode) {
+
+            if (taskNameNode instanceof TextNode && pointsValueNode instanceof IntNode
+                    && completedNode instanceof BooleanNode && dueDayNode instanceof TextNode) {
                 String taskName = ((TextNode) taskNameNode).asText();
                 int pointsValue = ((IntNode) pointsValueNode).asInt();
                 String dueDay = ((TextNode) dueDayNode).asText();
@@ -39,11 +40,11 @@ public class TaskDeserializer extends JsonDeserializer<Task>{
         }
         return null;
     }
+
     @Override
     public Task deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JacksonException {
         TreeNode treeNode = parser.getCodec().readTree(parser);
         return deserialize((JsonNode) treeNode);
     }
-    
+
 }
-    

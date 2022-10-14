@@ -15,36 +15,37 @@ import com.fasterxml.jackson.databind.node.TextNode;
 
 import core.Task;
 
-<span class="fc" id="L18">public class TaskDeserializer extends JsonDeserializer&lt;Task&gt;{</span>
+<span class="fc" id="L18">public class TaskDeserializer extends JsonDeserializer&lt;Task&gt; {</span>
 
     public Task deserialize(JsonNode jsonNode) {
 <span class="pc bpc" id="L21" title="1 of 2 branches missed.">        if (jsonNode instanceof ObjectNode) {</span>
 <span class="fc" id="L22">            ObjectNode objectNode = (ObjectNode) jsonNode;</span>
-        
+
 <span class="fc" id="L24">            JsonNode taskNameNode = objectNode.get(&quot;taskName&quot;);</span>
 <span class="fc" id="L25">            JsonNode pointsValueNode = objectNode.get(&quot;pointsValue&quot;);</span>
 <span class="fc" id="L26">            JsonNode completedNode = objectNode.get(&quot;completed&quot;);</span>
 <span class="fc" id="L27">            JsonNode dueDayNode = objectNode.get(&quot;dueDay&quot;);</span>
-            
-<span class="pc bpc" id="L29" title="4 of 8 branches missed.">            if (taskNameNode instanceof TextNode &amp;&amp; pointsValueNode instanceof IntNode &amp;&amp; completedNode instanceof BooleanNode &amp;&amp; dueDayNode instanceof TextNode) {</span>
-<span class="fc" id="L30">                String taskName = ((TextNode) taskNameNode).asText();</span>
-<span class="fc" id="L31">                int pointsValue = ((IntNode) pointsValueNode).asInt();</span>
-<span class="fc" id="L32">                String dueDay = ((TextNode) dueDayNode).asText();</span>
-<span class="fc" id="L33">                Task task = new Task(taskName, pointsValue, dueDay);</span>
-<span class="pc bpc" id="L34" title="1 of 2 branches missed.">                if (((BooleanNode) completedNode).asBoolean()) {</span>
-<span class="nc" id="L35">                    task.setTrue();</span>
+
+<span class="pc bpc" id="L29" title="4 of 8 branches missed.">            if (taskNameNode instanceof TextNode &amp;&amp; pointsValueNode instanceof IntNode</span>
+                    &amp;&amp; completedNode instanceof BooleanNode &amp;&amp; dueDayNode instanceof TextNode) {
+<span class="fc" id="L31">                String taskName = ((TextNode) taskNameNode).asText();</span>
+<span class="fc" id="L32">                int pointsValue = ((IntNode) pointsValueNode).asInt();</span>
+<span class="fc" id="L33">                String dueDay = ((TextNode) dueDayNode).asText();</span>
+<span class="fc" id="L34">                Task task = new Task(taskName, pointsValue, dueDay);</span>
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">                if (((BooleanNode) completedNode).asBoolean()) {</span>
+<span class="nc" id="L36">                    task.setTrue();</span>
                 }
-<span class="fc" id="L37">                return task;</span>
+<span class="fc" id="L38">                return task;</span>
             }
         }
-<span class="nc" id="L40">        return null;</span>
+<span class="nc" id="L41">        return null;</span>
     }
+
     @Override
     public Task deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JacksonException {
-<span class="nc" id="L44">        TreeNode treeNode = parser.getCodec().readTree(parser);</span>
-<span class="nc" id="L45">        return deserialize((JsonNode) treeNode);</span>
+<span class="nc" id="L46">        TreeNode treeNode = parser.getCodec().readTree(parser);</span>
+<span class="nc" id="L47">        return deserialize((JsonNode) treeNode);</span>
     }
-    
+
 }
-    
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

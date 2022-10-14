@@ -18,9 +18,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import json.CleanEModule;
 
-
-<span class="fc" id="L22">public class CleanEController {</span>
-
+<span class="fc" id="L21">public class CleanEController {</span>
 
     @FXML
     private ListView&lt;Task&gt; monday, tuesday, wednesday, thursday, friday, saturday, sunday;
@@ -28,80 +26,67 @@ import json.CleanEModule;
     @FXML
     private Button completedButton;
 
-<span class="fc" id="L31">    private Leaderboard leaderboard = new Leaderboard();</span>
+<span class="fc" id="L29">    private Leaderboard leaderboard = new Leaderboard();</span>
 
-<span class="fc" id="L33">    private ObjectMapper mapper = new ObjectMapper();</span>
+<span class="fc" id="L31">    private ObjectMapper mapper = new ObjectMapper();</span>
 
-<span class="fc" id="L35">    private final File file = new File(&quot;../savestates/savefile.json&quot;);</span>
-
-
-
+<span class="fc" id="L33">    private final File file = new File(&quot;../savestates/savefile.json&quot;);</span>
 
     public void initialize() {
         try {
-<span class="fc" id="L42">            CleanEModule mod = new CleanEModule();</span>
-<span class="fc" id="L43">            mapper.registerModule(mod);</span>
-<span class="fc" id="L44">            mapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES,false);</span>
-<span class="fc" id="L45">            updateListViews();</span>
-<span class="nc" id="L46">        } catch (Exception e) {</span>
-<span class="nc" id="L47">            System.out.println(e);</span>
-<span class="fc" id="L48">        }</span>
-<span class="fc" id="L49">    }</span>
-    
-    //load list fra cleane.txt
+<span class="fc" id="L37">            CleanEModule mod = new CleanEModule();</span>
+<span class="fc" id="L38">            mapper.registerModule(mod);</span>
+<span class="fc" id="L39">            mapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);</span>
+<span class="fc" id="L40">            updateListViews();</span>
+<span class="nc" id="L41">        } catch (Exception e) {</span>
+<span class="nc" id="L42">            System.out.println(e);</span>
+<span class="fc" id="L43">        }</span>
+<span class="fc" id="L44">    }</span>
+
+    // load list fra cleane.txt
     @FXML
     private void loadFromFile() throws IOException {
-<span class="nc" id="L54">        leaderboard = mapper.readerFor(Leaderboard.class).readValue(file);</span>
-        
-<span class="nc" id="L56">        updateListViews();</span>
-<span class="nc" id="L57">    }</span>
+<span class="nc" id="L49">        leaderboard = mapper.readerFor(Leaderboard.class).readValue(file);</span>
 
-
+<span class="nc" id="L51">        updateListViews();</span>
+<span class="nc" id="L52">    }</span>
 
     @FXML
     private void updateListViews() {
-<span class="fc" id="L63">        this.monday.getItems().clear();</span>
-<span class="fc" id="L64">        this.tuesday.getItems().clear();</span>
-<span class="fc" id="L65">        this.wednesday.getItems().clear();</span>
-<span class="fc" id="L66">        this.thursday.getItems().clear();</span>
-<span class="fc" id="L67">        this.friday.getItems().clear();</span>
-<span class="fc" id="L68">        this.saturday.getItems().clear();</span>
-<span class="fc" id="L69">        this.sunday.getItems().clear();</span>
+<span class="fc" id="L56">        this.monday.getItems().clear();</span>
+<span class="fc" id="L57">        this.tuesday.getItems().clear();</span>
+<span class="fc" id="L58">        this.wednesday.getItems().clear();</span>
+<span class="fc" id="L59">        this.thursday.getItems().clear();</span>
+<span class="fc" id="L60">        this.friday.getItems().clear();</span>
+<span class="fc" id="L61">        this.saturday.getItems().clear();</span>
+<span class="fc" id="L62">        this.sunday.getItems().clear();</span>
 
-<span class="fc bfc" id="L71" title="All 2 branches covered.">        for (User user : leaderboard.getUsers()) {</span>
-<span class="fc bfc" id="L72" title="All 2 branches covered.">            for (Task task : user.getTasks()) {</span>
-<span class="fc bfc" id="L73" title="All 2 branches covered.">                if (task.getDueDay().equals(&quot;monday&quot;)) {</span>
-<span class="fc" id="L74">                    this.monday.getItems().add(task);</span>
-                }
-<span class="fc bfc" id="L76" title="All 2 branches covered.">                else if (task.getDueDay().equals(&quot;tuesday&quot;)  ) {</span>
-<span class="fc" id="L77">                    this.tuesday.getItems().add(task);</span>
-                }
-<span class="fc bfc" id="L79" title="All 2 branches covered.">                else if (task.getDueDay().equals(&quot;wednesday&quot;)) {</span>
-<span class="fc" id="L80">                    this.wednesday.getItems().add(task);</span>
-                }
-<span class="fc bfc" id="L82" title="All 2 branches covered.">                else if (task.getDueDay().equals(&quot;thursday&quot;) ) {</span>
-<span class="fc" id="L83">                    this.thursday.getItems().add(task);</span>
-                }
-<span class="fc bfc" id="L85" title="All 2 branches covered.">                else if (task.getDueDay().equals(&quot;friday&quot;)) {</span>
-<span class="fc" id="L86">                    this.friday.getItems().add(task);</span>
-                }
-<span class="fc bfc" id="L88" title="All 2 branches covered.">                else if (task.getDueDay().equals(&quot;saturday&quot;)) {</span>
-<span class="fc" id="L89">                    this.saturday.getItems().add(task);</span>
-                    
-                }
-<span class="pc bpc" id="L92" title="1 of 2 branches missed.">                else if (task.getDueDay().equals(&quot;sunday&quot;)) {</span>
-<span class="fc" id="L93">                    this.sunday.getItems().add(task);</span>
-                }
-<span class="fc" id="L95">            }</span>
-<span class="fc" id="L96">        }</span>
-<span class="fc" id="L97">    }</span>
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        for (User user : leaderboard.getUsers()) {</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">            for (Task task : user.getTasks()) {</span>
+<span class="fc bfc" id="L66" title="All 2 branches covered.">                if (task.getDueDay().equals(&quot;monday&quot;)) {</span>
+<span class="fc" id="L67">                    this.monday.getItems().add(task);</span>
+<span class="fc bfc" id="L68" title="All 2 branches covered.">                } else if (task.getDueDay().equals(&quot;tuesday&quot;)) {</span>
+<span class="fc" id="L69">                    this.tuesday.getItems().add(task);</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">                } else if (task.getDueDay().equals(&quot;wednesday&quot;)) {</span>
+<span class="fc" id="L71">                    this.wednesday.getItems().add(task);</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">                } else if (task.getDueDay().equals(&quot;thursday&quot;)) {</span>
+<span class="fc" id="L73">                    this.thursday.getItems().add(task);</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">                } else if (task.getDueDay().equals(&quot;friday&quot;)) {</span>
+<span class="fc" id="L75">                    this.friday.getItems().add(task);</span>
+<span class="fc bfc" id="L76" title="All 2 branches covered.">                } else if (task.getDueDay().equals(&quot;saturday&quot;)) {</span>
+<span class="fc" id="L77">                    this.saturday.getItems().add(task);</span>
 
+<span class="pc bpc" id="L79" title="1 of 2 branches missed.">                } else if (task.getDueDay().equals(&quot;sunday&quot;)) {</span>
+<span class="fc" id="L80">                    this.sunday.getItems().add(task);</span>
+                }
+<span class="fc" id="L82">            }</span>
+<span class="fc" id="L83">        }</span>
+<span class="fc" id="L84">    }</span>
 
     @FXML
     private void handleSaveButton() throws IOException {
-<span class="nc" id="L102">        mapper.writeValue(file, leaderboard);</span>
-<span class="nc" id="L103">    }</span>
-
+<span class="nc" id="L88">        mapper.writeValue(file, leaderboard);</span>
+<span class="nc" id="L89">    }</span>
 
     @FXML
     private TextField assignedUser;
@@ -114,124 +99,114 @@ import json.CleanEModule;
 
     @FXML
     private TextField dueDay;
-    
 
-    //hjelpemetode
-     private User userTextToObject(String assignedUser) {
-<span class="pc bpc" id="L121" title="1 of 2 branches missed.">        if (leaderboard.getUsers().isEmpty()) {</span>
-<span class="nc" id="L122">            return new User(assignedUser);</span>
-        }
-        else {
-<span class="pc bpc" id="L125" title="1 of 2 branches missed.">            for (User user : leaderboard.getUsers()) {</span>
-<span class="pc bpc" id="L126" title="1 of 2 branches missed.">                if(user.getName().equals(assignedUser)) {</span>
-<span class="fc" id="L127">                    return user;</span>
+    // hjelpemetode
+    private User userTextToObject(String assignedUser) {
+<span class="pc bpc" id="L105" title="1 of 2 branches missed.">        if (leaderboard.getUsers().isEmpty()) {</span>
+<span class="nc" id="L106">            return new User(assignedUser);</span>
+        } else {
+<span class="pc bpc" id="L108" title="1 of 2 branches missed.">            for (User user : leaderboard.getUsers()) {</span>
+<span class="pc bpc" id="L109" title="1 of 2 branches missed.">                if (user.getName().equals(assignedUser)) {</span>
+<span class="fc" id="L110">                    return user;</span>
                 }
-<span class="nc" id="L129">            }</span>
+<span class="nc" id="L112">            }</span>
         }
-<span class="nc" id="L131">        return new User(assignedUser);</span>
+<span class="nc" id="L114">        return new User(assignedUser);</span>
     }
 
     // sette inn if/else så at AddTask button er ubrukelig mens texfields er tomt
     @FXML
     private void appendTask() throws IOException {
-<span class="fc" id="L137">        User u = userTextToObject(assignedUser.getText());</span>
-<span class="fc" id="L138">        addUserToLeaderboard(u);</span>
-<span class="fc" id="L139">        new Task(u, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());</span>
-<span class="fc" id="L140">        leaderboard.addUser(u);</span>
-<span class="fc" id="L141">        updateListViews();</span>
-<span class="fc" id="L142">        scoreList.getItems().clear();</span>
-<span class="fc" id="L143">        scoreList.getItems().setAll(leaderboard.getUsers());</span>
-<span class="fc" id="L144">        System.out.println(u.getTasks());</span>
-<span class="fc" id="L145">        clearTask();</span>
-<span class="fc" id="L146">    }</span>
-
+<span class="fc" id="L120">        User u = userTextToObject(assignedUser.getText());</span>
+<span class="fc" id="L121">        addUserToLeaderboard(u);</span>
+<span class="fc" id="L122">        new Task(u, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());</span>
+<span class="fc" id="L123">        leaderboard.addUser(u);</span>
+<span class="fc" id="L124">        updateListViews();</span>
+<span class="fc" id="L125">        scoreList.getItems().clear();</span>
+<span class="fc" id="L126">        scoreList.getItems().setAll(leaderboard.getUsers());</span>
+<span class="fc" id="L127">        System.out.println(u.getTasks());</span>
+<span class="fc" id="L128">        clearTask();</span>
+<span class="fc" id="L129">    }</span>
 
     private void addUserToLeaderboard(User u) {
-<span class="pc bpc" id="L150" title="1 of 2 branches missed.">        if (!leaderboard.getUsers().contains(u)) {</span>
-<span class="nc" id="L151">            leaderboard.getUsers().add(u);</span>
+<span class="pc bpc" id="L132" title="1 of 2 branches missed.">        if (!leaderboard.getUsers().contains(u)) {</span>
+<span class="nc" id="L133">            leaderboard.getUsers().add(u);</span>
         }
-<span class="fc" id="L153">    }</span>
+<span class="fc" id="L135">    }</span>
 
-
-//Kontrollerlogikk for leaderBoard
+    // Kontrollerlogikk for leaderBoard
 
     @FXML
     private ListView&lt;User&gt; scoreList;
 
     @FXML
-    private void leaderBoardList() throws IOException { //listen blir sortert når man trykker på update-knapp
-        
-        
-<span class="fc" id="L165">        leaderboard.sortList();</span>
-<span class="fc" id="L166">        scoreList.getItems().setAll(leaderboard.getUsers());</span>
-<span class="fc" id="L167">    }</span>
-    
+    private void leaderBoardList() throws IOException { // listen blir sortert når man trykker på update-knapp
+
+<span class="fc" id="L145">        leaderboard.sortList();</span>
+<span class="fc" id="L146">        scoreList.getItems().setAll(leaderboard.getUsers());</span>
+<span class="fc" id="L147">    }</span>
 
     @FXML
     private void handleCompletedTask() throws IOException {
-<span class="fc" id="L172">        scoreList.getItems().clear();</span>
+<span class="fc" id="L151">        scoreList.getItems().clear();</span>
 
-<span class="fc" id="L174">        List&lt;ListView&lt;Task&gt;&gt; listviews = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L153">        List&lt;ListView&lt;Task&gt;&gt; listviews = new ArrayList&lt;&gt;();</span>
 
-<span class="fc" id="L176">        listviews.add(this.monday);</span>
-<span class="fc" id="L177">        listviews.add(this.tuesday);</span>
-<span class="fc" id="L178">        listviews.add(this.wednesday);</span>
-<span class="fc" id="L179">        listviews.add(this.thursday);</span>
-<span class="fc" id="L180">        listviews.add(this.friday);</span>
-<span class="fc" id="L181">        listviews.add(this.saturday);</span>
-<span class="fc" id="L182">        listviews.add(this.sunday);</span>
+<span class="fc" id="L155">        listviews.add(this.monday);</span>
+<span class="fc" id="L156">        listviews.add(this.tuesday);</span>
+<span class="fc" id="L157">        listviews.add(this.wednesday);</span>
+<span class="fc" id="L158">        listviews.add(this.thursday);</span>
+<span class="fc" id="L159">        listviews.add(this.friday);</span>
+<span class="fc" id="L160">        listviews.add(this.saturday);</span>
+<span class="fc" id="L161">        listviews.add(this.sunday);</span>
 
-<span class="fc bfc" id="L184" title="All 2 branches covered.">        for (ListView&lt;Task&gt; day : listviews) {</span>
-<span class="fc bfc" id="L185" title="All 2 branches covered.">            for (Task task : day.getItems()) {</span>
-<span class="fc bfc" id="L186" title="All 2 branches covered.">                if (task.equals(day.getSelectionModel().getSelectedItem())) {</span>
-<span class="fc" id="L187">                    task.setTrue();</span>
-<span class="pc bpc" id="L188" title="1 of 2 branches missed.">                    if (!leaderboard.getUsers().contains(task.getAssignedUser())) {</span>
-<span class="nc" id="L189">                        leaderboard.getUsers().add(task.getAssignedUser());</span>
+<span class="fc bfc" id="L163" title="All 2 branches covered.">        for (ListView&lt;Task&gt; day : listviews) {</span>
+<span class="fc bfc" id="L164" title="All 2 branches covered.">            for (Task task : day.getItems()) {</span>
+<span class="fc bfc" id="L165" title="All 2 branches covered.">                if (task.equals(day.getSelectionModel().getSelectedItem())) {</span>
+<span class="fc" id="L166">                    task.setTrue();</span>
+<span class="pc bpc" id="L167" title="1 of 2 branches missed.">                    if (!leaderboard.getUsers().contains(task.getAssignedUser())) {</span>
+<span class="nc" id="L168">                        leaderboard.getUsers().add(task.getAssignedUser());</span>
                     }
-<span class="fc" id="L191">                    task.getAssignedUser().removeTask(task);   </span>
+<span class="fc" id="L170">                    task.getAssignedUser().removeTask(task);</span>
                 }
-<span class="fc" id="L193">            }</span>
-<span class="fc" id="L194">        }</span>
-<span class="fc" id="L195">        scoreList.getItems().setAll(leaderboard.getUsers());</span>
-<span class="fc" id="L196">        updateListViews();</span>
-<span class="fc" id="L197">    }</span>
-
+<span class="fc" id="L172">            }</span>
+<span class="fc" id="L173">        }</span>
+<span class="fc" id="L174">        scoreList.getItems().setAll(leaderboard.getUsers());</span>
+<span class="fc" id="L175">        updateListViews();</span>
+<span class="fc" id="L176">    }</span>
 
     @FXML
-    private void clearTask() throws IOException{
-<span class="fc" id="L202">        this.assignedUser.clear();</span>
-<span class="fc" id="L203">        this.taskName.clear();</span>
-<span class="fc" id="L204">        this.pointsValue.clear();</span>
-<span class="fc" id="L205">        this.dueDay.clear();</span>
-<span class="fc" id="L206">    }</span>
-    
+    private void clearTask() throws IOException {
+<span class="fc" id="L180">        this.assignedUser.clear();</span>
+<span class="fc" id="L181">        this.taskName.clear();</span>
+<span class="fc" id="L182">        this.pointsValue.clear();</span>
+<span class="fc" id="L183">        this.dueDay.clear();</span>
+<span class="fc" id="L184">    }</span>
 
-    //Gettere for testing
+    // Gettere for testing
     public Leaderboard getLeaderboard() {
-<span class="fc" id="L211">        return this.leaderboard;</span>
+<span class="fc" id="L188">        return this.leaderboard;</span>
     }
 
     public TextField getTaskName() {
-<span class="fc" id="L215">        return this.taskName; </span>
+<span class="fc" id="L192">        return this.taskName;</span>
     }
 
     public TextField getAssignesUser() {
-<span class="fc" id="L219">        return this.assignedUser;</span>
+<span class="fc" id="L196">        return this.assignedUser;</span>
     }
 
     public TextField getPointsValue() {
-<span class="fc" id="L223">        return this.pointsValue;</span>
+<span class="fc" id="L200">        return this.pointsValue;</span>
     }
 
     public TextField getDueDay() {
-<span class="fc" id="L227">        return this.dueDay;</span>
+<span class="fc" id="L204">        return this.dueDay;</span>
     }
 
     public ListView&lt;User&gt; getScoreList() {
-<span class="fc" id="L231">        return this.scoreList;</span>
+<span class="fc" id="L208">        return this.scoreList;</span>
     }
 
-
-    
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

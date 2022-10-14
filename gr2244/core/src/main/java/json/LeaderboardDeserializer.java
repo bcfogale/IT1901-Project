@@ -14,12 +14,13 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import core.Leaderboard;
 import core.User;
 
-public class LeaderboardDeserializer extends JsonDeserializer<Leaderboard>{
+public class LeaderboardDeserializer extends JsonDeserializer<Leaderboard> {
 
     private UserDeserializer userDeserializer = new UserDeserializer();
 
     @Override
-    public Leaderboard deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JacksonException {
+    public Leaderboard deserialize(JsonParser parser, DeserializationContext ctxt)
+            throws IOException, JacksonException {
         TreeNode treeNode = parser.getCodec().readTree(parser);
         if (treeNode instanceof ObjectNode) {
             ObjectNode objectNode = (ObjectNode) treeNode;
@@ -37,5 +38,5 @@ public class LeaderboardDeserializer extends JsonDeserializer<Leaderboard>{
         }
         return null;
     }
-    
+
 }

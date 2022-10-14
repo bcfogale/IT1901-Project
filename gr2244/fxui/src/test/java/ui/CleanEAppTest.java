@@ -9,7 +9,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 
-
 import core.Leaderboard;
 import core.Task;
 import core.User;
@@ -20,13 +19,12 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
-public class CleanEAppTest extends ApplicationTest{
-    
+public class CleanEAppTest extends ApplicationTest {
+
     private CleanEController controller;
     private Leaderboard leaderboard;
     private User user1, user2;
     private Task task1, task4;
-
 
     @Override
     public void start(final Stage primaryStage) throws IOException {
@@ -36,9 +34,8 @@ public class CleanEAppTest extends ApplicationTest{
         this.leaderboard = this.controller.getLeaderboard();
         primaryStage.setScene(new Scene(parent));
         primaryStage.show();
-        
-    }
 
+    }
 
     @BeforeEach
     public void setup() {
@@ -47,7 +44,7 @@ public class CleanEAppTest extends ApplicationTest{
 
         leaderboard.addUser(user1);
         leaderboard.addUser(user2);
-        
+
         task1 = new Task(user1, "Vaske badet", 10, "monday");
         new Task(user1, "Vaske rommet", 5, "tuesday");
         new Task(user1, "Vaske rommet", 5, "saturday");
@@ -55,9 +52,8 @@ public class CleanEAppTest extends ApplicationTest{
         new Task(user2, "Vaske kjøkkenet", 20, "wednesday");
         task4 = new Task(user2, "Ta ut søppelet", 5, "friday");
         new Task(user2, "Vaske bil", 9, "sunday");
-     
-    }
 
+    }
 
     @Test
     public void testControllerAndLeaderboard() {
@@ -71,16 +67,15 @@ public class CleanEAppTest extends ApplicationTest{
         clickOn("#assignedUser").write("Sander");
         clickOn("#pointsValue").write("5");
         clickOn("#dueDay").write("thursday");
-        
+
         clickOn("#addButton");
 
         assertEquals("Støvsuge", user1.getTasks().get(3).getTaskName());
         assertEquals("Sander", user1.getTasks().get(3).getAssignedUser().getName());
         assertEquals(5, user1.getTasks().get(3).getPointsValue());
         assertEquals("thursday", user1.getTasks().get(3).getDueDay());
-        
-    }
 
+    }
 
     @Test
     public void testClearTask() {
@@ -98,7 +93,6 @@ public class CleanEAppTest extends ApplicationTest{
 
     }
 
-    
     @Test
     public void testHandleCompletedTask() {
         clickOn("#taskName").write("Støvsuge");
@@ -119,9 +113,8 @@ public class CleanEAppTest extends ApplicationTest{
 
         // 6 tab, 1 enter.
 
-
         clickOn("#completedButton");
-        
+
         assertEquals(10, user1.getPoints());
     }
 
@@ -134,7 +127,7 @@ public class CleanEAppTest extends ApplicationTest{
         clickOn("#assignedUser").write("Sander");
         clickOn("#pointsValue").write("5");
         clickOn("#dueDay").write("thursday");
-        
+
         clickOn("#addButton");
 
         clickOn("#updateBoardList");

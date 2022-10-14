@@ -42,7 +42,7 @@ public class UserDeserializer extends JsonDeserializer<User> {
                             task.setAssignedUser(user);
                             user.addTask(task);
                         }
-                        
+
                     }
                 }
                 return user;

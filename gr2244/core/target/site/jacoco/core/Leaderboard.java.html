@@ -3,38 +3,31 @@
 import java.util.ArrayList;
 import java.util.List;
 
+<span class="fc" id="L6">public class Leaderboard {</span>
 
-<span class="fc" id="L7">public class Leaderboard {</span>
-
-<span class="fc" id="L9">    private List&lt;User&gt; users = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L8">    private List&lt;User&gt; users = new ArrayList&lt;&gt;();</span>
 
     public List&lt;User&gt; getUsers() {
-<span class="fc" id="L12">        return users;</span>
-    }    
+<span class="fc" id="L11">        return new ArrayList&lt;&gt;(users);</span>
+    }
 
-   
     public void addUser(User user) {
-<span class="fc bfc" id="L17" title="All 2 branches covered.">        if (!users.contains(user)) {</span>
-<span class="fc" id="L18">            users.add(user);</span>
+<span class="pc bpc" id="L15" title="1 of 2 branches missed.">        if (!users.contains(user)) {</span>
+<span class="fc" id="L16">            users.add(user);</span>
+        } else {
+<span class="nc" id="L18">            System.out.println(&quot;User already in list.&quot;);</span>
         }
-        else {
-<span class="fc" id="L21">            System.out.println(&quot;User already in list.&quot;);</span>
-        }
-<span class="fc" id="L23">    }     </span>
+<span class="fc" id="L20">    }</span>
 
-    
     public void sortList() {
-<span class="fc" id="L27">        users.sort((u1, u2) -&gt; u2.getPoints() - u1.getPoints());</span>
-<span class="fc" id="L28">        System.out.println(&quot;sorted users: &quot; + users);</span>
-<span class="fc" id="L29">    }</span>
-    
+<span class="fc" id="L23">        users.sort((u1, u2) -&gt; u2.getPoints() - u1.getPoints());</span>
+<span class="fc" id="L24">        System.out.println(&quot;sorted users: &quot; + users);</span>
+<span class="fc" id="L25">    }</span>
 
     @Override
     public String toString() {
-<span class="nc" id="L34">        return &quot;Leaderboard [users=&quot; + users + &quot;]&quot;;</span>
+<span class="nc" id="L29">        return &quot;Leaderboard [users=&quot; + users + &quot;]&quot;;</span>
     }
 
-    
-    
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

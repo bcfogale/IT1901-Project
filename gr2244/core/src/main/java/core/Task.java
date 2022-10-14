@@ -5,25 +5,26 @@ import java.util.List;
 
 public class Task {
 
-    final private List<String> days =Arrays.asList("monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday");
-    
+    final private List<String> days = Arrays.asList("monday", "tuesday", "wednesday", "thursday", "friday", "saturday",
+            "sunday");
+
     private String taskName;
     private int pointsValue;
     private boolean completed = false;
     private String dueDay;
     private User assignedUser;
-  
+
     public Task(User assignedUser, String taskName, int pointsValue, String dueDay) {
         this.assignedUser = assignedUser;
-         // Adds this task to the assigned users task list
-        assignedUser.addTask(this);;
+        // Adds this task to the assigned users task list
+        assignedUser.addTask(this);
+        ;
         this.taskName = taskName;
         this.pointsValue = pointsValue;
         if (days.contains(dueDay.toLowerCase())) {
             this.dueDay = dueDay;
 
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("Choose a valid day.");
         }
     }
@@ -63,7 +64,6 @@ public class Task {
     public String getDueDay() {
         return dueDay;
     }
-
 
     @Override
     public String toString() {

@@ -1,4 +1,0 @@
---patch-module
-gr2244.core=_
---add-reads
-gr2244.core=ALL-UNNAMED
