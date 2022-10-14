@@ -43,4 +43,10 @@ _App & Kontroller_
 
 - [Clean-E Controller](gr2244/fxui/src/main/java/ui/CleanEController.java) => Filen inneholder kontrolleren.
 
+</br>
+ 
+<h1> Arbeidsvaner og arbeidsflyt </h1>
+
+I denne iterasjonen av prosjektet har vi prøvd å bli enda bedre på å bruke gitlab som et verktøy i utviklingsprosessen vår. Vi har laget utviklingsoppgaver (issues) i gitlab som beskriver alt vi har gjort. For hver utviklingsoppgave har vi branchet slik at det man arbeider med ikke skaper problemer med det noen andre arbeider med. Vi har også vært flinke på å nevne issue nummer i commit-meldingene slik at man enkelt kan se hvilke commits som relaterer til hvilke issues når alle branchene har blitt satt sammen i master. Vi har også benyttet mye parprogrammering i denne iterasjonen. Dette kan man se i commit-meldingene der vi har skrevet "Medforfattet av: @brukernavn". Vi skjønte ikke helt i starten at det lønte seg med @brukernavn i steden for å bare skrive navn, men det lærte vi raskt.
+
 
