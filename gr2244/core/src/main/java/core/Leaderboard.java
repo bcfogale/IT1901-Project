@@ -16,10 +16,9 @@ public class Leaderboard {
     public void addUser(User user) {
         if (!users.contains(user)) {
             users.add(user);
-            System.out.println(user.getName() + " was added to list.");
         }
         else {
-             System.out.println("User already in list.");
+            System.out.println("User already in list.");
         }
     }     
 
@@ -28,6 +27,7 @@ public class Leaderboard {
         users.sort((u1, u2) -> u2.getPoints() - u1.getPoints());
         System.out.println("sorted users: " + users);
     }
+    
 
     @Override
     public String toString() {

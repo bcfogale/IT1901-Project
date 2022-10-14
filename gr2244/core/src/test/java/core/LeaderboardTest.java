@@ -2,6 +2,9 @@ package core;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -49,6 +52,17 @@ public class LeaderboardTest {
 
     @Test
     public void testAddUser() {
-        
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        final PrintStream originalOut = System.out;
+        System.setOut(new PrintStream(outContent));
+
+        User u = new User("Sander");
+
+        l.addUser(u);
+        l.addUser(u);
+
+        assertEquals("User already in list.\r\n", outContent.toString());
+
+        System.setOut(originalOut);
     }
 }

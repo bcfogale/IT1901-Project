@@ -17,7 +17,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ListView;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
 public class CleanEAppTest extends ApplicationTest{
@@ -25,7 +25,7 @@ public class CleanEAppTest extends ApplicationTest{
     private CleanEController controller;
     private Leaderboard leaderboard;
     private User user1, user2;
-    private Task task1, task2, task3, task4;
+    private Task task1, task4;
 
 
     @Override
@@ -49,10 +49,10 @@ public class CleanEAppTest extends ApplicationTest{
         leaderboard.addUser(user2);
         
         task1 = new Task(user1, "Vaske badet", 10, "monday");
-        task2 = new Task(user1, "Vaske rommet", 5, "tuesday");
+        new Task(user1, "Vaske rommet", 5, "tuesday");
         new Task(user1, "Vaske rommet", 5, "saturday");
 
-        task3 = new Task(user2, "Vaske kjøkkenet", 20, "wednesday");
+        new Task(user2, "Vaske kjøkkenet", 20, "wednesday");
         task4 = new Task(user2, "Ta ut søppelet", 5, "friday");
         new Task(user2, "Vaske bil", 9, "sunday");
      
@@ -101,9 +101,28 @@ public class CleanEAppTest extends ApplicationTest{
     
     @Test
     public void testHandleCompletedTask() {
-        this.controller.getMonday().getSelectionModel().selectFirst();
+        clickOn("#taskName").write("Støvsuge");
+        clickOn("#assignedUser").write("Sander");
+        clickOn("#pointsValue").write("5");
+        clickOn("#dueDay").write("thursday");
+
+        clickOn("#addButton");
+
+        press(KeyCode.TAB).release(KeyCode.TAB);
+        press(KeyCode.TAB).release(KeyCode.TAB);
+        press(KeyCode.TAB).release(KeyCode.TAB);
+        press(KeyCode.TAB).release(KeyCode.TAB);
+        press(KeyCode.TAB).release(KeyCode.TAB);
+        press(KeyCode.TAB).release(KeyCode.TAB);
+
+        press(KeyCode.ENTER).release(KeyCode.ENTER);
+
+        // 6 tab, 1 enter.
+
+
         clickOn("#completedButton");
         
+        assertEquals(10, user1.getPoints());
     }
 
     @Test

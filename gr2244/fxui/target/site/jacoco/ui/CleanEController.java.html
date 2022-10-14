@@ -169,15 +169,15 @@ import javafx.scene.control.TextField;
 <span class="fc" id="L169">        listviews.add(this.sunday);</span>
 
 <span class="fc bfc" id="L171" title="All 2 branches covered.">        for (ListView&lt;Task&gt; day : listviews) {</span>
-<span class="pc bpc" id="L172" title="1 of 2 branches missed.">            for (Task task : day.getItems()) {</span>
-<span class="nc bnc" id="L173" title="All 2 branches missed.">                if (task.equals(day.getSelectionModel().getSelectedItem())) {</span>
-<span class="nc" id="L174">                    task.setTrue();</span>
-<span class="nc bnc" id="L175" title="All 2 branches missed.">                    if (!leaderboard.getUsers().contains(task.getAssignedUser())) {</span>
+<span class="fc bfc" id="L172" title="All 2 branches covered.">            for (Task task : day.getItems()) {</span>
+<span class="fc bfc" id="L173" title="All 2 branches covered.">                if (task.equals(day.getSelectionModel().getSelectedItem())) {</span>
+<span class="fc" id="L174">                    task.setTrue();</span>
+<span class="pc bpc" id="L175" title="1 of 2 branches missed.">                    if (!leaderboard.getUsers().contains(task.getAssignedUser())) {</span>
 <span class="nc" id="L176">                        leaderboard.getUsers().add(task.getAssignedUser());</span>
                     }
-<span class="nc" id="L178">                    task.getAssignedUser().removeTask(task);   </span>
+<span class="fc" id="L178">                    task.getAssignedUser().removeTask(task);   </span>
                 }
-<span class="nc" id="L180">            }</span>
+<span class="fc" id="L180">            }</span>
 <span class="fc" id="L181">        }</span>
 <span class="fc" id="L182">        scoreList.getItems().setAll(leaderboard.getUsers());</span>
 <span class="fc" id="L183">        updateListViews();</span>
@@ -218,8 +218,7 @@ import javafx.scene.control.TextField;
 <span class="fc" id="L218">        return this.scoreList;</span>
     }
 
-    public ListView&lt;Task&gt; getMonday() {
-<span class="fc" id="L222">        return this.monday;</span>
-    }
+
+    
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

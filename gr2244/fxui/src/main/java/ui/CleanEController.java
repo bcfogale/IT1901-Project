@@ -218,7 +218,6 @@ public class CleanEController {
         return this.scoreList;
     }
 
-    public ListView<Task> getMonday() {
-        return this.monday;
-    }
+
+    
 }

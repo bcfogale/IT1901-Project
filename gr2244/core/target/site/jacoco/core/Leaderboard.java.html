@@ -14,20 +14,20 @@ import java.util.List;
 
    
     public void addUser(User user) {
-<span class="pc bpc" id="L17" title="1 of 2 branches missed.">        if (!users.contains(user)) {</span>
+<span class="fc bfc" id="L17" title="All 2 branches covered.">        if (!users.contains(user)) {</span>
 <span class="fc" id="L18">            users.add(user);</span>
-<span class="fc" id="L19">            System.out.println(user.getName() + &quot; was added to list.&quot;);</span>
         }
         else {
-<span class="nc" id="L22">             System.out.println(&quot;User already in list.&quot;);</span>
+<span class="fc" id="L21">            System.out.println(&quot;User already in list.&quot;);</span>
         }
-<span class="fc" id="L24">    }     </span>
+<span class="fc" id="L23">    }     </span>
 
     
     public void sortList() {
-<span class="fc" id="L28">        users.sort((u1, u2) -&gt; u2.getPoints() - u1.getPoints());</span>
-<span class="fc" id="L29">        System.out.println(&quot;sorted users: &quot; + users);</span>
-<span class="fc" id="L30">    }</span>
+<span class="fc" id="L27">        users.sort((u1, u2) -&gt; u2.getPoints() - u1.getPoints());</span>
+<span class="fc" id="L28">        System.out.println(&quot;sorted users: &quot; + users);</span>
+<span class="fc" id="L29">    }</span>
+    
 
     @Override
     public String toString() {
