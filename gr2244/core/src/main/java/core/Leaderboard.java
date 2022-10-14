@@ -9,7 +9,7 @@ public class Leaderboard {
     private List<User> users = new ArrayList<>();
 
     public List<User> getUsers() {
-        return users;
+        return new ArrayList<>(users);
     }    
 
    

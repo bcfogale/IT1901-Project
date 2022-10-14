@@ -40,15 +40,15 @@ public class User {
     }
 
     public List<Task> getTasks() {
-        return this.tasks;
+        return new ArrayList<>(this.tasks);
     }
 
     public void addTask(Task task) {
-        getTasks().add(task);
+        this.tasks.add(task);
     }
 
     public void removeTask(Task task) {
-        getTasks().remove(task);
+        this.tasks.remove(task);
     }
 
     @Override

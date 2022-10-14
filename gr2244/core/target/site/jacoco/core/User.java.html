@@ -40,15 +40,15 @@ public class User {
 <span class="fc" id="L40">    }</span>
 
     public List&lt;Task&gt; getTasks() {
-<span class="fc" id="L43">        return this.tasks;</span>
+<span class="fc" id="L43">        return new ArrayList&lt;&gt;(this.tasks);</span>
     }
 
     public void addTask(Task task) {
-<span class="fc" id="L47">        getTasks().add(task);</span>
+<span class="fc" id="L47">        this.tasks.add(task);</span>
 <span class="fc" id="L48">    }</span>
 
     public void removeTask(Task task) {
-<span class="fc" id="L51">        getTasks().remove(task);</span>
+<span class="fc" id="L51">        this.tasks.remove(task);</span>
 <span class="fc" id="L52">    }</span>
 
     @Override
