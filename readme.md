@@ -3,34 +3,44 @@
 
 <h1>Bygging av prosjektet</h1>
 
-Prosjektet bruker maven til bygging og kjøring.
+Prosjektet bruker maven til bygging og kjøring. Gjør følgende operasjoner i terminalen (gitt at du starter fra rotnivå i terminalen):
 
-For å bygge, kjør "mvn install".
-Prosjektet må kjøres fra den innerste gr2244 mappen (gr2244/gr244). Derfra må man kjøre "mvn javafx:run -f fxui/pom.xml". 
+- Steg 1: &emsp; <code>cd cleane </code>
+- Steg 2: &emsp; <code>mvn clean install </code>
+- Steg 3: &emsp; <code>mvn javafx:run -f fxui/pom.xml </code>
+
 
 <h1>Innhold</h1>
 
-[Om Appen](gr2244/docs/readme.md)
+[Om Appen](cleane/readme.md)
 
-Inne i mappen gr2244/src vil man finne kodeprosjektet. Herfra er det delt inn i test og main. I gr2244/src/main/cleane finnes hovedfilene til prosjektet. I gr2244/src/main/resources finnes brukergrensesnittet. I gr2244/src/test/java/cleane finnes JUnit testene. 
+Inne i mappen cleane/core/src vil man finne hovedfilene til prosjektet. Herfra er det delt inn i test og main. I main finnes selve programfilene til prosjektet. I test finnes JUnit testene. I cleane/fxui/src/main finnes filene knyttet til brukergrensesnittet. I java/ui finner man kontrolleren-klassen og app-klassen. I resources/ui finner man selve brukergrensesnittet.
 
-_Applikasjonfiler_
+<u><h3> Core </h3></u>
 
-- [Clean-E App](gr2244/src/main/java/cleane/CleanEApp.java) => Filen inneholder main kode for å kjøre appen.
+_Core_
 
-- [Clean-E Controller](gr2244/src/main/java/cleane/CleanEController.java) => Filen inneholder kontrolleren.
 
-- [Clean-E Leaderboard](gr2244/src/main/java/cleane/Leaderboard.java) => Filen inneholder kode hvor brukere blir sorteres i en liste i følge poengene sine. (Ikke implementert i innlevering 1)
+- [Clean-E Leaderboard](gr2244/core/src/main/java/core/Leaderboard.java) => Filen inneholder kode hvor brukere blir sorteres i en liste i følge poengene sine.
 
-- [Clean-E Task](gr2244/src/main/java/cleane/Task.java) => Filen inneholder koden for task klassen.
+- [Clean-E Task](gr2244/core/src/main/java/core/Task.java) => Filen inneholder koden for task klassen.
 
-- [Clean-E User](gr2244/src/main/java/cleane/User.java) => Filen inneholder koden for user klassen.
+- [Clean-E User](gr2244/core/src/main/java/core/User.java) => Filen inneholder koden for user klassen.
 
-_Brukergrensesnitt_
+_Persistens_
 
-- [Clean-E App](gr2244/fxui/src/main/resources/ui/cleanE.fxml) => Filen inneholder hovedsiden GUI til alle : AddTask, Kalenderen, Fillagring /Loading & Leaderboard.
+- [JSON](gr2244/core/src/main/java/json) => Håndtering av hvordan fillagring håndteres med serialiserere og deserialiserer samt en Moddule-fil finnes i JSON-mappen, ingen lokalt.
 
-_Lagringfiler_
+<u><h3>FXUI</h3></u>
 
-- [JSON](gr2244/core/src/main/java/json) => Fillagring kjer i JSON sin mappe, ingen lokalt.
+_UI_
+
+- [Clean-E FXUI](gr2244/fxui/src/main/resources/ui/cleanE.fxml) => Filen inneholder hovedsiden GUI til alle : AddTask, Kalenderen, Fillagring /Loading & Leaderboard.
+
+_App & Kontroller_
+
+- [Clean-E App](gr2244/fxui/src/main/java/ui/CleanEApp.java) => Filen inneholder main kode for å kjøre appen.
+
+- [Clean-E Controller](gr2244/fxui/src/main/java/ui/CleanEController.java) => Filen inneholder kontrolleren.
+
 
