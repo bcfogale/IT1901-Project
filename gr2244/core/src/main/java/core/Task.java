@@ -13,6 +13,7 @@ public class Task {
     private String dueDay;
     private User assignedUser;
   
+    
     public Task(User assignedUser, String taskName, int pointsValue, String dueDay) {
         this.assignedUser = assignedUser;
          // Adds this task to the assigned users task list

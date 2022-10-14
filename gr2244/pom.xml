@@ -129,6 +129,7 @@
           <configuration>
             <xmlOutput>false</xmlOutput>
             <htmlOutput>true</htmlOutput>
+            <excludeFilterFile>resources/spotbugs-exclude.xml</excludeFilterFile>
           </configuration>
           <executions>
             <execution>

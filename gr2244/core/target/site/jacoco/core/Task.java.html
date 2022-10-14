@@ -13,62 +13,63 @@ public class Task {
     private String dueDay;
     private User assignedUser;
   
-<span class="fc" id="L16">    public Task(User assignedUser, String taskName, int pointsValue, String dueDay) {</span>
-<span class="fc" id="L17">        this.assignedUser = assignedUser;</span>
+    
+<span class="fc" id="L17">    public Task(User assignedUser, String taskName, int pointsValue, String dueDay) {</span>
+<span class="fc" id="L18">        this.assignedUser = assignedUser;</span>
          // Adds this task to the assigned users task list
-<span class="fc" id="L19">        assignedUser.addTask(this);;</span>
-<span class="fc" id="L20">        this.taskName = taskName;</span>
-<span class="fc" id="L21">        this.pointsValue = pointsValue;</span>
-<span class="fc bfc" id="L22" title="All 2 branches covered.">        if (days.contains(dueDay.toLowerCase())) {</span>
-<span class="fc" id="L23">            this.dueDay = dueDay;</span>
+<span class="fc" id="L20">        assignedUser.addTask(this);;</span>
+<span class="fc" id="L21">        this.taskName = taskName;</span>
+<span class="fc" id="L22">        this.pointsValue = pointsValue;</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">        if (days.contains(dueDay.toLowerCase())) {</span>
+<span class="fc" id="L24">            this.dueDay = dueDay;</span>
 
         }
         else {
-<span class="fc" id="L27">            throw new IllegalArgumentException(&quot;Choose a valid day.&quot;);</span>
+<span class="fc" id="L28">            throw new IllegalArgumentException(&quot;Choose a valid day.&quot;);</span>
         }
-<span class="fc" id="L29">    }</span>
+<span class="fc" id="L30">    }</span>
 
     // This constructor is only used for deserialization purposes and testing
-<span class="fc" id="L32">    public Task(String taskName, int pointsValue, String dueDay) {</span>
-<span class="fc" id="L33">        this.taskName = taskName;</span>
-<span class="fc" id="L34">        this.pointsValue = pointsValue;</span>
-<span class="fc" id="L35">        this.dueDay = dueDay;</span>
-<span class="fc" id="L36">    }</span>
+<span class="fc" id="L33">    public Task(String taskName, int pointsValue, String dueDay) {</span>
+<span class="fc" id="L34">        this.taskName = taskName;</span>
+<span class="fc" id="L35">        this.pointsValue = pointsValue;</span>
+<span class="fc" id="L36">        this.dueDay = dueDay;</span>
+<span class="fc" id="L37">    }</span>
 
     public void setAssignedUser(User assignedUser) {
-<span class="fc" id="L39">        this.assignedUser = assignedUser;</span>
-<span class="fc" id="L40">    }</span>
+<span class="fc" id="L40">        this.assignedUser = assignedUser;</span>
+<span class="fc" id="L41">    }</span>
 
     public void setTrue() {
-<span class="fc" id="L43">        this.completed = true;</span>
-<span class="fc" id="L44">        getAssignedUser().addPoints(pointsValue);</span>
-<span class="fc" id="L45">    }</span>
+<span class="fc" id="L44">        this.completed = true;</span>
+<span class="fc" id="L45">        getAssignedUser().addPoints(pointsValue);</span>
+<span class="fc" id="L46">    }</span>
 
     public User getAssignedUser() {
-<span class="fc" id="L48">        return assignedUser;</span>
+<span class="fc" id="L49">        return assignedUser;</span>
     }
 
     public String getTaskName() {
-<span class="fc" id="L52">        return taskName;</span>
+<span class="fc" id="L53">        return taskName;</span>
     }
 
     public int getPointsValue() {
-<span class="fc" id="L56">        return pointsValue;</span>
+<span class="fc" id="L57">        return pointsValue;</span>
     }
 
     public boolean isCompleted() {
-<span class="fc" id="L60">        return completed;</span>
+<span class="fc" id="L61">        return completed;</span>
     }
 
     public String getDueDay() {
-<span class="fc" id="L64">        return dueDay;</span>
+<span class="fc" id="L65">        return dueDay;</span>
     }
 
 
     @Override
     public String toString() {
-<span class="nc" id="L70">        return &quot;Task [taskName=&quot; + taskName + &quot;, pointsValue=&quot; + pointsValue + &quot;, completed=&quot; + completed + &quot;, dueDay=&quot;</span>
-<span class="nc" id="L71">                + dueDay + &quot;, assignedUser=&quot; + assignedUser.getName() + &quot;]&quot;;</span>
+<span class="nc" id="L71">        return &quot;Task [taskName=&quot; + taskName + &quot;, pointsValue=&quot; + pointsValue + &quot;, completed=&quot; + completed + &quot;, dueDay=&quot;</span>
+<span class="nc" id="L72">                + dueDay + &quot;, assignedUser=&quot; + assignedUser.getName() + &quot;]&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
