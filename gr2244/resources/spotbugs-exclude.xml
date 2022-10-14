@@ -9,7 +9,10 @@
   <Bug code="EI2" />
 </Match>
 <Match>
-  <Class name="core.Task"/>
+  <Classes>
+    <Class name="core.Task"/>
+    <Class name="fxui.CleanEController"/>
+  </Classes>
   <Bug code="EI" />
 </Match>
 </FindBugsFilter>
