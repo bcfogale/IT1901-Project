@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserDeserializer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">core</a> &gt; <a href="index.source.html" class="el_package">json</a> &gt; <span class="el_source">UserDeserializer.java</span></div><h1>UserDeserializer.java</h1><pre class="source lang-java linenums">package json;
+
+import java.io.IOException;
+
+import com.fasterxml.jackson.core.JacksonException;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.TreeNode;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.IntNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.node.TextNode;
+
+import core.Task;
+import core.User;
+
+<span class="fc" id="L19">public class UserDeserializer extends JsonDeserializer&lt;User&gt; {</span>
+<span class="fc" id="L20">    TaskDeserializer taskDeserializer = new TaskDeserializer();</span>
+
+    public User deserialize(JsonNode jsonNode) {
+
+<span class="pc bpc" id="L24" title="1 of 2 branches missed.">        if (jsonNode instanceof ObjectNode) {</span>
+<span class="fc" id="L25">            ObjectNode objectNode = (ObjectNode) jsonNode;</span>
+<span class="fc" id="L26">            JsonNode nameNode = objectNode.get(&quot;name&quot;);</span>
+
+<span class="pc bpc" id="L28" title="1 of 2 branches missed.">            if (nameNode instanceof TextNode) {</span>
+<span class="fc" id="L29">                User user = new User(((TextNode) nameNode).asText());</span>
+<span class="fc" id="L30">                JsonNode pointNode = objectNode.get(&quot;points&quot;);</span>
+
+<span class="pc bpc" id="L32" title="1 of 2 branches missed.">                if (pointNode instanceof IntNode) {</span>
+<span class="fc" id="L33">                    user.addPoints(((IntNode) pointNode).asInt());</span>
+                }
+<span class="fc" id="L35">                JsonNode taskListNode = objectNode.get(&quot;tasks&quot;);</span>
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">                if (taskListNode instanceof ArrayNode) {</span>
+
+<span class="fc bfc" id="L38" title="All 2 branches covered.">                    for (JsonNode taskNode : ((ArrayNode) taskListNode)) {</span>
+
+<span class="fc" id="L40">                        Task task = taskDeserializer.deserialize(taskNode);</span>
+<span class="pc bpc" id="L41" title="1 of 2 branches missed.">                        if (task != null) {</span>
+<span class="fc" id="L42">                            task.setAssignedUser(user);</span>
+<span class="fc" id="L43">                            user.addTask(task);</span>
+                        }
+                        
+<span class="fc" id="L46">                    }</span>
+                }
+<span class="fc" id="L48">                return user;</span>
+            }
+        }
+<span class="nc" id="L51">        return null;</span>
+    }
+
+    @Override
+    public User deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JacksonException {
+<span class="nc" id="L56">        TreeNode treeNode = parser.getCodec().readTree(parser);</span>
+<span class="nc" id="L57">        return deserialize((JsonNode) treeNode);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

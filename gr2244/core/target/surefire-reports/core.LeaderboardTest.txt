@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: core.LeaderboardTest
 -------------------------------------------------------------------------------
-<<<<<<< HEAD:gr2244/core/target/surefire-reports/cleanE.LeaderboardTest.txt
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.019 s - in cleanE.LeaderboardTest
-=======
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.017 s - in core.LeaderboardTest
->>>>>>> 2a180b88d58bb69bd36949017997a7496186f240:gr2244/core/target/surefire-reports/core.LeaderboardTest.txt
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.033 s - in core.LeaderboardTest

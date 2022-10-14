@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-/Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244/core/src/main/java/cleane/CleanEController.java
-/Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244/core/src/main/java/cleane/Leaderboard.java
-/Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244/core/src/main/java/cleane/FileManagement.java
-/Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244/core/src/main/java/cleane/CleanEApp.java
-/Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244/core/src/main/java/cleane/User.java
-/Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244/core/src/main/java/cleane/Task.java
-=======
 /Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244/core/src/main/java/core/User.java
 /Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244/core/src/main/java/json/CleanEModule.java
 /Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244/core/src/main/java/module-info.java
@@ -15,4 +7,3 @@
 /Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244/core/src/main/java/json/TaskDeserializer.java
 /Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244/core/src/main/java/json/LeaderboardDeserializer.java
 /Users/sanderslinning/Documents/NTNU/3-Semester/Informatikk-Prosjekt/Prosjektmappe.nosync/gr2244/gr2244/core/src/main/java/json/UserDeserializer.java
->>>>>>> 2a180b88d58bb69bd36949017997a7496186f240

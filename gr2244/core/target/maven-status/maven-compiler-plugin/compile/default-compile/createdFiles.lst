@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-cleane/CleanEApp.class
-cleane/Task.class
-cleane/CleanEController.class
-cleane/FileManagement.class
-cleane/User.class
-cleane/Leaderboard.class
-=======
 core/Leaderboard.class
 core/Task.class
 json/LeaderboardSerializer.class
@@ -16,4 +8,3 @@ json/LeaderboardDeserializer.class
 core/User.class
 json/TaskDeserializer.class
 json/UserDeserializer.class
->>>>>>> 2a180b88d58bb69bd36949017997a7496186f240

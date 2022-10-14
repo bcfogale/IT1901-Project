@@ -1,7 +1,6 @@
 package ui;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,9 +13,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import core.Leaderboard;
 import core.Task;
 import core.User;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import json.CleanEModule;
 
 
@@ -25,6 +24,9 @@ public class CleanEController {
 
     @FXML
     private ListView<Task> monday, tuesday, wednesday, thursday, friday, saturday, sunday;
+
+    @FXML
+    private Button completedButton;
 
     private Leaderboard leaderboard = new Leaderboard();
 
@@ -54,15 +56,6 @@ public class CleanEController {
         updateListViews();
     }
 
-
-    @FXML
-    private void handleTest(){
-        Alert alert = new Alert(AlertType.ERROR);
-        alert.setTitle("Error message");
-        alert.setHeaderText("Something went wrong");
-        alert.setContentText("Hallo");
-        alert.showAndWait();
-    }
 
 
     @FXML
@@ -142,6 +135,7 @@ public class CleanEController {
     @FXML
     private void appendTask() throws IOException {
         User u = userTextToObject(assignedUser.getText());
+        addUserToLeaderboard(u);
         new Task(u, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
         leaderboard.addUser(u);
         updateListViews();
@@ -149,6 +143,13 @@ public class CleanEController {
         scoreList.getItems().setAll(leaderboard.getUsers());
         System.out.println(u.getTasks());
         clearTask();
+    }
+
+
+    private void addUserToLeaderboard(User u) {
+        if (!leaderboard.getUsers().contains(u)) {
+            leaderboard.getUsers().add(u);
+        }
     }
 
 
@@ -203,4 +204,33 @@ public class CleanEController {
         this.pointsValue.clear();
         this.dueDay.clear();
     }
+    
+
+    //Gettere for testing
+    public Leaderboard getLeaderboard() {
+        return this.leaderboard;
+    }
+
+    public TextField getTaskName() {
+        return this.taskName; 
+    }
+
+    public TextField getAssignesUser() {
+        return this.assignedUser;
+    }
+
+    public TextField getPointsValue() {
+        return this.pointsValue;
+    }
+
+    public TextField getDueDay() {
+        return this.dueDay;
+    }
+
+    public ListView<User> getScoreList() {
+        return this.scoreList;
+    }
+
+
+    
 }

@@ -28,7 +28,7 @@ public class Task {
         }
     }
 
-    // This constructor is only used for deserialization purposes
+    // This constructor is only used for deserialization purposes and testing
     public Task(String taskName, int pointsValue, String dueDay) {
         this.taskName = taskName;
         this.pointsValue = pointsValue;

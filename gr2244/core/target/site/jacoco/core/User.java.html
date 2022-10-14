@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>User.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">core</a> &gt; <a href="index.source.html" class="el_package">core</a> &gt; <span class="el_source">User.java</span></div><h1>User.java</h1><pre class="source lang-java linenums">package core;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+
+@JsonIdentityInfo(
+  generator = ObjectIdGenerators.IntSequenceGenerator.class, 
+  property = &quot;id&quot;)
+public class User {
+
+    // public static List&lt;User&gt; users = new ArrayList&lt;&gt;();
+    
+    private int points;
+    private String name;
+<span class="fc" id="L19">    private List&lt;Task&gt; tasks = new ArrayList&lt;&gt;();</span>
+    
+
+<span class="fc" id="L22">    public User(String name) {</span>
+<span class="fc" id="L23">        this.name = name;</span>
+<span class="fc" id="L24">    }</span>
+
+    public int getPoints() {
+<span class="fc" id="L27">        return points;</span>
+    }
+
+    public void addPoints(int additionalPoints) {
+<span class="fc" id="L31">        this.points += additionalPoints;</span>
+<span class="fc" id="L32">    }</span>
+
+    public String getName() {
+<span class="fc" id="L35">        return name;</span>
+    }
+
+    public void setName(String name) {
+<span class="fc" id="L39">        this.name = name;</span>
+<span class="fc" id="L40">    }</span>
+
+    public List&lt;Task&gt; getTasks() {
+<span class="fc" id="L43">        return this.tasks;</span>
+    }
+
+    public void addTask(Task task) {
+<span class="fc" id="L47">        getTasks().add(task);</span>
+<span class="fc" id="L48">    }</span>
+
+    public void removeTask(Task task) {
+<span class="fc" id="L51">        getTasks().remove(task);</span>
+<span class="fc" id="L52">    }</span>
+
+    @Override
+    public String toString() {
+<span class="fc" id="L56">        return &quot;&quot;+ name + &quot;: &quot; + points + &quot; poeng&quot;;</span>
+    }
+
+
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
