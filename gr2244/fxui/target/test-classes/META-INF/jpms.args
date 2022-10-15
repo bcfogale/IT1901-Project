@@ -1,4 +1,0 @@
---patch-module
-gr2244.fxui=_
---add-reads
-gr2244.fxui=ALL-UNNAMED

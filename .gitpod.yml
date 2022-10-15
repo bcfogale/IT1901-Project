@@ -3,7 +3,7 @@ image:
 
 tasks:
   - init: sdk use java 16.01.hs-adpt
-    command: cd gr2244
+
 
 ports:
   - port: 6080
