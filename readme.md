@@ -5,7 +5,7 @@
 
 Prosjektet bruker maven til bygging og kjøring. Gjør følgende operasjoner i terminalen (gitt at du starter fra rotnivå i terminalen):
 
-- Steg 1: &emsp; <code>cd cleane </code>
+- Steg 1: &emsp; <code>cd CleanE </code>
 - Steg 2: &emsp; <code>mvn clean install </code>
 - Steg 3: &emsp; <code>mvn javafx:run -f fxui/pom.xml </code>
 
