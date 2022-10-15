@@ -25,6 +25,7 @@ Dette gjør at User får en ID og at denne IDen refereres til i User sin assigne
 </br>
 </br>
 Legg merke til at id == assignedUser, fordi assignedUser refererer til den User-instansen med den spesifikke IDen. Som man ser fra JSON filen vil Leaderboard ha en liste med Users, og hver User ha en liste med Tasks, hver task referer tilbake til sin assignedUser.
- <!--
- TODO: Skrive mer om JSON, serlializing...
- >
+</br>
+</br>
+<u><h1>Viktig info!</u></h1>
+Grunnen til at vi leverer sent er på grunn av manglende teknisk hjelp. Noen dager satt vi å ventet på hjelp i mer enn 5 timer, mens vi selv forsøkte å løse problemet selv. Når vi endelig løste problemet var det som regel en enkel feil som vi hadde oversett. Dette gjorde at vi brukte mer tid enn vi egentlig trengte.
