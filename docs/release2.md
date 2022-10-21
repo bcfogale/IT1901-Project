@@ -29,7 +29,7 @@ Legg merke til at id == assignedUser, fordi assignedUser refererer til den User-
 </br>
 <h2>Sekvensdiagram</h2>
 
-<p style="text-align:center;"><img src="../docs\prosjekt-images\sekvensdiagram.png" ></p>
+<p style="text-align:center;"><img src="../docs/prosjekt-images/sekvensdiagram.png" ></p>
 </br>
 </br>
 <u><h1>Viktig info!</u></h1>
