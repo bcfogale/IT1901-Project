@@ -49,4 +49,10 @@ _App & Kontroller_
 
 I denne iterasjonen av prosjektet har vi prøvd å bli enda bedre på å bruke gitlab som et verktøy i utviklingsprosessen vår. Vi har laget utviklingsoppgaver (issues) i gitlab som beskriver alt vi har gjort. For hver utviklingsoppgave har vi branchet slik at det man arbeider med ikke skaper problemer med det noen andre arbeider med. Vi har også vært flinke på å nevne issue nummer i commit-meldingene slik at man enkelt kan se hvilke commits som relaterer til hvilke issues når alle branchene har blitt satt sammen i master. Vi har også benyttet mye parprogrammering i denne iterasjonen. Dette kan man se i commit-meldingene der vi har skrevet "Medforfattet av: @brukernavn". Vi skjønte ikke helt i starten at det lønte seg med @brukernavn i steden for å bare skrive navn, men det lærte vi raskt.
 
+<h1> Dokument-metafor </h1>
 
+I dette prosjektet velger vi dokument-metafor i stedet for implisitt lagring fordi vi tror at appen passer best med bare en liste for å lagre informasjoner av brukere. Det vil si at brukerne velger selv hvis de ville overskrive den listen som er allerede lagret for å begynne på nytt.
+
+Appen lagrer brukeres informasjoner som står på listen hver ganger en trykk på den SAVE knappen, og laste ned informasjonen fra filen inn til listen med LOAD knappen. 
+
+Med andre ord, det finnes ikke en ny liste fordi vi bruker på en måte bare en liste for en hele uke. Her antar vi at listen skal bli oppdatert hver uke, derfor appen lister bare 7 dager i stedet for en måned med 30 dager. Forresten, vi antar også at at husholdere er den sammen gruppen som bo sammen på en ganske lang stund. Dermed den Scoreboard konkurransen er gyldig og skal begynne på nytt etter 7 dager.
