@@ -51,8 +51,8 @@ I denne iterasjonen av prosjektet har vi prøvd å bli enda bedre på å bruke g
 
 <h1> Dokument-metafor </h1>
 
-I dette prosjektet velger vi dokument-metafor i stedet for implisitt lagring fordi vi tror at appen passer best med bare en liste for å lagre informasjoner av brukere. Det vil si at brukerne velger selv hvis de ville overskrive den listen som er allerede lagret for å begynne på nytt.
+I dette prosjektet velger vi dokument-metafor i stedet for implisitt lagring, fordi vi tror at appen passer best med bare en liste for å lagre informasjon av brukere. Det vil si at brukerne velger selv hvis de vil overskrive listen som er allerede lagret for å begynne på nytt.
 
-Appen lagrer brukeres informasjoner som står på listen hver ganger en trykk på den SAVE knappen, og laste ned informasjonen fra filen inn til listen med LOAD knappen. 
+Appen lagrer brukeres informasjon som står på listen hver ganger en trykker på SAVE knappen, og laster ned informasjonen fra filen inn til listen med LOAD knappen. 
 
-Med andre ord, det finnes ikke en ny liste fordi vi bruker på en måte bare en liste for en hele uke. Her antar vi at listen skal bli oppdatert hver uke, derfor appen lister bare 7 dager i stedet for en måned med 30 dager. Forresten, vi antar også at at husholdere er den sammen gruppen som bo sammen på en ganske lang stund. Dermed den Scoreboard konkurransen er gyldig og skal begynne på nytt etter 7 dager.
+Med andre ord finnes det ikke en ny liste, fordi vi bruker bare en liste for en hele uke. Her antar vi at listen skal bli oppdatert hver uke, derfor lister appen bare 7 dager i stedet for en måned med 30 dager. Vi antar også at husholdet er en gruppe som bor sammen under en lenger tid. Dermed er Scoreboard konkurransen gyldig i 7 dager, før den begynner på nytt.
