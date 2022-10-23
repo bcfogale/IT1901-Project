@@ -14,9 +14,16 @@ public class Task {
     private String dueDay;
     private User assignedUser;
 
+
+    /**
+     * Konstruerer objektet og setter alle feltene til klassen unntatt dueDay, som allerede er satt til "false".
+     * @param assignedUser
+     * @param taskName
+     * @param pointsValue
+     * @param dueDay
+     */
     public Task(User assignedUser, String taskName, int pointsValue, String dueDay) {
         this.assignedUser = assignedUser;
-        // Adds this task to the assigned users task list
         assignedUser.addTask(this);
         ;
         this.taskName = taskName;
@@ -29,7 +36,12 @@ public class Task {
         }
     }
 
-    // This constructor is only used for deserialization purposes and testing
+    /**
+     * Enda en konstruktør, men denne brukes kun for deserialisering og testing.
+     * @param taskName
+     * @param pointsValue
+     * @param dueDay
+     */
     public Task(String taskName, int pointsValue, String dueDay) {
         this.taskName = taskName;
         this.pointsValue = pointsValue;
@@ -40,6 +52,9 @@ public class Task {
         this.assignedUser = assignedUser;
     }
 
+    /**
+     * Setter completed til true og legger til oppgavens poengsum til den ansvarlige brukeren
+     */
     public void setTrue() {
         this.completed = true;
         getAssignedUser().addPoints(pointsValue);
