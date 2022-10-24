@@ -2,13 +2,9 @@ package ui;
 
 import javafx.fxml.FXML;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import core.Leaderboard;
 import core.Task;
@@ -16,7 +12,7 @@ import core.User;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import json.CleanEModule;
+import json.FileManagement;
 
 public class CleanEController {
 
@@ -28,15 +24,10 @@ public class CleanEController {
 
     private Leaderboard leaderboard = new Leaderboard();
 
-    private ObjectMapper mapper = new ObjectMapper();
-
-    private final File file = new File("../savestates/savefile.json");
+    private FileManagement fm = new FileManagement();
 
     public void initialize() {
         try {
-            CleanEModule mod = new CleanEModule();
-            mapper.registerModule(mod);
-            mapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
             updateListViews();
         } catch (Exception e) {
             System.out.println(e);
@@ -46,8 +37,7 @@ public class CleanEController {
     // load list fra cleane.txt
     @FXML
     private void loadFromFile() throws IOException {
-        leaderboard = mapper.readerFor(Leaderboard.class).readValue(file);
-
+        leaderboard = fm.readFromFile();
         updateListViews();
     }
 
@@ -85,7 +75,7 @@ public class CleanEController {
 
     @FXML
     private void handleSaveButton() throws IOException {
-        mapper.writeValue(file, leaderboard);
+        fm.writeToFile(leaderboard);
     }
 
     @FXML
