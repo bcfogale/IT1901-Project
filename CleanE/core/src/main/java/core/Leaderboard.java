@@ -11,6 +11,10 @@ public class Leaderboard {
         return new ArrayList<>(users);
     }
 
+    /**
+     * Legger user til i listen over brukere i Leaderboard.
+     * @param user
+     */
     public void addUser(User user) {
         if (!users.contains(user)) {
             users.add(user);
@@ -19,6 +23,7 @@ public class Leaderboard {
         }
     }
 
+    /**Sorterer listen over brukere etter poengsum */
     public void sortList() {
         users.sort((u1, u2) -> u2.getPoints() - u1.getPoints());
         System.out.println("sorted users: " + users);
