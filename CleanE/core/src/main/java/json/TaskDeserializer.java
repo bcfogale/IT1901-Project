@@ -17,6 +17,11 @@ import core.Task;
 
 public class TaskDeserializer extends JsonDeserializer<Task> {
 
+    /**
+     * Deserialiserer Task-klassen for JSON lagring
+     * @param jsonNode
+     * @return
+     */
     public Task deserialize(JsonNode jsonNode) {
         if (jsonNode instanceof ObjectNode) {
             ObjectNode objectNode = (ObjectNode) jsonNode;
@@ -41,6 +46,11 @@ public class TaskDeserializer extends JsonDeserializer<Task> {
         return null;
     }
 
+    /**
+     * Deserialiserer Task-klassen for JSON lagring
+     * @param jsonNode
+     * @return
+     */
     @Override
     public Task deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JacksonException {
         TreeNode treeNode = parser.getCodec().readTree(parser);
