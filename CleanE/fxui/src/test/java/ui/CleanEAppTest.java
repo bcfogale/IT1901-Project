@@ -37,6 +37,7 @@ public class CleanEAppTest extends ApplicationTest {
 
     }
 
+    /**Lager brukere med oppgaver før hver test */
     @BeforeEach
     public void setup() {
         user1 = new User("Sander");
@@ -55,12 +56,14 @@ public class CleanEAppTest extends ApplicationTest {
 
     }
 
+    /**Tester om kontrollen og ledertavlen eksisterer slik at de andre testene vil fungere */
     @Test
     public void testControllerAndLeaderboard() {
         assertNotNull(this.controller);
         assertNotNull(this.leaderboard);
     }
 
+    /**Skriver inn informasjon og tester om en oppgave med denne informasjonen faktisk blir laget */
     @Test
     public void testAddTask() {
         clickOn("#taskName").write("Støvsuge");
@@ -77,6 +80,7 @@ public class CleanEAppTest extends ApplicationTest {
 
     }
 
+    /**Tester om "cancel"-knappen funker og fjerner informasjonen fra inputfeltene */
     @Test
     public void testClearTask() {
         clickOn("#taskName").write("Støvsuge");
@@ -93,6 +97,9 @@ public class CleanEAppTest extends ApplicationTest {
 
     }
 
+    /**Tester om "completed"-knappen fjerner den valgte oppgaven fra aktive oppgaver og oppdaterer antall
+     * poeng til brukeren.
+     */
     @Test
     public void testHandleCompletedTask() {
         clickOn("#taskName").write("Støvsuge");
@@ -118,6 +125,7 @@ public class CleanEAppTest extends ApplicationTest {
         assertEquals(10, user1.getPoints());
     }
 
+    /**Tester om "update"-knappen sorterer ledertavlen */
     @Test
     public void testSortList() {
         task1.setTrue();
