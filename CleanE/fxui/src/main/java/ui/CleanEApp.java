@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**Starter applikasjonen */
 public class CleanEApp extends Application {
 
     public static void main(String[] args) {

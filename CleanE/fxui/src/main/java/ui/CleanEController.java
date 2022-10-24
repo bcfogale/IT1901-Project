@@ -43,7 +43,10 @@ public class CleanEController {
         }
     }
 
-    // load list fra cleane.txt
+    /**
+     * Laster innhold fra fil
+     * @throws IOException
+     */
     @FXML
     private void loadFromFile() throws IOException {
         leaderboard = mapper.readerFor(Leaderboard.class).readValue(file);
@@ -51,6 +54,7 @@ public class CleanEController {
         updateListViews();
     }
 
+    /**Oppdaterer listviews slik at riktig informasjon vises */
     @FXML
     private void updateListViews() {
         this.monday.getItems().clear();
@@ -83,6 +87,10 @@ public class CleanEController {
         }
     }
 
+    /**
+     * Lagrer innhold til fil
+     * @throws IOException
+     */
     @FXML
     private void handleSaveButton() throws IOException {
         mapper.writeValue(file, leaderboard);
@@ -100,7 +108,11 @@ public class CleanEController {
     @FXML
     private TextField dueDay;
 
-    // hjelpemetode
+    /**
+     * Hjelpemetode som sjekker om en navnet til en bruker allerede finnes
+     * @param assignedUser
+     * @return
+     */
     private User userTextToObject(String assignedUser) {
         if (leaderboard.getUsers().isEmpty()) {
             return new User(assignedUser);
@@ -114,6 +126,11 @@ public class CleanEController {
         return new User(assignedUser);
     }
 
+    /**
+     * Legger til en oppgave til en bruker utifra hva som er skrevet
+     * i input-feltene
+     * @throws IOException
+     */
     // sette inn if/else så at AddTask button er ubrukelig mens texfields er tomt
     @FXML
     private void appendTask() throws IOException {
@@ -128,6 +145,10 @@ public class CleanEController {
         clearTask();
     }
 
+    /**
+     * Legger en bruker til Leaderboard
+     * @param u
+     */
     private void addUserToLeaderboard(User u) {
         if (!leaderboard.getUsers().contains(u)) {
             leaderboard.getUsers().add(u);
@@ -139,6 +160,10 @@ public class CleanEController {
     @FXML
     private ListView<User> scoreList;
 
+    /**
+     * Sorterer Listview til ledertavlen
+     * @throws IOException
+     */
     @FXML
     private void leaderBoardList() throws IOException { // listen blir sortert når man trykker på update-knapp
 
@@ -146,6 +171,11 @@ public class CleanEController {
         scoreList.getItems().setAll(leaderboard.getUsers());
     }
 
+    /**
+     * Fjerner en oppgave når den er blitt gjort ferdig og oppdaterer
+     * antall poeng til ansvarlig bruker.
+     * @throws IOException
+     */
     @FXML
     private void handleCompletedTask() throws IOException {
         scoreList.getItems().clear();
@@ -175,6 +205,10 @@ public class CleanEController {
         updateListViews();
     }
 
+    /**
+     * Fjerner teksten i inputfeltene når man trykker på "cancel" knappen
+     * @throws IOException
+     */
     @FXML
     private void clearTask() throws IOException {
         this.assignedUser.clear();
