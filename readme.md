@@ -56,3 +56,8 @@ I dette prosjektet velger vi dokument-metafor i stedet for implisitt lagring for
 Appen lagrer brukeres informasjoner som står på listen hver ganger en trykk på den SAVE knappen, og laste ned informasjonen fra filen inn til listen med LOAD knappen. 
 
 Med andre ord, det finnes ikke en ny liste fordi vi bruker på en måte bare en liste for en hele uke. Her antar vi at listen skal bli oppdatert hver uke, derfor appen lister bare 7 dager i stedet for en måned med 30 dager. Forresten, vi antar også at at husholdere er den sammen gruppen som bo sammen på en ganske lang stund. Dermed den Scoreboard konkurransen er gyldig og skal begynne på nytt etter 7 dager.
+
+<p style="text-align:center;"><img src="../docs/prosjekt-images/Clean-E_SAVE_LOAD.png"  width="300" height="100" ></p>
+
+<p style="text-align:center;">
+<small><em >Save/Load</em></small></p>
