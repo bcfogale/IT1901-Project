@@ -103,16 +103,11 @@ public class CleanEAppTest extends ApplicationTest {
 
         clickOn("#addButton");
 
-        press(KeyCode.TAB).release(KeyCode.TAB);
-        press(KeyCode.TAB).release(KeyCode.TAB);
-        press(KeyCode.TAB).release(KeyCode.TAB);
-        press(KeyCode.TAB).release(KeyCode.TAB);
-        press(KeyCode.TAB).release(KeyCode.TAB);
-        press(KeyCode.TAB).release(KeyCode.TAB);
+        clickOn("#monday");
 
         press(KeyCode.ENTER).release(KeyCode.ENTER);
 
-        // 6 tab, 1 enter.
+        
 
         clickOn("#completedButton");
 

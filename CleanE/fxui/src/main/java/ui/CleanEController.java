@@ -22,6 +22,9 @@ public class CleanEController {
     @FXML
     private Button completedButton;
 
+    @FXML
+    private TextField nameOfUser, points;
+
     private Leaderboard leaderboard = new Leaderboard();
 
     private FileManagement fm = new FileManagement();
@@ -79,6 +82,19 @@ public class CleanEController {
     }
 
     @FXML
+    private void handleAddUserButton(){
+        User u = userTextToObject(nameOfUser.getText());
+        int pointsToAdd = Integer.parseInt(points.getText());
+        u.addPoints(pointsToAdd);
+        leaderboard.addUser(u);
+    }
+
+    @FXML
+    private void handleCancelButton(){
+        
+    }
+
+    @FXML
     private TextField assignedUser;
 
     @FXML
@@ -108,9 +124,8 @@ public class CleanEController {
     @FXML
     private void appendTask() throws IOException {
         User u = userTextToObject(assignedUser.getText());
-        addUserToLeaderboard(u);
         new Task(u, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
-        leaderboard.addUser(u);
+        addUserToLeaderboard(u);
         updateListViews();
         scoreList.getItems().clear();
         scoreList.getItems().setAll(leaderboard.getUsers());
@@ -120,7 +135,7 @@ public class CleanEController {
 
     private void addUserToLeaderboard(User u) {
         if (!leaderboard.getUsers().contains(u)) {
-            leaderboard.getUsers().add(u);
+            leaderboard.addUser(u);
         }
     }
 
