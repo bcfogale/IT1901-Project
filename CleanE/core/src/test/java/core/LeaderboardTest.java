@@ -12,16 +12,19 @@ public class LeaderboardTest {
 
     Leaderboard l;
 
+    /**Konstruerer et nytt Leaderboard objekt før hver test */
     @BeforeEach
     public void setup() {
         l = new Leaderboard();
     }
 
+    /**Tester om konstruktøren faktisk lager et objekt */
     @Test
     public void testConstructor() {
         assertEquals(0, l.getUsers().size());
     }
 
+    /**Tester om sortList-funksjonen sorterer listen etter antall poeng */
     @Test
     public void testSortList() {
         User u = new User("Sander");

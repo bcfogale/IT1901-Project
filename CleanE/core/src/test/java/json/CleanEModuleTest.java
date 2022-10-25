@@ -37,12 +37,21 @@ public class CleanEModuleTest {
         new Task(u, "wash stuff", 5, "monday");
     }
 
+    /**
+     * Tester serialisering
+     * @throws JsonProcessingException
+     */
     @Test
     public void testSerializers() throws JsonProcessingException {
         String mapperString = mapper.writeValueAsString(l);
         assertEquals(jsonString, mapperString);
     }
 
+    /**
+     * Tester deserialisering
+     * @throws JsonMappingException
+     * @throws JsonProcessingException
+     */
     @Test
     public void testDeserializers() throws JsonMappingException, JsonProcessingException {
         Leaderboard leaderboardFromFile = mapper.readerFor(Leaderboard.class).readValue(jsonString);
@@ -51,6 +60,10 @@ public class CleanEModuleTest {
         assertThat(leaderboardFromFile).usingRecursiveComparison().isEqualTo(l);
     }
 
+    /**
+     * Tester serialisering og deserialisering
+     * @throws JsonProcessingException
+     */
     @Test
     public void testSerializersDeserializers() throws JsonProcessingException {
         String mapperString2 = mapper.writeValueAsString(l);

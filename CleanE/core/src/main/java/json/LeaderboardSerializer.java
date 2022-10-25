@@ -11,6 +11,7 @@ import core.User;
 
 public class LeaderboardSerializer extends JsonSerializer<Leaderboard> {
 
+    /**Serialiserer Leaderboard-klassen for JSON lagring */
     @Override
     public void serialize(Leaderboard leaderboard, JsonGenerator gen, SerializerProvider serializers)
             throws IOException {

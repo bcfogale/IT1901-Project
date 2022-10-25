@@ -12,6 +12,7 @@ public class CleanEModule extends SimpleModule {
     private static final VersionUtil VERSION_UTIL = new VersionUtil() {
     };
 
+    /**Implementerer JSON lagring i prosjektet */
     public CleanEModule() {
         super(NAME, VERSION_UTIL.version());
         // We don't have custom serializers for User and Task

@@ -14,6 +14,10 @@ public class User {
     private String name;
     private Collection<Task> tasks = new ArrayList<>();
 
+    /**
+     * Konstruktør som tar inn et navn
+     * @param name
+     */
     public User(String name) {
         this.name = name;
     }
@@ -22,6 +26,10 @@ public class User {
         return points;
     }
 
+    /**
+     * Legger til poeng, slik at brukeren kan rangeres i Leaderboard.
+     * @param additionalPoints
+     */
     public void addPoints(int additionalPoints) {
         this.points += additionalPoints;
     }
@@ -38,10 +46,18 @@ public class User {
         return new ArrayList<>(this.tasks);
     }
 
+    /**
+     * Legger til en oppgave i listen over alle oppgavene til en bruker
+     * @param task
+     */
     public void addTask(Task task) {
         this.tasks.add(task);
     }
 
+    /**
+     * Fjerner en oppgave fra listen over alle oppgaver
+     * @param task
+     */
     public void removeTask(Task task) {
         this.tasks.remove(task);
     }
