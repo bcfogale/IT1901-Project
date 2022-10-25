@@ -1,7 +1,8 @@
 package core;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+//import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -11,7 +12,7 @@ public class User {
 
     private int points;
     private String name;
-    private List<Task> tasks = new ArrayList<>();
+    private Collection<Task> tasks = new ArrayList<>();
 
     public User(String name) {
         this.name = name;
@@ -33,7 +34,7 @@ public class User {
         this.name = name;
     }
 
-    public List<Task> getTasks() {
+    public Collection<Task> getTasks() {
         return new ArrayList<>(this.tasks);
     }
 
