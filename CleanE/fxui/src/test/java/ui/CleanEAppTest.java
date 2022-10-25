@@ -70,10 +70,11 @@ public class CleanEAppTest extends ApplicationTest {
 
         clickOn("#addButton");
 
-        assertEquals("Støvsuge", user1.getTasks().get(3).getTaskName());
-        assertEquals("Sander", user1.getTasks().get(3).getAssignedUser().getName());
-        assertEquals(5, user1.getTasks().get(3).getPointsValue());
-        assertEquals("thursday", user1.getTasks().get(3).getDueDay());
+        Task t1 = (Task) user1.getTasks().stream().filter(e -> e.getTaskName().equals("Støvsuge")).findFirst().orElse(null);
+        assertEquals("Støvsuge", t1.getTaskName());
+        assertEquals("Sander", t1.getAssignedUser().getName());
+        assertEquals(5, t1.getPointsValue());
+        assertEquals("thursday", t1.getDueDay());
 
     }
 
