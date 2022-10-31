@@ -42,6 +42,7 @@ public class CleanEController {
     private void loadFromFile() throws IOException {
         leaderboard = fm.readFromFile();
         updateListViews();
+        leaderBoardList();
     }
 
     @FXML
@@ -82,16 +83,19 @@ public class CleanEController {
     }
 
     @FXML
-    private void handleAddUserButton(){
+    private void handleAddUserButton() throws IOException{
         User u = userTextToObject(nameOfUser.getText());
         int pointsToAdd = Integer.parseInt(points.getText());
         u.addPoints(pointsToAdd);
         leaderboard.addUser(u);
+        leaderBoardList();
+        clearUserInput();
     }
 
     @FXML
-    private void handleCancelButton(){
-        
+    private void clearUserInput(){
+        nameOfUser.clear();
+        points.clear();
     }
 
     @FXML
@@ -130,7 +134,7 @@ public class CleanEController {
         scoreList.getItems().clear();
         scoreList.getItems().setAll(leaderboard.getUsers());
         System.out.println(u.getTasks());
-        clearTask();
+        clearTaskInput();
     }
 
     private void addUserToLeaderboard(User u) {
@@ -178,10 +182,11 @@ public class CleanEController {
         }
         scoreList.getItems().setAll(leaderboard.getUsers());
         updateListViews();
+        leaderBoardList();
     }
 
     @FXML
-    private void clearTask() throws IOException {
+    private void clearTaskInput() throws IOException {
         this.assignedUser.clear();
         this.taskName.clear();
         this.pointsValue.clear();

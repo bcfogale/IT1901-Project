@@ -54,7 +54,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Calendar" textAlignment="CENTER" wrappingWidth="280.3277587890625">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Calendar" textAlignment="CENTER" wrappingWidth="403.3277587890625">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -206,7 +206,7 @@
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#clearTask" prefWidth="63.0" text="Cancel">
+                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#clearTaskInput" prefWidth="63.0" text="Cancel">
                            <HBox.margin>
                               <Insets left="10.0" right="54.0" />
                            </HBox.margin>
@@ -271,7 +271,6 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <Button fx:id="updateBoardList" mnemonicParsing="false" onAction="#leaderBoardList" text="Update !" />
                   <HBox alignment="CENTER">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -368,7 +367,7 @@
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#handleCancelButton" prefWidth="63.0" text="Cancel">
+                        <Button mnemonicParsing="false" onAction="#clearUserInput" prefWidth="63.0" text="Cancel">
                            <HBox.margin>
                               <Insets left="10.0" right="54.0" />
                            </HBox.margin>
