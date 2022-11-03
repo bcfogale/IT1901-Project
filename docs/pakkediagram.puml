@@ -1,0 +1,32 @@
+@startuml pd
+
+allow_mixing
+
+title Pakkediagram
+
+
+component core{
+  package core
+  package json
+}
+
+component fxui{
+  package ui
+}
+
+component javafx{
+  component fxml{
+  
+  }
+}
+
+component jackson{
+
+}
+
+json ..> jackson
+fxui ..> javafx
+fxui ..> fxml
+ui ..> core
+
+@enduml
