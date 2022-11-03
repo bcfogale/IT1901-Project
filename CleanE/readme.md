@@ -45,9 +45,26 @@ Viktig å kunne se :
 - oversikt over hvem som er ansvarlig på hvilken oppgave.
 - finne ut hvem og hvor mye poeng som er skaffet.
 
-Viktig å kunne gjøre
+Viktig å kunne gjøre:
 
 - legge inn ny task og user.
+- fjerne task og user fra Calender listen etter det et komplett.
+- addere poeng til user.
+- ser scoreboard listen er oppdatert med det nyeste poeng.
+
+<em><u><h3>Clean-E (user3)</h3></u></em>
+
+I mitt kollektiv har vi allerede et poengsystem som føres med penn og papir. Vi har lyst til å gå over til et lignende system, men som vi kan bruke digitalt.
+
+Viktig å kunne se : 
+
+- oversikt over hvem som er ansvarlig på hvilken oppgave.
+- finne ut hvem og hvor mye poeng som er skaffet.
+
+Viktig å kunne gjøre:
+
+- legge inn poengene og brukerne vi allerede har laget på penn og papir.
+- legge inn ny task.
 - fjerne task og user fra Calender listen etter det et komplett.
 - addere poeng til user.
 - ser scoreboard listen er oppdatert med det nyeste poeng.
