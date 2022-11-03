@@ -134,7 +134,6 @@ public class CleanEAppTest extends ApplicationTest {
 
         clickOn("#addButton");
 
-        clickOn("#updateBoardList");
 
         ObservableList<User> temp = this.controller.getScoreList().getItems();
 
