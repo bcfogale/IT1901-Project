@@ -25,8 +25,9 @@ component jackson{
 }
 
 json ..> jackson
-fxui ..> javafx
-fxui ..> fxml
+ui ..> javafx
+ui ..> fxml
 ui ..> core
+ui ..> json
 
 @enduml
