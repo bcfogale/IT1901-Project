@@ -150,6 +150,7 @@ public class CleanEAppTest extends ApplicationTest {
 
     }
 
+    /**Tester å legge til bruker vha. inputfeltene. */
     @Test
     public void testAddUser() {
         clickOn("#nameOfUser").write("Ajanan");
@@ -165,6 +166,7 @@ public class CleanEAppTest extends ApplicationTest {
     }
 
 
+    /**Tester om 'cancel'-knappen fjerner teksten fra inputene */
     @FXML
     public void testClearUser() {
         clickOn("#nameOfUser").write("Ajanan");
