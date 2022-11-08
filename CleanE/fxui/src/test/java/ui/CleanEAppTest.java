@@ -37,7 +37,7 @@ public class CleanEAppTest extends ApplicationTest {
 
     }
 
-    /**Lager brukere med oppgaver før hver test */
+    /** Lager brukere med oppgaver før hver test */
     @BeforeEach
     public void setup() {
         user1 = new User("Sander");
@@ -56,14 +56,20 @@ public class CleanEAppTest extends ApplicationTest {
 
     }
 
-    /**Tester om kontrollen og ledertavlen eksisterer slik at de andre testene vil fungere */
+    /**
+     * Tester om kontrollen og ledertavlen eksisterer slik at de andre testene vil
+     * fungere
+     */
     @Test
     public void testControllerAndLeaderboard() {
         assertNotNull(this.controller);
         assertNotNull(this.leaderboard);
     }
 
-    /**Skriver inn informasjon og tester om en oppgave med denne informasjonen faktisk blir laget */
+    /**
+     * Skriver inn informasjon og tester om en oppgave med denne informasjonen
+     * faktisk blir laget
+     */
     @Test
     public void testAddTask() {
         clickOn("#taskName").write("Støvsuge");
@@ -73,7 +79,8 @@ public class CleanEAppTest extends ApplicationTest {
 
         clickOn("#addButton");
 
-        Task t1 = (Task) user1.getTasks().stream().filter(e -> e.getTaskName().equals("Støvsuge")).findFirst().orElse(null);
+        Task t1 = (Task) user1.getTasks().stream().filter(e -> e.getTaskName().equals("Støvsuge")).findFirst()
+                .orElse(null);
         assertEquals("Støvsuge", t1.getTaskName());
         assertEquals("Sander", t1.getAssignedUser().getName());
         assertEquals(5, t1.getPointsValue());
@@ -81,7 +88,9 @@ public class CleanEAppTest extends ApplicationTest {
 
     }
 
-    /**Tester om "cancel"-knappen funker og fjerner informasjonen fra inputfeltene */
+    /**
+     * Tester om "cancel"-knappen funker og fjerner informasjonen fra inputfeltene
+     */
     @Test
     public void testClearTask() {
         clickOn("#taskName").write("Støvsuge");
@@ -98,7 +107,9 @@ public class CleanEAppTest extends ApplicationTest {
 
     }
 
-    /**Tester om "completed"-knappen fjerner den valgte oppgaven fra aktive oppgaver og oppdaterer antall
+    /**
+     * Tester om "completed"-knappen fjerner den valgte oppgaven fra aktive oppgaver
+     * og oppdaterer antall
      * poeng til brukeren.
      */
     @Test
@@ -114,14 +125,12 @@ public class CleanEAppTest extends ApplicationTest {
 
         press(KeyCode.ENTER).release(KeyCode.ENTER);
 
-        
-
         clickOn("#completedButton");
 
         assertEquals(10, user1.getPoints());
     }
 
-    /**Tester om "update"-knappen sorterer ledertavlen */
+    /** Tester om "update"-knappen sorterer ledertavlen */
     @Test
     public void testSortList() {
         task1.setTrue();
@@ -134,15 +143,29 @@ public class CleanEAppTest extends ApplicationTest {
 
         clickOn("#addButton");
 
-
         ObservableList<User> temp = this.controller.getScoreList().getItems();
 
         assertEquals(user1, temp.get(0));
 
     }
 
+    @Test
+    public void testAddUser() {
+        clickOn("#nameOfUser").write("Ajanan");
+        clickOn("#points").write("25");
+
+        clickOn("#addUser");
+
+        User u = (User) leaderboard.getUsers().stream().filter(e -> e.getName().equals("Ajanan")).findFirst()
+                    .orElse(null);
+
+        assertEquals(u.getName(), "Ajanan");
+        assertEquals(u.getPoints(), 25);
+    }
     // taskName
     // assignedUser
     // pointsValue
     // dueDay
+    // nameOfUser
+    // points
 }

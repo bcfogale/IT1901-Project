@@ -362,7 +362,7 @@
                   </HBox>
                   <HBox alignment="TOP_RIGHT">
                      <children>
-                        <Button alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#handleAddUserButton" prefHeight="26.0" prefWidth="96.0" text="Add user">
+                        <Button fx:id="addUser" alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#handleAddUserButton" prefHeight="26.0" prefWidth="96.0" text="Add user">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
