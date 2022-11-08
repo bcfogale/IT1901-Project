@@ -9,9 +9,11 @@ import java.util.List;
 import core.Leaderboard;
 import core.Task;
 import core.User;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import json.FileManagement;
 
 public class CleanEController {
@@ -91,12 +93,17 @@ public class CleanEController {
     }
 
     @FXML
-    private void handleAddUserButton() throws IOException{
+    private void handleAddUserButton(){
         User u = userTextToObject(nameOfUser.getText());
         int pointsToAdd = Integer.parseInt(points.getText());
         u.addPoints(pointsToAdd);
         leaderboard.addUser(u);
-        leaderBoardList();
+        try {
+            leaderBoardList();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         clearUserInput();
     }
 
@@ -226,6 +233,15 @@ public class CleanEController {
         this.pointsValue.clear();
         this.dueDay.clear();
     }
+
+    private void showErrorMessage(String errorMessage) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Error message");
+        alert.setHeaderText("Something went wrong");
+        alert.setContentText(errorMessage);
+        alert.showAndWait();
+    }
+
 
     // Gettere for testing
     public Leaderboard getLeaderboard() {
