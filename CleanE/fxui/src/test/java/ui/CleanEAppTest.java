@@ -13,6 +13,7 @@ import core.Leaderboard;
 import core.Task;
 import core.User;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -161,6 +162,19 @@ public class CleanEAppTest extends ApplicationTest {
 
         assertEquals(u.getName(), "Ajanan");
         assertEquals(u.getPoints(), 25);
+    }
+
+
+    @FXML
+    public void testClearUser() {
+        clickOn("#nameOfUser").write("Ajanan");
+        clickOn("#points").write("25");
+
+        clickOn("#cancelUserInput");
+
+
+        assertEquals(controller.getPoints().getText(), "");
+        assertEquals(controller.getNameOfUser().getText(), "");
     }
     // taskName
     // assignedUser

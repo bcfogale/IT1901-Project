@@ -252,4 +252,12 @@ public class CleanEController {
         return this.scoreList;
     }
 
+    public TextField getNameOfUser() {
+        return this.nameOfUser;
+    }
+
+    public TextField getPoints() {
+        return this.points;
+    }
+
 }
