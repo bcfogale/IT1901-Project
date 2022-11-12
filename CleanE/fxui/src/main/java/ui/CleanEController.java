@@ -22,6 +22,9 @@ public class CleanEController {
     @FXML
     private Button completedButton;
 
+    @FXML
+    private TextField nameOfUser, points;
+
     private Leaderboard leaderboard = new Leaderboard();
 
     private FileManagement fm = new FileManagement();
@@ -42,6 +45,7 @@ public class CleanEController {
     private void loadFromFile() throws IOException {
         leaderboard = fm.readFromFile();
         updateListViews();
+        leaderBoardList();
     }
 
     /**Oppdaterer listviews slik at riktig informasjon vises */
@@ -87,6 +91,22 @@ public class CleanEController {
     }
 
     @FXML
+    private void handleAddUserButton() throws IOException{
+        User u = userTextToObject(nameOfUser.getText());
+        int pointsToAdd = Integer.parseInt(points.getText());
+        u.addPoints(pointsToAdd);
+        leaderboard.addUser(u);
+        leaderBoardList();
+        clearUserInput();
+    }
+
+    @FXML
+    private void clearUserInput(){
+        nameOfUser.clear();
+        points.clear();
+    }
+
+    @FXML
     private TextField assignedUser;
 
     @FXML
@@ -125,14 +145,13 @@ public class CleanEController {
     @FXML
     private void appendTask() throws IOException {
         User u = userTextToObject(assignedUser.getText());
-        addUserToLeaderboard(u);
         new Task(u, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
-        leaderboard.addUser(u);
+        addUserToLeaderboard(u);
         updateListViews();
         scoreList.getItems().clear();
         scoreList.getItems().setAll(leaderboard.getUsers());
         System.out.println(u.getTasks());
-        clearTask();
+        clearTaskInput();
     }
 
     /**
@@ -141,7 +160,7 @@ public class CleanEController {
      */
     private void addUserToLeaderboard(User u) {
         if (!leaderboard.getUsers().contains(u)) {
-            leaderboard.getUsers().add(u);
+            leaderboard.addUser(u);
         }
     }
 
@@ -193,6 +212,7 @@ public class CleanEController {
         }
         scoreList.getItems().setAll(leaderboard.getUsers());
         updateListViews();
+        leaderBoardList();
     }
 
     /**
@@ -200,7 +220,7 @@ public class CleanEController {
      * @throws IOException
      */
     @FXML
-    private void clearTask() throws IOException {
+    private void clearTaskInput() throws IOException {
         this.assignedUser.clear();
         this.taskName.clear();
         this.pointsValue.clear();

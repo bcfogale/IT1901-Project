@@ -3,6 +3,11 @@ package core;
 import java.util.ArrayList;
 import java.util.List;
 
+// Importing class
+import lombok.Data;
+
+@Data
+
 public class Leaderboard {
 
     private List<User> users = new ArrayList<>();
