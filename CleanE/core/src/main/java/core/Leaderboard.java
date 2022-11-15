@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // Importing class
-import lombok.Data;
 
-@Data
 
 public class Leaderboard {
 

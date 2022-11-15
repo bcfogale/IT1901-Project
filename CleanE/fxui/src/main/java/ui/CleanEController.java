@@ -151,7 +151,7 @@ public class CleanEController {
         scoreList.getItems().clear();
         scoreList.getItems().setAll(leaderboard.getUsers());
         System.out.println(u.getTasks());
-        clearTaskInput();
+        clearTask();
     }
 
     /**
@@ -220,7 +220,7 @@ public class CleanEController {
      * @throws IOException
      */
     @FXML
-    private void clearTaskInput() throws IOException {
+    private void clearTask() throws IOException {
         this.assignedUser.clear();
         this.taskName.clear();
         this.pointsValue.clear();
