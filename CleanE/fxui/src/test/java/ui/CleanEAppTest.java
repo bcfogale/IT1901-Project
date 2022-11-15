@@ -67,6 +67,15 @@ public class CleanEAppTest extends ApplicationTest {
         assertNotNull(this.leaderboard);
     }
 
+
+    public void testLoadKnapp() {
+        
+    }
+
+    public void testSaveKnapp() {
+        
+    }
+
     /**
      * Skriver inn informasjon og tester om en oppgave med denne informasjonen
      * faktisk blir laget
