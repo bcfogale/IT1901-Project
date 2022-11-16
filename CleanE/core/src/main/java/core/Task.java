@@ -2,6 +2,7 @@ package core;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 public class Task {
 
@@ -13,6 +14,7 @@ public class Task {
     private boolean completed = false;
     private String dueDay;
     private User assignedUser;
+    private String uuid;
 
 
     /**
@@ -28,6 +30,29 @@ public class Task {
         ;
         this.taskName = taskName;
         this.pointsValue = pointsValue;
+        this.uuid = UUID.randomUUID().toString();
+        if (days.contains(dueDay.toLowerCase())) {
+            this.dueDay = dueDay;
+
+        } else {
+            throw new IllegalArgumentException("Choose a valid day.");
+        }
+    }
+
+    /**
+     * Konstruerer objektet og setter alle feltene til klassen unntatt dueDay, som allerede er satt til "false".
+     * @param assignedUser
+     * @param taskName
+     * @param pointsValue
+     * @param dueDay
+     */
+    public Task(User assignedUser, String taskName, int pointsValue, String dueDay, String uuid) {
+        this.assignedUser = assignedUser;
+        assignedUser.addTask(this);
+        ;
+        this.taskName = taskName;
+        this.pointsValue = pointsValue;
+        this.uuid = uuid;
         if (days.contains(dueDay.toLowerCase())) {
             this.dueDay = dueDay;
 
@@ -78,6 +103,10 @@ public class Task {
 
     public String getDueDay() {
         return dueDay;
+    }
+
+    public String getUuid() {
+        return uuid;
     }
 
     @Override

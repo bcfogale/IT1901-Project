@@ -62,6 +62,11 @@ public class User {
         this.tasks.remove(task);
     }
 
+    public void removeTaskByUUID(String uuid) {
+        Task task = this.tasks.stream().filter(e -> e.getUuid().equals(uuid)).findFirst().get();
+        removeTask(task);
+    }
+
     @Override
     public String toString() {
         return "" + name + ": " + points + " poeng";
