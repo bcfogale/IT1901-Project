@@ -67,10 +67,11 @@ public class Task {
      * @param pointsValue
      * @param dueDay
      */
-    public Task(String taskName, int pointsValue, String dueDay) {
+    public Task(String taskName, int pointsValue, String dueDay, String uuid) {
         this.taskName = taskName;
         this.pointsValue = pointsValue;
         this.dueDay = dueDay;
+        this.uuid = uuid;
     }
 
     public void setAssignedUser(User assignedUser) {
