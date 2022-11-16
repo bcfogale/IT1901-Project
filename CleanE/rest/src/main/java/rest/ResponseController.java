@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 // import core.Leaderboard;
 
+import core.Leaderboard;
+
 
 // Annotation
 @RestController
@@ -20,7 +22,9 @@ public class ResponseController {
 	@Autowired
 	private CleanEService cleanEService;
 
-	
+	private Leaderboard name() {
+		return new Leaderboard();
+	}
 
 	// @GetMapping("/get") public Leaderboard getList(Leaderboard users)
 	// {

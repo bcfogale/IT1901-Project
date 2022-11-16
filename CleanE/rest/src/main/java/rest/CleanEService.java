@@ -25,8 +25,13 @@ public class CleanEService {
         this.fileManagement.writeToFile(this.leaderboard);
     }
 
-    public void name() {
-        
+    public Leaderboard getLeaderboard() {
+        return this.leaderboard;
+    }
+
+    public void setLeaderboard(Leaderboard leaderboard) throws IOException {
+        this.leaderboard = leaderboard;
+        this.save();
     }
 
     
