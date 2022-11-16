@@ -2,6 +2,7 @@
 
 package rest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 // Importing required classes
 // import org.springframework.stereotype.Controller;
 // import org.springframework.ui.Model;
@@ -15,6 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/ConsumeResponse")
 public class ResponseController {
+
+	@Autowired
+	private CleanEService cleanEService;
+
+	
 
 	// @GetMapping("/get") public Leaderboard getList(Leaderboard users)
 	// {
