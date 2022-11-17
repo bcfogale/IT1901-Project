@@ -12,6 +12,7 @@ public class Leaderboard {
 
     public List<User> getUsers() {
         return new ArrayList<>(users);
+        // return user;
     }
 
     /**
@@ -32,6 +33,11 @@ public class Leaderboard {
         System.out.println("sorted users: " + users);
     }
 
+    public User getUser(String name) {
+		User u = getUsers().stream().filter(e -> e.getName().equals(name)).findFirst().get();
+		return u;
+	}
+    
     @Override
     public String toString() {
         return "Leaderboard [users=" + users + "]";
