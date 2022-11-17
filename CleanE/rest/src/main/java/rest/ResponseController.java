@@ -3,13 +3,9 @@
 package rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-// Importing required classes
-// import org.springframework.stereotype.Controller;
-// import org.springframework.ui.Model;
-// import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-// import core.Leaderboard;
 
 import core.Leaderboard;
 
@@ -26,8 +22,11 @@ public class ResponseController {
 		return new Leaderboard();
 	}
 
-	// @GetMapping("/get") public Leaderboard getList(Leaderboard users)
-	// {
+	@GetMapping
+	public Leaderboard getLeaderboard() {
+	  return cleanEService.getLeaderboard();
+	}
+  
 
 	// 	// Creating object of ConsumeResponse class
 	// 	Leaderboard user = new cleanEService.getModel();
