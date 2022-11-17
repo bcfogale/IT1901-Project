@@ -21,7 +21,7 @@ public class CleanEModuleTest {
     private CleanEModule mod;
     private Leaderboard l;
     private User u;
-    private final String jsonString = "{\"users\":[{\"id\":1,\"points\":10,\"name\":\"Sander\",\"tasks\":[{\"taskName\":\"wash stuff\",\"pointsValue\":5,\"completed\":false,\"dueDay\":\"monday\",\"assignedUser\":1}]}]}";
+    private final String jsonString = "{\"users\":[{\"id\":1,\"points\":10,\"name\":\"Sander\",\"tasks\":[{\"taskName\":\"wash stuff\",\"pointsValue\":5,\"completed\":false,\"dueDay\":\"monday\",\"assignedUser\":1,\"uuid\":\"tokenUUID\"}]}]}";
 
     @BeforeEach
     public void setup() {
@@ -34,7 +34,7 @@ public class CleanEModuleTest {
         u = new User("Sander");
         l.addUser(u);
         u.addPoints(10);
-        new Task(u, "wash stuff", 5, "monday");
+        new Task(u, "wash stuff", 5, "monday", "tokenUUID");
     }
 
     /**
