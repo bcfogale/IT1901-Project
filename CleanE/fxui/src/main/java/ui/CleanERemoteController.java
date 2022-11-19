@@ -3,6 +3,8 @@ package ui;
 import javafx.fxml.FXML;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +30,15 @@ public class CleanERemoteController {
     private Leaderboard leaderboard = new Leaderboard();
 
     private FileManagement fm = new FileManagement();
+
+    private RemoteCleanEAccess remoteCleanEAccess;
+
+
+    
+
+    public CleanERemoteController() throws URISyntaxException {
+        this.remoteCleanEAccess = new RemoteCleanEAccess(new URI("http://localhost:8080/Leaderboard"));
+    }
 
     public void initialize() {
         try {
@@ -59,7 +70,7 @@ public class CleanERemoteController {
         this.saturday.getItems().clear();
         this.sunday.getItems().clear();
 
-        for (User user : leaderboard.getUsers()) {
+        for (User user : remoteCleanEAccess.getUsers()) {
             for (Task task : user.getTasks()) {
                 if (task.getDueDay().equals("monday")) {
                     this.monday.getItems().add(task);
@@ -95,7 +106,7 @@ public class CleanERemoteController {
         User u = userTextToObject(nameOfUser.getText());
         int pointsToAdd = Integer.parseInt(points.getText());
         u.addPoints(pointsToAdd);
-        leaderboard.addUser(u);
+        remoteCleanEAccess.addUser(u);
         leaderBoardList();
         clearUserInput();
     }
@@ -124,10 +135,10 @@ public class CleanERemoteController {
      * @return
      */
     private User userTextToObject(String assignedUser) {
-        if (leaderboard.getUsers().isEmpty()) {
+        if (remoteCleanEAccess.getUsers().isEmpty()) {
             return new User(assignedUser);
         } else {
-            for (User user : leaderboard.getUsers()) {
+            for (User user : remoteCleanEAccess.getUsers()) {
                 if (user.getName().equals(assignedUser)) {
                     return user;
                 }
@@ -145,12 +156,10 @@ public class CleanERemoteController {
     @FXML
     private void appendTask() throws IOException {
         User u = userTextToObject(assignedUser.getText());
-        new Task(u, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
-        addUserToLeaderboard(u);
+        remoteCleanEAccess.addTask(u, new Task(u, taskName.getText(), Integer.parseInt(points.getText()), dueDay.getText()));
         updateListViews();
         scoreList.getItems().clear();
-        scoreList.getItems().setAll(leaderboard.getUsers());
-        System.out.println(u.getTasks());
+        scoreList.getItems().setAll(remoteCleanEAccess.getUsers());
         clearTask();
     }
 
@@ -159,8 +168,8 @@ public class CleanERemoteController {
      * @param u
      */
     private void addUserToLeaderboard(User u) {
-        if (!leaderboard.getUsers().contains(u)) {
-            leaderboard.addUser(u);
+        if (!remoteCleanEAccess.getUsers().contains(u)) {
+            remoteCleanEAccess.addUser(u);
         }
     }
 
