@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import core.Leaderboard;
 import core.Task;
+import json.CleanEModule;
 
 public class RemoteCleanEAccess {
     
@@ -29,18 +30,42 @@ public class RemoteCleanEAccess {
         this.endpointBaseUri = endpointBaseUri;
         this.objectMapper = new ObjectMapper();
         objectMapper.configure(Feature.AUTO_CLOSE_SOURCE, true);
+        objectMapper.registerModule(new CleanEModule());
     }
 
-    private void addTask(Task t, URI j) {
+    private URI setURI(String s) {
+       return endpointBaseUri.resolve(endpointBaseUri + s);
+    }
+
+    private void addTask(Task t, String s) {
         try {
             String json = objectMapper.writeValueAsString(t);
-            HttpRequest request = HttpRequest.newBuilder(j)
+            HttpRequest request = HttpRequest.newBuilder(setURI(s))
             .header(ACCEPT_HEADER, APPLICATION_JSON)
             .header(CONTENT_TYPE_HEADER, APPLICATION_JSON)
             .POST(BodyPublishers.ofString(json))
             .build();
-        } catch (Exception e) {
-            // TODO: handle exception
+
+            HttpResponse<String> response = HttpClient.newBuilder().build()
+            .send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void removeTaskByUUID(String uuid, String s) {
+        try {
+            String json = objectMapper.writeValueAsString(t);
+            HttpRequest request = HttpRequest.newBuilder(setURI(s))
+            .header(ACCEPT_HEADER, APPLICATION_JSON)
+            .header(CONTENT_TYPE_HEADER, APPLICATION_JSON)
+            .POST(BodyPublishers.ofString(json))
+            .build();
+
+            HttpResponse<String> response = HttpClient.newBuilder().build()
+            .send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
