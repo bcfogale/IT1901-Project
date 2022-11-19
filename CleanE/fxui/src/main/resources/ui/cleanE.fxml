@@ -59,8 +59,8 @@
                         <Font size="40.0" />
                      </font>
                   </Text>
-                  <Button mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="24.0" prefWidth="87.0" text="Save" textAlignment="CENTER" GridPane.rowIndex="1" />
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#loadFromFile" prefHeight="26.0" prefWidth="88.0" text="Load" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="24.0" prefWidth="87.0" text="Save" textAlignment="CENTER" GridPane.rowIndex="1" />
+                  <Button fx:id="loadButton" alignment="CENTER" mnemonicParsing="false" onAction="#loadFromFile" prefHeight="26.0" prefWidth="88.0" text="Load" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Monday" wrappingWidth="99.57619857788086" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">

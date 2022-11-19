@@ -3,11 +3,17 @@ package ui;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import core.Leaderboard;
 import core.Task;
@@ -19,6 +25,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
+import json.FileManagement;
 
 public class CleanEAppTest extends ApplicationTest {
 
@@ -67,13 +74,37 @@ public class CleanEAppTest extends ApplicationTest {
         assertNotNull(this.leaderboard);
     }
 
+    /**
+     * Først lages en kopi.
+     * Deretter testes selve lagringen og den orginale filen skrives over.
+     * Til slutt bruker man kopien til å gjenopprette savefilen sin orginale tilstand og sletter kopien.
+     * @throws IOException
+     */
+    @Test
+    public void testSaveKnapp() throws IOException {
+        Path copied = Paths.get("../savestates/savefile_copy.json");
+        Path originalPath = Paths.get("../savestates/savefile.json");
+        Files.copy(originalPath, copied, StandardCopyOption.COPY_ATTRIBUTES);
 
-    public void testLoadKnapp() {
         
+        clickOn("#saveButton");
+        FileManagement f = new FileManagement();
+        assertThat(leaderboard).usingRecursiveComparison().isEqualTo(f.readFromFile());
+
+        Files.copy(copied, originalPath, StandardCopyOption.REPLACE_EXISTING);
+        File oldFile = copied.toFile();
+        oldFile.delete();
     }
 
-    public void testSaveKnapp() {
-        
+    /**
+     * Sjekker om load knappen fungerer.
+     * @throws IOException
+     */
+    @Test
+    public void testLoadKnapp() throws IOException {
+        clickOn("#loadButton");
+        FileManagement f = new FileManagement();
+        assertThat(leaderboard).usingRecursiveComparison().isEqualTo(f.readFromFile());
     }
 
     /**
