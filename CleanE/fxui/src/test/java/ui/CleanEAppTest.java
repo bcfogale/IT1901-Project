@@ -104,7 +104,7 @@ public class CleanEAppTest extends ApplicationTest {
     public void testLoadKnapp() throws IOException {
         clickOn("#loadButton");
         FileManagement f = new FileManagement();
-        assertThat(leaderboard).usingRecursiveComparison().isEqualTo(f.readFromFile());
+        assertThat(controller.getLeaderboard()).usingRecursiveComparison().isEqualTo(f.readFromFile());
     }
 
     /**
