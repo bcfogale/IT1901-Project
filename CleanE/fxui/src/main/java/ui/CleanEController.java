@@ -43,8 +43,12 @@ public class CleanEController {
      * Laster innhold fra fil
      */
     @FXML
-    private void loadFromFile() throws IOException {
-        leaderboard = fm.readFromFile();
+    private void loadFromFile(){
+        try {
+            leaderboard = fm.readFromFile();
+        } catch (IOException e) {
+            showErrorMessage("There was an error loading the savefile. Either the savefile was manually edited, or the savefile was moved from its location");
+        }
         updateListViews();
         leaderBoardList();
     }
