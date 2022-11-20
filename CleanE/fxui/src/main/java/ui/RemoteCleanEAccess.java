@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.core.JsonParser.Feature;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import core.Leaderboard;
@@ -20,7 +21,6 @@ import json.CleanEModule;
 public class RemoteCleanEAccess {
     
     private URI endpointBaseUri;
-    private Leaderboard leaderboard;
 
     private static final String CONTENT_TYPE_HEADER = "Content-Type";
     private static final String ACCEPT_HEADER = "Accept";
@@ -45,9 +45,10 @@ public class RemoteCleanEAccess {
     
     private void addTask(User u, Task t, String method) {
         try {
-            u.addTask(t);
-            String json = objectMapper.writeValueAsString(u);
-            HttpRequest request = HttpRequest.newBuilder(setURI(method))
+            String json = objectMapper.writeValueAsString(t);
+
+            System.out.println(json);
+            HttpRequest request = HttpRequest.newBuilder(setURI(method + "/"+u.getName()))
             .header(ACCEPT_HEADER, APPLICATION_JSON)
             .header(CONTENT_TYPE_HEADER, APPLICATION_JSON)
             .PUT(BodyPublishers.ofString(json))
@@ -55,6 +56,8 @@ public class RemoteCleanEAccess {
             
             HttpResponse<String> response = HttpClient.newBuilder().build()
             .send(request, HttpResponse.BodyHandlers.ofString());
+
+            System.out.println(response);
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -62,15 +65,20 @@ public class RemoteCleanEAccess {
     
     private void addUser(User u, String method) {
         try {
+
             String json = objectMapper.writeValueAsString(u);
             HttpRequest request = HttpRequest.newBuilder(setURI(method))
             .header(ACCEPT_HEADER, APPLICATION_JSON)
             .header(CONTENT_TYPE_HEADER, APPLICATION_JSON)
             .POST(BodyPublishers.ofString(json))
             .build();
+
+            System.out.println(json);
             
-            HttpResponse<String> response = HttpClient.newBuilder().build()
+            final HttpResponse<String> response = HttpClient.newBuilder().build()
             .send(request, HttpResponse.BodyHandlers.ofString());
+
+            System.out.println(response);
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -78,56 +86,58 @@ public class RemoteCleanEAccess {
     
     private void removeTaskByUUID(Task t, String method) {
         try {
-            // Task t = null;
+         // Task t = null;
+        
+         // for (User u : getLeaderboard().getUsers()) {
+            //     t = u.getTaskByUUID(uuid);
+            //     u.removeTaskByUUID(uuid);
+            // }
+            // String json = objectMapper.writeValueAsString(t);
+            HttpRequest request = HttpRequest.newBuilder(setURI(method +"/"+ t.getUuid()))
+            .header(ACCEPT_HEADER, APPLICATION_JSON)
+            .header(CONTENT_TYPE_HEADER, APPLICATION_JSON)
+            .header(t.getUuid(), APPLICATION_JSON)
+            .DELETE()
+            .build();
             
-            // for (User u : getLeaderboard().getUsers()) {
-                //     t = u.getTaskByUUID(uuid);
-                //     u.removeTaskByUUID(uuid);
-                // }
-                // String json = objectMapper.writeValueAsString(t);
-                HttpRequest request = HttpRequest.newBuilder(setURI(method +"/"+ t.getUuid()))
-                .header(ACCEPT_HEADER, APPLICATION_JSON)
-                .header(CONTENT_TYPE_HEADER, APPLICATION_JSON)
-                .header(t.getUuid(), APPLICATION_JSON)
-                .DELETE()
-                .build();
-                
-                HttpResponse<String> response = HttpClient.newBuilder().build()
-                .send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = HttpClient.newBuilder().build()
+            .send(request, HttpResponse.BodyHandlers.ofString());
+
+            System.out.println(response);
             } catch (IOException | InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
         
-        private List<User> getUsers(String method) {
-            try {
-                HttpRequest request = HttpRequest.newBuilder(setURI(method))
-                .header(ACCEPT_HEADER, APPLICATION_JSON)
-                .GET()
-                .build();
-                
-                HttpResponse<String> response = HttpClient.newBuilder().build()
-                .send(request, HttpResponse.BodyHandlers.ofString());
-                
-                List<User> users = new ArrayList<User>();
-                
-                for (Object object : objectMapper.readValue(response.body(), List.class)) {
-                    users.add((User) object);
-                }
-                
-                return users;
-            } catch (IOException | InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        
-        private User getUser(String method) {
-            try {
-                HttpRequest request = HttpRequest.newBuilder(setURI(method))
-                .header(ACCEPT_HEADER, APPLICATION_JSON)
+    private List<User> getUsers(String method) {
+        try {
+            HttpRequest request = HttpRequest.newBuilder(setURI(method))
+            .header(ACCEPT_HEADER, APPLICATION_JSON)
             .GET()
             .build();
             
+            HttpResponse<String> response = HttpClient.newBuilder().build()
+            .send(request, HttpResponse.BodyHandlers.ofString());
+            
+            List<User> users = new ArrayList<User>();
+            
+            for (Object object : objectMapper.readValue(response.body(), new TypeReference<List<User>>() {})) {
+                users.add((User) object);
+            }
+            
+            return users;
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    private User getUser(String method) {
+        try {
+            HttpRequest request = HttpRequest.newBuilder(setURI(method))
+            .header(ACCEPT_HEADER, APPLICATION_JSON)
+            .GET()
+            .build();
+        
             HttpResponse<String> response = HttpClient.newBuilder().build()
             .send(request, HttpResponse.BodyHandlers.ofString());
             
@@ -159,19 +169,16 @@ public class RemoteCleanEAccess {
 
     
     public Leaderboard getLeaderboard() { //når og hvor skal denne kalles?
-        if (leaderboard == null) {
             HttpRequest request = HttpRequest.newBuilder(endpointBaseUri)
             .header(ACCEPT_HEADER, APPLICATION_JSON).GET().build();
             
             try {
                 final HttpResponse<String> response = HttpClient.newBuilder().build().send(request, HttpResponse.BodyHandlers.ofString());
-                this.leaderboard = objectMapper.readValue(response.body(), Leaderboard.class);
+                return objectMapper.readValue(response.body(), Leaderboard.class);
             }
             catch (IOException | InterruptedException e) {
                 throw new RuntimeException(e);
-            }
         }
-        return leaderboard;
     }
     
     public void addTask(User u, Task t) {
@@ -198,5 +205,24 @@ public class RemoteCleanEAccess {
         return getTask("/getTask");
     }
 
+    public static void main(String[] args) {
+        RemoteCleanEAccess remote = new RemoteCleanEAccess(URI.create("http://localhost:8080/Leaderboard"));
 
+        System.out.println(remote.getLeaderboard());
+        
+        User u = new User("Daniel");
+        remote.addUser(u);
+
+        Task t = new Task(u, "Test", 1, "monday", "temp");
+        remote.addTask(u, t);
+
+        System.out.println(remote.getUsers());
+
+        System.out.println(remote.getLeaderboard());
+
+        remote.removeTaskByUUID(t);
+
+        System.out.println(remote.getLeaderboard());
+
+    }
 }
