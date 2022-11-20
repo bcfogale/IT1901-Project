@@ -135,7 +135,7 @@
         <artifactId>javafx-maven-plugin</artifactId>
         <version>0.0.6</version>
         <configuration>
-          <mainClass>CleanE.fxui/ui.CleanEApp</mainClass>
+          <mainClass>CleanE.fxui/ui.CleanERemoteApp</mainClass>
         </configuration>
       </plugin>
     </plugins>

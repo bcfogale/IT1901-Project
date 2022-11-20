@@ -98,7 +98,7 @@ public class CleanERemoteController {
      */
     @FXML
     private void handleSaveButton() throws IOException {
-        fm.writeToFile(leaderboard);
+        fm.writeToFile(remoteCleanEAccess.getLeaderboard());
     }
 
     @FXML
@@ -156,22 +156,14 @@ public class CleanERemoteController {
     @FXML
     private void appendTask() throws IOException {
         User u = userTextToObject(assignedUser.getText());
-        remoteCleanEAccess.addTask(u, new Task(u, taskName.getText(), Integer.parseInt(points.getText()), dueDay.getText()));
+        remoteCleanEAccess.addUser(u);
+        remoteCleanEAccess.addTask(u, new Task(u, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText()));
         updateListViews();
         scoreList.getItems().clear();
         scoreList.getItems().setAll(remoteCleanEAccess.getUsers());
         clearTask();
     }
 
-    /**
-     * Legger en bruker til Leaderboard
-     * @param u
-     */
-    private void addUserToLeaderboard(User u) {
-        if (!remoteCleanEAccess.getUsers().contains(u)) {
-            remoteCleanEAccess.addUser(u);
-        }
-    }
 
     // Kontrollerlogikk for leaderBoard
 
@@ -185,8 +177,8 @@ public class CleanERemoteController {
     @FXML
     private void leaderBoardList() throws IOException { // listen blir sortert når man trykker på update-knapp
 
-        leaderboard.sortList();
-        scoreList.getItems().setAll(leaderboard.getUsers());
+        remoteCleanEAccess.getLeaderboard().sortList();
+        scoreList.getItems().setAll(remoteCleanEAccess.getUsers());
     }
 
     /**
@@ -212,14 +204,14 @@ public class CleanERemoteController {
             for (Task task : day.getItems()) {
                 if (task.equals(day.getSelectionModel().getSelectedItem())) {
                     task.setTrue();
-                    if (!leaderboard.getUsers().contains(task.getAssignedUser())) {
-                        leaderboard.getUsers().add(task.getAssignedUser());
+                    if (!remoteCleanEAccess.getUsers().contains(task.getAssignedUser())) {
+                        remoteCleanEAccess.getUsers().add(task.getAssignedUser());
                     }
                     task.getAssignedUser().removeTask(task);
                 }
             }
         }
-        scoreList.getItems().setAll(leaderboard.getUsers());
+        scoreList.getItems().setAll(remoteCleanEAccess.getUsers());
         updateListViews();
         leaderBoardList();
     }
