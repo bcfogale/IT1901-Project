@@ -10,6 +10,11 @@ public class Leaderboard {
 
     private List<User> users = new ArrayList<>();
 
+    
+
+    public Leaderboard() {
+    }
+
     public List<User> getUsers() {
         return new ArrayList<>(users);
         // return user;

@@ -22,6 +22,13 @@ public class User {
         this.name = name;
     }
 
+
+
+    public User() {
+    }
+
+
+
     public int getPoints() {
         return points;
     }
@@ -73,7 +80,9 @@ public class User {
     }
     @Override
     public String toString() {
-        return "" + name + ": " + points + " poeng";
+        return "" + name + ": " + points + " poeng ";
+
+        // + "Tasks: " + tasks
     }
 
 }

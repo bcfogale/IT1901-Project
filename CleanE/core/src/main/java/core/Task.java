@@ -17,6 +17,11 @@ public class Task {
     private String uuid;
 
 
+    
+
+    public Task() {
+    }
+
     /**
      * Konstruerer objektet og setter alle feltene til klassen unntatt dueDay, som allerede er satt til "false".
      * @param assignedUser
