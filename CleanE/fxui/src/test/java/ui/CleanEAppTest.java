@@ -110,16 +110,11 @@ public class CleanEAppTest extends ApplicationTest {
 
         clickOn("#addButton");
 
-        press(KeyCode.TAB).release(KeyCode.TAB);
-        press(KeyCode.TAB).release(KeyCode.TAB);
-        press(KeyCode.TAB).release(KeyCode.TAB);
-        press(KeyCode.TAB).release(KeyCode.TAB);
-        press(KeyCode.TAB).release(KeyCode.TAB);
-        press(KeyCode.TAB).release(KeyCode.TAB);
+        clickOn("#monday");
 
         press(KeyCode.ENTER).release(KeyCode.ENTER);
 
-        // 6 tab, 1 enter.
+        
 
         clickOn("#completedButton");
 
@@ -139,7 +134,6 @@ public class CleanEAppTest extends ApplicationTest {
 
         clickOn("#addButton");
 
-        clickOn("#updateBoardList");
 
         ObservableList<User> temp = this.controller.getScoreList().getItems();
 
