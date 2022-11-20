@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -70,18 +72,21 @@ public class ResponseController {
 		return getLeaderboard().getUser(name).getTaskByUUID(uuid).getAssignedUser();
 	}
 
-	@DeleteMapping(path = "/getUser/{name}/removeTaskByUUID/{uuid}")
-	public void removeTaskByUUID(@PathVariable("name") String name, @PathVariable("uuid") String uuid) {
-		getLeaderboard().getUser(name).removeTaskByUUID(uuid);
+	@DeleteMapping(path = "/removeTaskByUUID/{uuid}")
+	public void removeTaskByUUID(@PathVariable("uuid") String uuid) {
+		for (User u : getLeaderboard().getUsers()) {
+			u.removeTaskByUUID(uuid);
+		}
 	}
 
-	@PostMapping(path = "/getUser/{name}/addTask/{task}")
-	public void addTask(@PathVariable("name") String name, @PathVariable("task") Task task) {
+	@PutMapping(path = "/addTask/{name}")
+	public void addTask(@RequestBody Task task, @PathVariable("name") String name) {
 		getLeaderboard().getUser(name).addTask(task);
 	}
 
-	@PostMapping(path = "/addUser/{user}")
-	public void addUser(@PathVariable("user") User user) {
+	@PostMapping(path = "/addUser")
+	public void addUser(@RequestBody User user) {
+		System.out.println(user);
 		getLeaderboard().addUser(user);
 	}
 	
