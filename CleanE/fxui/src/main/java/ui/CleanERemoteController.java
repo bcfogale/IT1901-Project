@@ -14,7 +14,6 @@ import core.User;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import json.FileManagement;
 
 public class CleanERemoteController {
 
@@ -28,9 +27,6 @@ public class CleanERemoteController {
     private TextField nameOfUser, points;
 
     private Leaderboard leaderboard = new Leaderboard();
-
-    private FileManagement fm = new FileManagement();
-
     private RemoteCleanEAccess remoteCleanEAccess;
 
 
@@ -49,16 +45,6 @@ public class CleanERemoteController {
         }
     }
 
-    /**
-     * Laster innhold fra fil
-     * @throws IOException
-     */
-    @FXML
-    private void loadFromFile() throws IOException {
-        leaderboard = fm.readFromFile();
-        updateListViews();
-        leaderBoardList();
-    }
 
     /**Oppdaterer listviews slik at riktig informasjon vises */
     @FXML
@@ -92,14 +78,6 @@ public class CleanERemoteController {
         }
     }
 
-    /**
-     * Lagrer innhold til fil
-     * @throws IOException
-     */
-    @FXML
-    private void handleSaveButton() throws IOException {
-        fm.writeToFile(remoteCleanEAccess.getLeaderboard());
-    }
 
     @FXML
     private void handleAddUserButton() throws IOException{

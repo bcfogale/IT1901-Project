@@ -44,23 +44,19 @@
             <RowConstraints maxHeight="57.5" minHeight="57.5" prefHeight="57.5" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <GridPane style="-fx-background-color: ffffff;" GridPane.columnSpan="4">
+            <GridPane prefHeight="35.0" prefWidth="404.0" style="-fx-background-color: ffffff;" GridPane.columnSpan="4">
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Calendar" textAlignment="CENTER" wrappingWidth="403.3277587890625">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Calendar">
                      <font>
                         <Font size="40.0" />
                      </font>
                   </Text>
-                  <Button mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="24.0" prefWidth="87.0" text="Save" textAlignment="CENTER" GridPane.rowIndex="1" />
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#loadFromFile" prefHeight="26.0" prefWidth="88.0" text="Load" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Monday" wrappingWidth="99.57619857788086" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
@@ -226,7 +222,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="New Task" textAlignment="CENTER" wrappingWidth="279.68944549560547">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="New Task" textAlignment="CENTER" wrappingWidth="337.28942108154297">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -290,7 +286,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Scoreboard" textAlignment="CENTER" wrappingWidth="275.68944549560547">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Scoreboard" textAlignment="CENTER" wrappingWidth="294.08946990966797">
                      <font>
                         <Font size="40.0" />
                      </font>
@@ -387,7 +383,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="New user" textAlignment="CENTER" wrappingWidth="186.4472427368164">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="New user" textAlignment="CENTER" wrappingWidth="256.0472946166992">
                      <font>
                         <Font size="40.0" />
                      </font>
