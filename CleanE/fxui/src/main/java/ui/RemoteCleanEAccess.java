@@ -196,6 +196,7 @@ public class RemoteCleanEAccess {
             try {
                 final HttpResponse<String> response = HttpClient.newBuilder().build().send(request, HttpResponse.BodyHandlers.ofString());
                 return objectMapper.readValue(response.body(), Leaderboard.class);
+                
             }
             catch (IOException | InterruptedException e) {
                 throw new RuntimeException(e);

@@ -35,7 +35,6 @@ public class Leaderboard {
     /**Sorterer listen over brukere etter poengsum */
     public void sortList() {
         users.sort((u1, u2) -> u2.getPoints() - u1.getPoints());
-        System.out.println("sorted users: " + users);
     }
 
     public User getUser(String name) {

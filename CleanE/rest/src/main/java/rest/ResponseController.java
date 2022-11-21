@@ -39,6 +39,7 @@ public class ResponseController {
 
 	@GetMapping(path = "/getUsers")
 	public List<User> getUsers() {
+		getLeaderboard().sortList();
 		return getLeaderboard().getUsers();
 	}
 

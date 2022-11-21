@@ -43,6 +43,7 @@ public class CleanERemoteController {
     public void initialize() {
         try {
             updateListViews();
+            leaderBoardList();
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -193,8 +194,8 @@ public class CleanERemoteController {
     @FXML
     private void leaderBoardList() throws IOException { // listen blir sortert når man trykker på update-knapp
 
-        remoteCleanEAccess.getLeaderboard().sortList();
-        scoreList.getItems().setAll(remoteCleanEAccess.getLeaderboard().getUsers());
+        // remoteCleanEAccess.getLeaderboard().sortList();
+        scoreList.getItems().setAll(remoteCleanEAccess.getUsers());
     }
 
     /**
@@ -228,8 +229,8 @@ public class CleanERemoteController {
             }
         }
         scoreList.getItems().setAll(remoteCleanEAccess.getUsers());
-        updateListViews();
         leaderBoardList();
+        updateListViews();
     }
 
     /**
