@@ -63,7 +63,9 @@ I den siste iterasjonen av prosjektet har vi fortsatt vår gode vaner ved å bru
 
 I dette prosjektet velger vi dokument-metafor i stedet for implisitt lagring, fordi vi tror dette gjør det lettere for brukeren av appen å skjønne når ting lagres. Det vil si at brukerne velger selv hvis de vil overskrive listen som er allerede lagret for å begynne på nytt.
 
-Appen lagrer brukeres informasjon tilstanden til programmet hver gang man trykker på SAVE knappen, og laster inn informasjonen fra filen til programmet med LOAD knappen. 
+Appen lagrer brukeres informasjon tilstanden til programmet hver gang man trykker på SAVE knappen, og laster inn informasjonen fra filen til programmet med LOAD knappen.
+
+Når programmet kjører med REST, bruker vi implisitt lagring. Når REST-serveren kjøres vil naturligvis alt lastes inn så lenge serveren er gående.
 
 <p style="text-align:center;"><img src="docs/prosjekt-images/Clean-E_SAVE_LOAD.png"  width="300" height="100" ></p>
 

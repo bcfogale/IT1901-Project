@@ -8,6 +8,10 @@ Vi har også gjort noen mindre endringer som å fjerne oppdateringsknappen fra p
 </br>
 </br>
 <h1>Diagrammer</h1>
+<h2>Sekvensdiagram</h2>
+
+<img src="../docs/prosjekt-images/release3_sekvensdiagram.png">
+
 <h2>Klassediagram Core</h2>
 
 <img src="../docs/prosjekt-images/klassediagram_core.png">
