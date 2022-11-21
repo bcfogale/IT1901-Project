@@ -71,11 +71,14 @@ public class User {
 
     public void removeTaskByUUID(String uuid) {
         Task task = getTaskByUUID(uuid);
+        // if (task != null) {
+        //     removeTask(task);
+        // }
         removeTask(task);
     }
 
     public Task getTaskByUUID(String uuid){
-        Task task = this.tasks.stream().filter(e -> e.getUuid().equals(uuid)).findFirst().get();
+        Task task = this.tasks.stream().filter(e -> e.getUuid().equals(uuid)).findFirst().orElse(null);
         return task;
     }
     @Override

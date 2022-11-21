@@ -75,7 +75,9 @@ public class ResponseController {
 	@DeleteMapping(path = "/removeTaskByUUID/{uuid}")
 	public void removeTaskByUUID(@PathVariable("uuid") String uuid) {
 		for (User u : getLeaderboard().getUsers()) {
-			u.removeTaskByUUID(uuid);
+			if (u.getTaskByUUID(uuid)!=null) {
+				u.removeTaskByUUID(uuid);
+			}
 		}
 	}
 
@@ -88,6 +90,11 @@ public class ResponseController {
 	public void addUser(@RequestBody User user) {
 		System.out.println(user);
 		getLeaderboard().addUser(user);
+	}
+
+	@PutMapping(path = "/addPoints/{name}")
+	public void addPoints(@RequestBody int additionalPoints, @PathVariable("name") String name) {
+		getLeaderboard().getUser(name).addPoints(additionalPoints);
 	}
 	
 /*

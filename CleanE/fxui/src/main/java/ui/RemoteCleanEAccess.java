@@ -48,7 +48,7 @@ public class RemoteCleanEAccess {
             String json = objectMapper.writeValueAsString(t);
 
             System.out.println(json);
-            HttpRequest request = HttpRequest.newBuilder(setURI(method + "/"+u.getName()))
+            HttpRequest request = HttpRequest.newBuilder(setURI(method + "/" + u.getName()))
             .header(ACCEPT_HEADER, APPLICATION_JSON)
             .header(CONTENT_TYPE_HEADER, APPLICATION_JSON)
             .PUT(BodyPublishers.ofString(json))
@@ -84,6 +84,27 @@ public class RemoteCleanEAccess {
         }
     }
     
+    private void addPoints(User u, int additionalPoints, String method) {
+        try {
+
+            String json = objectMapper.writeValueAsString(additionalPoints);
+            HttpRequest request = HttpRequest.newBuilder(setURI(method + "/" + u.getName()))
+            .header(ACCEPT_HEADER, APPLICATION_JSON)
+            .header(CONTENT_TYPE_HEADER, APPLICATION_JSON)
+            .PUT(BodyPublishers.ofString(json))
+            .build();
+
+            System.out.println(json);
+            
+            final HttpResponse<String> response = HttpClient.newBuilder().build()
+            .send(request, HttpResponse.BodyHandlers.ofString());
+
+            System.out.println(response);
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private void removeTaskByUUID(Task t, String method) {
         try {
          // Task t = null;
@@ -189,6 +210,10 @@ public class RemoteCleanEAccess {
         addUser(u, "/addUser");
     }
 
+    public void addPoints(User u, int additionalPoints) {
+        addPoints(u, additionalPoints, "/addPoints");
+    }
+
     public void removeTaskByUUID(Task t) {
         removeTaskByUUID(t, "/removeTaskByUUID");
     }
@@ -220,7 +245,11 @@ public class RemoteCleanEAccess {
 
         System.out.println(remote.getLeaderboard());
 
-        remote.removeTaskByUUID(t);
+        remote.addPoints(u, 5);
+
+        System.out.println(remote.getLeaderboard());
+
+        remote.addPoints(u, 5);
 
         System.out.println(remote.getLeaderboard());
 

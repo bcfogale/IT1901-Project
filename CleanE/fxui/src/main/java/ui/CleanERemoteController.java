@@ -84,7 +84,6 @@ public class CleanERemoteController {
                     this.friday.getItems().add(task);
                 } else if (task.getDueDay().equals("saturday")) {
                     this.saturday.getItems().add(task);
-
                 } else if (task.getDueDay().equals("sunday")) {
                     this.sunday.getItems().add(task);
                 }
@@ -103,7 +102,7 @@ public class CleanERemoteController {
 
     @FXML
     private void handleAddUserButton() throws IOException{
-        User u = userTextToObject(nameOfUser.getText());
+        User u = checkIfUserExists(nameOfUser.getText());
         int pointsToAdd = Integer.parseInt(points.getText());
         u.addPoints(pointsToAdd);
         remoteCleanEAccess.addUser(u);
@@ -136,7 +135,10 @@ public class CleanERemoteController {
      */
     private User userTextToObject(String assignedUser) {
         if (remoteCleanEAccess.getUsers().isEmpty()) {
-            return new User(assignedUser);
+
+            User u1 = new User(assignedUser);
+            remoteCleanEAccess.addUser(u1);
+            return u1;
         } else {
             for (User user : remoteCleanEAccess.getUsers()) {
                 if (user.getName().equals(assignedUser)) {
@@ -144,7 +146,22 @@ public class CleanERemoteController {
                 }
             }
         }
-        return new User(assignedUser);
+        User u2 = new User(assignedUser);
+        remoteCleanEAccess.addUser(u2);
+        return u2;
+    }
+
+    private User checkIfUserExists(String username) {
+        if (remoteCleanEAccess.getUsers().isEmpty()) {
+            return new User(username);
+        } else {
+            for (User user : remoteCleanEAccess.getUsers()) {
+                if (user.getName().equals(username)) {
+                    throw new IllegalArgumentException("User already exists.");
+                }
+            }
+        }
+        return new User(username);
     }
 
     /**
@@ -156,7 +173,6 @@ public class CleanERemoteController {
     @FXML
     private void appendTask() throws IOException {
         User u = userTextToObject(assignedUser.getText());
-        remoteCleanEAccess.addUser(u);
         remoteCleanEAccess.addTask(u, new Task(u, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText()));
         updateListViews();
         scoreList.getItems().clear();
@@ -178,7 +194,7 @@ public class CleanERemoteController {
     private void leaderBoardList() throws IOException { // listen blir sortert når man trykker på update-knapp
 
         remoteCleanEAccess.getLeaderboard().sortList();
-        scoreList.getItems().setAll(remoteCleanEAccess.getUsers());
+        scoreList.getItems().setAll(remoteCleanEAccess.getLeaderboard().getUsers());
     }
 
     /**
@@ -203,11 +219,11 @@ public class CleanERemoteController {
         for (ListView<Task> day : listviews) {
             for (Task task : day.getItems()) {
                 if (task.equals(day.getSelectionModel().getSelectedItem())) {
-                    task.setTrue();
+                    remoteCleanEAccess.addPoints(task.getAssignedUser(), task.getPointsValue());;
                     if (!remoteCleanEAccess.getUsers().contains(task.getAssignedUser())) {
                         remoteCleanEAccess.getUsers().add(task.getAssignedUser());
                     }
-                    task.getAssignedUser().removeTask(task);
+                    remoteCleanEAccess.removeTaskByUUID(task);
                 }
             }
         }
