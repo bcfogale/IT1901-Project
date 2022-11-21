@@ -5,16 +5,19 @@
 
 Prosjektet bruker maven til bygging og kjøring. Gjør følgende operasjoner i terminalen (gitt at du starter fra rotnivå i terminalen):
 
-- Steg 1: &emsp; <code>cd CleanE </code>
-- Steg 2: &emsp; <code>mvn clean install </code>
-- Steg 3: &emsp; <code>mvn javafx:run -f fxui/pom.xml </code>
+- Steg 1: &emsp; <code>cd rest </code>
+- Steg 2: &emsp; <code>mvn spring-boot:run </code>
+- Steg 3: &emsp; Åpne så en ny terminal og skriv kommandoene i de neste stegene i denne terminalen
+- Steg 4: &emsp; <code>cd CleanE </code>
+- Steg 5: &emsp; <code>mvn clean install </code>
+- Steg 6: &emsp; <code>mvn javafx:run -f fxui/pom.xml </code>
 
 
 <h1>Innhold</h1>
 
 [Om Appen](cleane/readme.md)
 
-Inne i mappen cleane/core/src vil man finne hovedfilene til prosjektet. Herfra er det delt inn i test og main. I main finnes selve programfilene til prosjektet. I test finnes JUnit testene. I cleane/fxui/src/main finnes filene knyttet til brukergrensesnittet. I java/ui finner man kontrolleren-klassen og app-klassen. I resources/ui finner man selve brukergrensesnittet.
+Inne i mappen CleanE/core/src vil man finne hovedfilene til prosjektet. Herfra er det delt inn i test og main. I main finnes selve programfilene til prosjektet. I test finnes JUnit testene. I CleanE/fxui/src/main finnes filene knyttet til brukergrensesnittet. I java/ui finner man kontrolleren-klassen og app-klassen. I resources/ui finner man selve brukergrensesnittet. I CleanE/rest finner man alle filer knyttet til rest api.
 
 <u><h3> Core </h3></u>
 
@@ -29,7 +32,7 @@ _Core_
 
 _Persistens_
 
-- [JSON](CleanE/core/src/main/java/json) => Håndtering av hvordan fillagring håndteres med serialiserere og deserialiserer samt en Moddule-fil finnes i JSON-mappen, ingen lokalt.
+- [JSON](CleanE/core/src/main/java/json) => Håndtering av hvordan fillagring håndteres med serialiserere og deserialiserer samt en Module-fil finnes i JSON-mappen, ingen lokalt.
 
 <u><h3>FXUI</h3></u>
 
@@ -54,7 +57,7 @@ Når HTML-filen åpnes i nettleseren, så får man frem prosjektets testdeknings
 </br>
 <h1> Arbeidsvaner og arbeidsflyt </h1>
 
-I den siste iterasjonen av prosjektet har vi fortsatt vår gode vaner ved å bruke gitlab som et verktøy i utviklingsprosessen vår. Vi har laget utviklingsoppgaver (issues) i gitlab som beskriver alt vi har gjort. For hver utviklingsoppgave har vi branchet slik at det man arbeider med ikke skaper problemer med det noen andre arbeider med. Vi har også vært flinke på å nevne issue nummer i commit-meldingene slik at man enkelt kan se hvilke commits som relaterer til hvilke issues når alle branchene har blitt satt sammen i master. Vi har også fortsatt å benyttet oss mye av parprogrammering i denne iterasjonen. Dette kan man se i commit-meldingene der vi har skrevet "Medforfattet av @brukernavn". 
+I den siste iterasjonen av prosjektet har vi fortsatt vår gode vaner ved å bruke gitlab som et verktøy i utviklingsprosessen vår. Vi har laget utviklingsoppgaver (issues) i gitlab som beskriver alt vi har gjort. For hver utviklingsoppgave har vi branchet slik at det man arbeider med ikke skaper problemer med det noen andre arbeider med. Vi har også vært flinke på å nevne issue nummer i commit-meldingene slik at man enkelt kan se hvilke commits som relaterer til hvilke issues når alle branchene har blitt satt sammen i master. Vi har også fortsatt å benyttet oss mye av parprogrammering i denne iterasjonen. Dette kan man se i commit-meldingene der vi har skrevet "Medforfattet av @brukernavn". Vi har også i denne iterasjonen brukt peer-review når vi merger ulike branches og lagt igjen kommentarer hvis det var noe som burde endres før merging.
 
 <h1> Dokument-metafor </h1>
 
