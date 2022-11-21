@@ -34,7 +34,7 @@ public class UserDeserializer extends JsonDeserializer<User> {
                 User user = new User(((TextNode) nameNode).asText());
                 JsonNode pointNode = objectNode.get("points");
 
-                if (pointNode instanceof IntNode) {
+                if (pointNode instanceof IntNode && ((IntNode) pointNode).asInt() > 0) {
                     user.addPoints(((IntNode) pointNode).asInt());
                 }
                 JsonNode taskListNode = objectNode.get("tasks");

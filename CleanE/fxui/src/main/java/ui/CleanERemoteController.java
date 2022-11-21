@@ -3,20 +3,19 @@ package ui;
 import javafx.fxml.FXML;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
 import core.Leaderboard;
 import core.Task;
 import core.User;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
-import json.FileManagement;
 
-public class CleanEController {
+public class CleanERemoteController {
 
     @FXML
     private ListView<Task> monday, tuesday, wednesday, thursday, friday, saturday, sunday;
@@ -28,32 +27,26 @@ public class CleanEController {
     private TextField nameOfUser, points;
 
     private Leaderboard leaderboard = new Leaderboard();
+    private RemoteCleanEAccess remoteCleanEAccess;
 
-    private FileManagement fm = new FileManagement();
+
+    
+
+    public CleanERemoteController() throws URISyntaxException {
+        this.remoteCleanEAccess = new RemoteCleanEAccess(new URI("http://localhost:8080/Leaderboard"));
+    }
 
     public void initialize() {
         try {
             updateListViews();
+            leaderBoardList();
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 
-    /**
-     * Laster innhold fra fil
-     */
-    @FXML
-    private void loadFromFile(){
-        try {
-            leaderboard = fm.readFromFile();
-        } catch (IOException e) {
-            showErrorMessage("There was an error loading the savefile. Either the savefile was manually edited, or the savefile was moved from its location");
-        }
-        updateListViews();
-        leaderBoardList();
-    }
 
-    /** Oppdaterer listviews slik at riktig informasjon vises */
+    /**Oppdaterer listviews slik at riktig informasjon vises */
     @FXML
     private void updateListViews() {
         this.monday.getItems().clear();
@@ -64,7 +57,7 @@ public class CleanEController {
         this.saturday.getItems().clear();
         this.sunday.getItems().clear();
 
-        for (User user : leaderboard.getUsers()) {
+        for (User user : remoteCleanEAccess.getUsers()) {
             for (Task task : user.getTasks()) {
                 if (task.getDueDay().equals("monday")) {
                     this.monday.getItems().add(task);
@@ -78,7 +71,6 @@ public class CleanEController {
                     this.friday.getItems().add(task);
                 } else if (task.getDueDay().equals("saturday")) {
                     this.saturday.getItems().add(task);
-
                 } else if (task.getDueDay().equals("sunday")) {
                     this.sunday.getItems().add(task);
                 }
@@ -86,35 +78,19 @@ public class CleanEController {
         }
     }
 
-    /**
-     * Lagrer innhold til fil
-     */
+
     @FXML
-    private void handleSaveButton() throws IOException {
-        fm.writeToFile(leaderboard);
+    private void handleAddUserButton() throws IOException{
+        User u = checkIfUserExists(nameOfUser.getText());
+        int pointsToAdd = Integer.parseInt(points.getText());
+        u.addPoints(pointsToAdd);
+        remoteCleanEAccess.addUser(u);
+        leaderBoardList();
+        clearUserInput();
     }
 
     @FXML
-    private void handleAddUserButton() {
-        try {
-            User u = userTextToObject(nameOfUser.getText());
-            int pointsToAdd = Integer.parseInt(points.getText());
-            u.addPoints(pointsToAdd);
-            leaderboard.addUser(u);
-            leaderBoardList();
-            clearUserInput();
-        } catch (IllegalArgumentException e) {
-            if (e.getMessage().equals("For input string: \"\"")) {
-                showErrorMessage("Please fill out ALL fields with valid values.");
-            } else {
-                showErrorMessage(e.getMessage());
-            }
-        }
-
-    }
-
-    @FXML
-    private void clearUserInput() {
+    private void clearUserInput(){
         nameOfUser.clear();
         points.clear();
     }
@@ -133,59 +109,56 @@ public class CleanEController {
 
     /**
      * Hjelpemetode som sjekker om en navnet til en bruker allerede finnes
-     * 
      * @param assignedUser
      * @return
      */
     private User userTextToObject(String assignedUser) {
-        if (leaderboard.getUsers().isEmpty()) {
-            return new User(assignedUser);
+        if (remoteCleanEAccess.getUsers().isEmpty()) {
+
+            User u1 = new User(assignedUser);
+            remoteCleanEAccess.addUser(u1);
+            return u1;
         } else {
-            for (User user : leaderboard.getUsers()) {
+            for (User user : remoteCleanEAccess.getUsers()) {
                 if (user.getName().equals(assignedUser)) {
                     return user;
                 }
             }
-            return new User(assignedUser);
         }
+        User u2 = new User(assignedUser);
+        remoteCleanEAccess.addUser(u2);
+        return u2;
+    }
 
+    private User checkIfUserExists(String username) {
+        if (remoteCleanEAccess.getUsers().isEmpty()) {
+            return new User(username);
+        } else {
+            for (User user : remoteCleanEAccess.getUsers()) {
+                if (user.getName().equals(username)) {
+                    throw new IllegalArgumentException("User already exists.");
+                }
+            }
+        }
+        return new User(username);
     }
 
     /**
      * Legger til en oppgave til en bruker utifra hva som er skrevet
      * i input-feltene
+     * @throws IOException
      */
+    // sette inn if/else så at AddTask button er ubrukelig mens texfields er tomt
     @FXML
-    private void appendTask() {
-        try {
-            User u = userTextToObject(assignedUser.getText());
-            new Task(u, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
-            addUserToLeaderboard(u);
-            updateListViews();
-            scoreList.getItems().clear();
-            scoreList.getItems().setAll(leaderboard.getUsers());
-            System.out.println(u.getTasks());
-            clearTaskInput();
-        } catch (IllegalArgumentException e) {
-            if (e.getMessage().equals("For input string: \"\"")) {
-                showErrorMessage("Please fill out ALL fields with valid values.");
-            } else {
-                showErrorMessage(e.getMessage());
-            }
-        }
-
+    private void appendTask() throws IOException {
+        User u = userTextToObject(assignedUser.getText());
+        remoteCleanEAccess.addTask(u, new Task(u, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText()));
+        updateListViews();
+        scoreList.getItems().clear();
+        scoreList.getItems().setAll(remoteCleanEAccess.getUsers());
+        clearTask();
     }
 
-    /**
-     * Legger en bruker til Leaderboard
-     * 
-     * @param u
-     */
-    private void addUserToLeaderboard(User u) {
-        if (!leaderboard.getUsers().contains(u)) {
-            leaderboard.addUser(u);
-        }
-    }
 
     // Kontrollerlogikk for leaderBoard
 
@@ -194,19 +167,22 @@ public class CleanEController {
 
     /**
      * Sorterer Listview til ledertavlen
+     * @throws IOException
      */
     @FXML
-    private void leaderBoardList() {
-        leaderboard.sortList();
-        scoreList.getItems().setAll(leaderboard.getUsers());
+    private void leaderBoardList() throws IOException { // listen blir sortert når man trykker på update-knapp
+
+        // remoteCleanEAccess.getLeaderboard().sortList();
+        scoreList.getItems().setAll(remoteCleanEAccess.getUsers());
     }
 
     /**
      * Fjerner en oppgave når den er blitt gjort ferdig og oppdaterer
      * antall poeng til ansvarlig bruker.
+     * @throws IOException
      */
     @FXML
-    private void handleCompletedTask() {
+    private void handleCompletedTask() throws IOException {
         scoreList.getItems().clear();
 
         List<ListView<Task>> listviews = new ArrayList<>();
@@ -222,36 +198,29 @@ public class CleanEController {
         for (ListView<Task> day : listviews) {
             for (Task task : day.getItems()) {
                 if (task.equals(day.getSelectionModel().getSelectedItem())) {
-                    task.setTrue();
-                    if (!leaderboard.getUsers().contains(task.getAssignedUser())) {
-                        leaderboard.getUsers().add(task.getAssignedUser());
+                    remoteCleanEAccess.addPoints(task.getAssignedUser(), task.getPointsValue());;
+                    if (!remoteCleanEAccess.getUsers().contains(task.getAssignedUser())) {
+                        remoteCleanEAccess.getUsers().add(task.getAssignedUser());
                     }
-                    task.getAssignedUser().removeTask(task);
+                    remoteCleanEAccess.removeTaskByUUID(task);
                 }
             }
         }
-        scoreList.getItems().setAll(leaderboard.getUsers());
-        updateListViews();
+        scoreList.getItems().setAll(remoteCleanEAccess.getUsers());
         leaderBoardList();
+        updateListViews();
     }
 
     /**
      * Fjerner teksten i inputfeltene når man trykker på "cancel" knappen
+     * @throws IOException
      */
     @FXML
-    private void clearTaskInput() {
+    private void clearTask() throws IOException {
         this.assignedUser.clear();
         this.taskName.clear();
         this.pointsValue.clear();
         this.dueDay.clear();
-    }
-
-    private void showErrorMessage(String errorMessage) {
-        Alert alert = new Alert(AlertType.ERROR);
-        alert.setTitle("Error message");
-        alert.setHeaderText("Something went wrong");
-        alert.setContentText(errorMessage);
-        alert.showAndWait();
     }
 
     // Gettere for testing

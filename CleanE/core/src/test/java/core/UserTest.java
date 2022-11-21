@@ -3,6 +3,8 @@ package core;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.UUID;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -28,8 +30,8 @@ public class UserTest {
     /**Tester om addTask metoden legger til oppgaver til brukeren */
     @Test
     public void testAddTask() {
-        s.addTask(new Task("taskName", 5, "monday"));
-        ;
+        s.addTask(new Task("taskName", 5, "monday", UUID.randomUUID().toString()));
+        
         assertEquals(1, s.getTasks().size());
     }
 
