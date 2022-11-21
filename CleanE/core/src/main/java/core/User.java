@@ -27,6 +27,13 @@ public class User {
         
     }
 
+
+
+    public User() {
+    }
+
+
+
     public int getPoints() {
         return points;
     }
@@ -73,9 +80,23 @@ public class User {
         this.tasks.remove(task);
     }
 
+    public void removeTaskByUUID(String uuid) {
+        Task task = getTaskByUUID(uuid);
+        // if (task != null) {
+        //     removeTask(task);
+        // }
+        removeTask(task);
+    }
+
+    public Task getTaskByUUID(String uuid){
+        Task task = this.tasks.stream().filter(e -> e.getUuid().equals(uuid)).findFirst().orElse(null);
+        return task;
+    }
     @Override
     public String toString() {
-        return "" + name + ": " + points + " poeng";
+        return "" + name + ": " + points + " poeng ";
+
+        // + "Tasks: " + tasks
     }
 
 }

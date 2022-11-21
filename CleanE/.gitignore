@@ -1,3 +1,4 @@
 # ignore maven build folder
 core/target/
 fxui/target/
+rest/target/
