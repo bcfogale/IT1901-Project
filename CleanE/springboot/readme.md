@@ -1,3 +1,0 @@
-Her kan vi bruke de to filer som ligger i [..todolist/restapi](https://gitlab.stud.idi.ntnu.no/it1901/todo-list/-/tree/master/todolist/rest/src/main/java/todolist/restapi) som eksempler.
-
-[ToDoModelService.java](https://gitlab.stud.idi.ntnu.no/it1901/todo-list/-/blob/master/todolist/rest/src/main/java/todolist/restapi/TodoModelService.java) & [ToDoListResource.java](https://gitlab.stud.idi.ntnu.no/it1901/todo-list/-/blob/master/todolist/rest/src/main/java/todolist/restapi/TodoListResource.java)
