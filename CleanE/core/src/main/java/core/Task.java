@@ -25,8 +25,13 @@ public class Task {
     public Task(User assignedUser, String taskName, int pointsValue, String dueDay) {
         this.assignedUser = assignedUser;
         assignedUser.addTask(this);
-        ;
+        if (taskName.length() < 2) {
+            throw new IllegalArgumentException("Taskname must be at least 2 characters long.");
+        }
         this.taskName = taskName;
+        if (pointsValue <= 0) {
+            throw new IllegalArgumentException("Points must be greater than 0.");
+        }
         this.pointsValue = pointsValue;
         if (days.contains(dueDay.toLowerCase())) {
             this.dueDay = dueDay;

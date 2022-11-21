@@ -19,7 +19,12 @@ public class User {
      * @param name
      */
     public User(String name) {
-        this.name = name;
+        if (name.length()<1) {
+            throw new IllegalArgumentException("Name should be 2 characters or more.");
+        } else {
+            this.name = name;
+        }
+        
     }
 
     public int getPoints() {
@@ -31,7 +36,13 @@ public class User {
      * @param additionalPoints
      */
     public void addPoints(int additionalPoints) {
-        this.points += additionalPoints;
+        if (additionalPoints >= 0) {
+            this.points += additionalPoints;
+        }
+        else{
+            throw new IllegalArgumentException("Points must be greater than or equal to 1.");
+        }
+        
     }
 
     public String getName() {
