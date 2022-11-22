@@ -30,13 +30,16 @@ public class TaskDeserializer extends JsonDeserializer<Task> {
             JsonNode pointsValueNode = objectNode.get("pointsValue");
             JsonNode completedNode = objectNode.get("completed");
             JsonNode dueDayNode = objectNode.get("dueDay");
+            JsonNode uuidNode = objectNode.get("uuid");
+
 
             if (taskNameNode instanceof TextNode && pointsValueNode instanceof IntNode
-                    && completedNode instanceof BooleanNode && dueDayNode instanceof TextNode) {
+                    && completedNode instanceof BooleanNode && dueDayNode instanceof TextNode && uuidNode instanceof TextNode) {
                 String taskName = ((TextNode) taskNameNode).asText();
                 int pointsValue = ((IntNode) pointsValueNode).asInt();
                 String dueDay = ((TextNode) dueDayNode).asText();
-                Task task = new Task(taskName, pointsValue, dueDay);
+                String uuid = ((TextNode) uuidNode).asText();
+                Task task = new Task(taskName, pointsValue, dueDay, uuid);
                 if (((BooleanNode) completedNode).asBoolean()) {
                     task.setTrue();
                 }

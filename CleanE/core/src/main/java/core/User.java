@@ -19,8 +19,20 @@ public class User {
      * @param name
      */
     public User(String name) {
-        this.name = name;
+        if (name.length()<1) {
+            throw new IllegalArgumentException("Name should be 2 characters or more.");
+        } else {
+            this.name = name;
+        }
+        
     }
+
+
+
+    public User() {
+    }
+
+
 
     public int getPoints() {
         return points;
@@ -31,7 +43,13 @@ public class User {
      * @param additionalPoints
      */
     public void addPoints(int additionalPoints) {
-        this.points += additionalPoints;
+        if (additionalPoints >= 0) {
+            this.points += additionalPoints;
+        }
+        else{
+            throw new IllegalArgumentException("Points must be greater than or equal to 1.");
+        }
+        
     }
 
     public String getName() {
@@ -62,9 +80,23 @@ public class User {
         this.tasks.remove(task);
     }
 
+    public void removeTaskByUUID(String uuid) {
+        Task task = getTaskByUUID(uuid);
+        // if (task != null) {
+        //     removeTask(task);
+        // }
+        removeTask(task);
+    }
+
+    public Task getTaskByUUID(String uuid){
+        Task task = this.tasks.stream().filter(e -> e.getUuid().equals(uuid)).findFirst().orElse(null);
+        return task;
+    }
     @Override
     public String toString() {
-        return "" + name + ": " + points + " poeng";
+        return "" + name + ": " + points + " poeng ";
+
+        // + "Tasks: " + tasks
     }
 
 }
