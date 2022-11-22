@@ -59,11 +59,13 @@ Når HTML-filen åpnes i nettleseren, så får man frem prosjektets testdeknings
 
 I den siste iterasjonen av prosjektet har vi fortsatt vår gode vaner ved å bruke gitlab som et verktøy i utviklingsprosessen vår. Vi har laget utviklingsoppgaver (issues) i gitlab som beskriver alt vi har gjort. For hver utviklingsoppgave har vi branchet slik at det man arbeider med ikke skaper problemer med det noen andre arbeider med. Vi har også vært flinke på å nevne issue nummer i commit-meldingene slik at man enkelt kan se hvilke commits som relaterer til hvilke issues når alle branchene har blitt satt sammen i master. Vi har også fortsatt å benyttet oss mye av parprogrammering i denne iterasjonen. Dette kan man se i commit-meldingene der vi har skrevet "Medforfattet av @brukernavn". Vi har også i denne iterasjonen brukt peer-review når vi merger ulike branches og lagt igjen kommentarer hvis det var noe som burde endres før merging.
 
-<h1> Dokument-metafor </h1>
+<h1> Dokument-metafor vs. implisitt lagring</h1>
 
-I dette prosjektet velger vi dokument-metafor i stedet for implisitt lagring, fordi vi tror dette gjør det lettere for brukeren av appen å skjønne når ting lagres. Det vil si at brukerne velger selv hvis de vil overskrive listen som er allerede lagret for å begynne på nytt.
+I andre iterasjon av prosjektet valgte vi dokument-metafor i stedet for implisitt lagring, fordi vi trodde dette ville gjøre det lettere for brukeren av appen å skjønne når ting lagres. Det vil si at brukerne selv valgte hvis de vil overskrive listen som er allerede lagret for å begynne på nytt.
 
-Appen lagrer brukeres informasjon tilstanden til programmet hver gang man trykker på SAVE knappen, og laster inn informasjonen fra filen til programmet med LOAD knappen.
+Appen lagret brukernes informasjon tilstanden til programmet hver gang man trykker på SAVE knappen, og laster inn informasjonen fra filen til programmet med LOAD knappen.
+
+I den tredje iterasjonen har vi endret lagringen til å bli implisitt. Det vil si at lagringen til fil og lastingen fra fil skjer automatisk, endrer tilstanden til programmet. Vi oppdaget at det var mange unødvendige tastetrykk når vi hver gang vi åpnet programmet måtte trykke på load-knappen for å laste fra fil. Vi mener dette gir en bedre brukeropplevelse.
 
 <p style="text-align:center;"><img src="docs/prosjekt-images/Clean-E_SAVE_LOAD.png"  width="300" height="100" ></p>
 
