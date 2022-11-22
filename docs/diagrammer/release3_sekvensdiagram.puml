@@ -1,0 +1,26 @@
+@startuml diagram
+
+actor U1
+
+U1 -> CleanERemoteController: Legg til bruker
+CleanERemoteController -> RemoteCleanEAccess: addUser(User)
+RemoteCleanEAccess -> ResponseController: HTTP POST
+ResponseController -> RemoteCleanEAccess: 200
+CleanERemoteController -> RemoteCleanEAccess: getUsers()
+RemoteCleanEAccess -> ResponseController: HTTP GET
+ResponseController -> RemoteCleanEAccess: 200
+RemoteCleanEAccess -> CleanERemoteController: List<User>
+CleanERemoteController -> U1: Scoreboard i UI oppdatert med bruker
+
+U1 -> CleanERemoteController: Legg til oppgave til bruker
+CleanERemoteController -> RemoteCleanEAccess: addTask(Task)
+RemoteCleanEAccess -> ResponseController: HTTP PUT
+ResponseController -> RemoteCleanEAccess: 200
+CleanERemoteController -> RemoteCleanEAccess: updateListviews()
+RemoteCleanEAccess -> ResponseController: HTTP GET
+ResponseController -> RemoteCleanEAccess: 200
+RemoteCleanEAccess -> CleanERemoteController: Task
+CleanERemoteController -> U1: Listview med tasks i UI oppdatert med task
+
+
+@enduml

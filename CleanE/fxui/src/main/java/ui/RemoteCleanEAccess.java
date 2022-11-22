@@ -36,6 +36,11 @@ public class RemoteCleanEAccess {
         objectMapper.registerModule(new CleanEModule());
     }
     
+    /**
+     * Sier hvilken funksjon fra responseControlloer som kjører.
+     * @param s
+     * @return
+     */
     private URI setURI(String s) {
         return endpointBaseUri.resolve(endpointBaseUri + s);
     }
@@ -43,6 +48,12 @@ public class RemoteCleanEAccess {
     * methods
     */
     
+    /**
+     * Sender HTTP forespørsel om å legge til en Task t til User u.
+     * @param u
+     * @param t
+     * @param method
+     */
     private void addTask(User u, Task t, String method) {
         try {
             String json = objectMapper.writeValueAsString(t);
@@ -63,6 +74,11 @@ public class RemoteCleanEAccess {
         }
     }
     
+    /**
+     * Sender HTTP forespørsel om å lage en ny User.
+     * @param u
+     * @param method
+     */
     private void addUser(User u, String method) {
         try {
 
@@ -84,6 +100,12 @@ public class RemoteCleanEAccess {
         }
     }
     
+    /**
+     * Sender HTTP forespørsel om å legge til poeng additionalPoints til User u.
+     * @param u
+     * @param additionalPoints
+     * @param method
+     */
     private void addPoints(User u, int additionalPoints, String method) {
         try {
 
@@ -105,6 +127,11 @@ public class RemoteCleanEAccess {
         }
     }
 
+    /**
+     * Sender HTTP forespørsel om å slette Task t fra REST-server.
+     * @param t
+     * @param method
+     */
     private void removeTaskByUUID(Task t, String method) {
         try {
          // Task t = null;
@@ -129,7 +156,12 @@ public class RemoteCleanEAccess {
                 throw new RuntimeException(e);
             }
         }
-        
+    
+    /**
+     * Sender HTTP GET forespørsel for å hente Users.
+     * @param method
+     * @return
+     */
     private List<User> getUsers(String method) {
         try {
             HttpRequest request = HttpRequest.newBuilder(setURI(method))
@@ -152,6 +184,11 @@ public class RemoteCleanEAccess {
         }
     }
     
+    /**
+     * Sender HTTP GET forespørsel om å hente spesifikk bruker.
+     * @param method
+     * @return
+     */
     private User getUser(String method) {
         try {
             HttpRequest request = HttpRequest.newBuilder(setURI(method))
@@ -170,6 +207,11 @@ public class RemoteCleanEAccess {
         }
     }
     
+    /**
+     * Sender HTTP forespørsel om å hente en spesifikk Task.
+     * @param method
+     * @return
+     */
     private Task getTask(String method) {
         try {
             HttpRequest request = HttpRequest.newBuilder(setURI(method))
@@ -188,8 +230,11 @@ public class RemoteCleanEAccess {
         }
     }
 
-    
-    public Leaderboard getLeaderboard() { //når og hvor skal denne kalles?
+    /**
+     * Sender HTTP GET forespørsel for å hente ut Leaderboard.
+     * @return
+     */
+    public Leaderboard getLeaderboard() { 
             HttpRequest request = HttpRequest.newBuilder(endpointBaseUri)
             .header(ACCEPT_HEADER, APPLICATION_JSON).GET().build();
             
@@ -231,28 +276,5 @@ public class RemoteCleanEAccess {
         return getTask("/getTask");
     }
 
-    public static void main(String[] args) {
-        RemoteCleanEAccess remote = new RemoteCleanEAccess(URI.create("http://localhost:8080/Leaderboard"));
-
-        System.out.println(remote.getLeaderboard());
-        
-        User u = new User("Daniel");
-        remote.addUser(u);
-
-        Task t = new Task(u, "Test", 1, "monday", "temp");
-        remote.addTask(u, t);
-
-        System.out.println(remote.getUsers());
-
-        System.out.println(remote.getLeaderboard());
-
-        remote.addPoints(u, 5);
-
-        System.out.println(remote.getLeaderboard());
-
-        remote.addPoints(u, 5);
-
-        System.out.println(remote.getLeaderboard());
-
-    }
+   
 }

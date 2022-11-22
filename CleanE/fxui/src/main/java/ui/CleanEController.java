@@ -20,12 +20,27 @@ public class CleanEController {
 
     @FXML
     private ListView<Task> monday, tuesday, wednesday, thursday, friday, saturday, sunday;
-
+    
     @FXML
     private Button completedButton;
-
+    
     @FXML
     private TextField nameOfUser, points;
+    
+    @FXML
+    private TextField assignedUser;
+
+    @FXML
+    private TextField taskName;
+
+    @FXML
+    private TextField pointsValue;
+
+    @FXML
+    private TextField dueDay;
+    
+    @FXML
+    private ListView<User> scoreList;
 
     private Leaderboard leaderboard = new Leaderboard();
 
@@ -94,6 +109,10 @@ public class CleanEController {
         fm.writeToFile(leaderboard);
     }
 
+    /**
+     * Metoden gkør det mulig å skrive inn nye brukere og gi dem en mengde poeng.
+     * @throws IOException
+     */
     @FXML
     private void handleAddUserButton() {
         try {
@@ -113,23 +132,13 @@ public class CleanEController {
 
     }
 
+    /**Fjerner tekst fra inputfeltene når man skal lage ny bruker. */
     @FXML
     private void clearUserInput() {
         nameOfUser.clear();
         points.clear();
     }
 
-    @FXML
-    private TextField assignedUser;
-
-    @FXML
-    private TextField taskName;
-
-    @FXML
-    private TextField pointsValue;
-
-    @FXML
-    private TextField dueDay;
 
     /**
      * Hjelpemetode som sjekker om en navnet til en bruker allerede finnes
@@ -189,8 +198,6 @@ public class CleanEController {
 
     // Kontrollerlogikk for leaderBoard
 
-    @FXML
-    private ListView<User> scoreList;
 
     /**
      * Sorterer Listview til ledertavlen

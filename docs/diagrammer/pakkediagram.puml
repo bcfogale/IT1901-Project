@@ -1,0 +1,45 @@
+@startuml diagram
+
+allow_mixing
+
+title Pakkediagram
+
+
+component core{
+  package core
+  package json
+}
+
+component fxui{
+  package ui
+}
+
+component javafx{
+  component fxml{
+  
+  }
+}
+
+component jackson{
+
+}
+component springboot{
+
+}
+component rest-api{
+  package rest{
+  
+  }
+}
+
+rest ..> springboot
+rest ..> json
+rest ..> core
+ui ..> rest
+json ..> jackson
+ui ..> javafx
+ui ..> fxml
+ui ..> core
+ui ..> json
+
+@enduml
