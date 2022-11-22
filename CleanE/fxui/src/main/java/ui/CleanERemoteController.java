@@ -78,7 +78,10 @@ public class CleanERemoteController {
         }
     }
 
-
+    /**
+     * Legger til bruker i leaderboard når man trykker på knappen.
+     * @throws IOException
+     */
     @FXML
     private void handleAddUserButton() throws IOException{
         User u = checkIfUserExists(nameOfUser.getText());
@@ -89,6 +92,9 @@ public class CleanERemoteController {
         clearUserInput();
     }
 
+    /**
+     * Fjerner inputet til brukeren.
+     */
     @FXML
     private void clearUserInput(){
         nameOfUser.clear();
@@ -108,7 +114,7 @@ public class CleanERemoteController {
     private TextField dueDay;
 
     /**
-     * Hjelpemetode som sjekker om en navnet til en bruker allerede finnes
+     * Hjelpemetode som sjekker om en navnet til en bruker allerede finnes.
      * @param assignedUser
      * @return
      */
@@ -130,6 +136,13 @@ public class CleanERemoteController {
         return u2;
     }
 
+    /**
+     * Hjelpemetode som sjekker om en bruker eksisterer og utløser
+     * IllegalArgumentException dersom den eksisterer og returnerer
+     * en ny bruker dersom ikke.
+     * @param username
+     * @return
+     */
     private User checkIfUserExists(String username) {
         if (remoteCleanEAccess.getUsers().isEmpty()) {
             return new User(username);
@@ -148,7 +161,6 @@ public class CleanERemoteController {
      * i input-feltene
      * @throws IOException
      */
-    // sette inn if/else så at AddTask button er ubrukelig mens texfields er tomt
     @FXML
     private void appendTask() throws IOException {
         User u = userTextToObject(assignedUser.getText());
