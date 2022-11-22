@@ -9,9 +9,11 @@ import java.util.List;
 import core.Leaderboard;
 import core.Task;
 import core.User;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import json.FileManagement;
 
 public class CleanEController {
@@ -54,16 +56,19 @@ public class CleanEController {
 
     /**
      * Laster innhold fra fil
-     * @throws IOException
      */
     @FXML
-    private void loadFromFile() throws IOException {
-        leaderboard = fm.readFromFile();
+    private void loadFromFile(){
+        try {
+            leaderboard = fm.readFromFile();
+        } catch (IOException e) {
+            showErrorMessage("There was an error loading the savefile. Either the savefile was manually edited, or the savefile was moved from its location");
+        }
         updateListViews();
         leaderBoardList();
     }
 
-    /**Oppdaterer listviews slik at riktig informasjon vises */
+    /** Oppdaterer listviews slik at riktig informasjon vises */
     @FXML
     private void updateListViews() {
         this.monday.getItems().clear();
@@ -98,7 +103,6 @@ public class CleanEController {
 
     /**
      * Lagrer innhold til fil
-     * @throws IOException
      */
     @FXML
     private void handleSaveButton() throws IOException {
@@ -110,18 +114,27 @@ public class CleanEController {
      * @throws IOException
      */
     @FXML
-    private void handleAddUserButton() throws IOException{
-        User u = userTextToObject(nameOfUser.getText());
-        int pointsToAdd = Integer.parseInt(points.getText());
-        u.addPoints(pointsToAdd);
-        leaderboard.addUser(u);
-        leaderBoardList();
-        clearUserInput();
+    private void handleAddUserButton() {
+        try {
+            User u = userTextToObject(nameOfUser.getText());
+            int pointsToAdd = Integer.parseInt(points.getText());
+            u.addPoints(pointsToAdd);
+            leaderboard.addUser(u);
+            leaderBoardList();
+            clearUserInput();
+        } catch (IllegalArgumentException e) {
+            if (e.getMessage().equals("For input string: \"\"")) {
+                showErrorMessage("Please fill out ALL fields with valid values.");
+            } else {
+                showErrorMessage(e.getMessage());
+            }
+        }
+
     }
 
     /**Fjerner tekst fra inputfeltene når man skal lage ny bruker. */
     @FXML
-    private void clearUserInput(){
+    private void clearUserInput() {
         nameOfUser.clear();
         points.clear();
     }
@@ -129,6 +142,7 @@ public class CleanEController {
 
     /**
      * Hjelpemetode som sjekker om en navnet til en bruker allerede finnes
+     * 
      * @param assignedUser
      * @return
      */
@@ -141,30 +155,39 @@ public class CleanEController {
                     return user;
                 }
             }
+            return new User(assignedUser);
         }
-        return new User(assignedUser);
+
     }
 
     /**
      * Legger til en oppgave til en bruker utifra hva som er skrevet
      * i input-feltene
-     * @throws IOException
      */
-    // sette inn if/else så at AddTask button er ubrukelig mens texfields er tomt
     @FXML
-    private void appendTask() throws IOException {
-        User u = userTextToObject(assignedUser.getText());
-        new Task(u, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
-        addUserToLeaderboard(u);
-        updateListViews();
-        scoreList.getItems().clear();
-        scoreList.getItems().setAll(leaderboard.getUsers());
-        System.out.println(u.getTasks());
-        clearTaskInput();
+    private void appendTask() {
+        try {
+            User u = userTextToObject(assignedUser.getText());
+            new Task(u, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText());
+            addUserToLeaderboard(u);
+            updateListViews();
+            scoreList.getItems().clear();
+            scoreList.getItems().setAll(leaderboard.getUsers());
+            System.out.println(u.getTasks());
+            clearTaskInput();
+        } catch (IllegalArgumentException e) {
+            if (e.getMessage().equals("For input string: \"\"")) {
+                showErrorMessage("Please fill out ALL fields with valid values.");
+            } else {
+                showErrorMessage(e.getMessage());
+            }
+        }
+
     }
 
     /**
      * Legger en bruker til Leaderboard
+     * 
      * @param u
      */
     private void addUserToLeaderboard(User u) {
@@ -178,11 +201,9 @@ public class CleanEController {
 
     /**
      * Sorterer Listview til ledertavlen
-     * @throws IOException
      */
     @FXML
-    private void leaderBoardList() throws IOException { // listen blir sortert når man trykker på update-knapp
-
+    private void leaderBoardList() {
         leaderboard.sortList();
         scoreList.getItems().setAll(leaderboard.getUsers());
     }
@@ -190,10 +211,9 @@ public class CleanEController {
     /**
      * Fjerner en oppgave når den er blitt gjort ferdig og oppdaterer
      * antall poeng til ansvarlig bruker.
-     * @throws IOException
      */
     @FXML
-    private void handleCompletedTask() throws IOException {
+    private void handleCompletedTask() {
         scoreList.getItems().clear();
 
         List<ListView<Task>> listviews = new ArrayList<>();
@@ -224,14 +244,21 @@ public class CleanEController {
 
     /**
      * Fjerner teksten i inputfeltene når man trykker på "cancel" knappen
-     * @throws IOException
      */
     @FXML
-    private void clearTaskInput() throws IOException {
+    private void clearTaskInput() {
         this.assignedUser.clear();
         this.taskName.clear();
         this.pointsValue.clear();
         this.dueDay.clear();
+    }
+
+    private void showErrorMessage(String errorMessage) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Error message");
+        alert.setHeaderText("Something went wrong");
+        alert.setContentText(errorMessage);
+        alert.showAndWait();
     }
 
     // Gettere for testing
