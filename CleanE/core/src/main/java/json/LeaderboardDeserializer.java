@@ -18,7 +18,7 @@ public class LeaderboardDeserializer extends JsonDeserializer<Leaderboard> {
 
     private UserDeserializer userDeserializer = new UserDeserializer();
 
-    /**Deserialiserer Leaderboard-klassen for JSON lagring*/
+    /** Deserialiserer Leaderboard-klassen for JSON lagring. */
     @Override
     public Leaderboard deserialize(JsonParser parser, DeserializationContext ctxt)
             throws IOException, JacksonException {

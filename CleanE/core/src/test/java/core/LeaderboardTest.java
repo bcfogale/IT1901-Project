@@ -2,9 +2,6 @@ package core;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,19 +9,19 @@ public class LeaderboardTest {
 
     Leaderboard l;
 
-    /**Konstruerer et nytt Leaderboard objekt før hver test */
+    /**Konstruerer et nytt Leaderboard objekt før hver test. */
     @BeforeEach
     public void setup() {
         l = new Leaderboard();
     }
 
-    /**Tester om konstruktøren faktisk lager et objekt */
+    /**Tester om konstruktøren faktisk lager et objekt. */
     @Test
     public void testConstructor() {
         assertEquals(0, l.getUsers().size());
     }
 
-    /**Tester om sortList-funksjonen sorterer listen etter antall poeng */
+    /**Tester om sortList-funksjonen sorterer listen etter antall poeng. */
     @Test
     public void testSortList() {
         User u = new User("Sander");
@@ -50,22 +47,4 @@ public class LeaderboardTest {
         assertEquals(u, l.getUsers().get(2));
 
     }
-
-    /*
-     * @Test
-     * public void testAddUser() {
-     * final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-     * final PrintStream originalOut = System.out;
-     * System.setOut(new PrintStream(outContent));
-     * 
-     * User u = new User("Sander");
-     * 
-     * l.addUser(u);
-     * l.addUser(u);
-     * 
-     * assertEquals("User already in list.\r\n", outContent.toString());
-     * 
-     * System.setOut(originalOut);
-     * }
-     */
 }

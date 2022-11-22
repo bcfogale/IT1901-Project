@@ -16,6 +16,7 @@ public class CleanEService {
         this.fileManagement = new FileManagement();
         this.leaderboard = leaderboard;
     }
+
     public CleanEService() throws IOException {
         this.fileManagement = new FileManagement();
         this.leaderboard = fileManagement.readFromFile();
@@ -43,6 +44,4 @@ public class CleanEService {
         this.save();
     }
 
-    
-    
 }

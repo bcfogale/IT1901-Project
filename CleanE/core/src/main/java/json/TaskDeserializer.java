@@ -18,7 +18,8 @@ import core.Task;
 public class TaskDeserializer extends JsonDeserializer<Task> {
 
     /**
-     * Deserialiserer Task-klassen for JSON lagring
+     * Deserialiserer Task-klassen for JSON lagring.
+     * 
      * @param jsonNode
      * @return
      */
@@ -32,9 +33,9 @@ public class TaskDeserializer extends JsonDeserializer<Task> {
             JsonNode dueDayNode = objectNode.get("dueDay");
             JsonNode uuidNode = objectNode.get("uuid");
 
-
             if (taskNameNode instanceof TextNode && pointsValueNode instanceof IntNode
-                    && completedNode instanceof BooleanNode && dueDayNode instanceof TextNode && uuidNode instanceof TextNode) {
+                    && completedNode instanceof BooleanNode && dueDayNode instanceof TextNode
+                    && uuidNode instanceof TextNode) {
                 String taskName = ((TextNode) taskNameNode).asText();
                 int pointsValue = ((IntNode) pointsValueNode).asInt();
                 String dueDay = ((TextNode) dueDayNode).asText();
@@ -50,8 +51,10 @@ public class TaskDeserializer extends JsonDeserializer<Task> {
     }
 
     /**
-     * Deserialiserer Task-klassen for JSON lagring
-     * @param jsonNode
+     * Deserialiserer Task-klassen for JSON lagring.
+     * 
+     * @param parser
+     * @param ctxt
      * @return
      */
     @Override

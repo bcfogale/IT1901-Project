@@ -45,7 +45,7 @@ public class CleanEAppTest extends ApplicationTest {
 
     }
 
-    /** Lager brukere med oppgaver før hver test */
+    /** Lager brukere med oppgaver før hver test. */
     @BeforeEach
     public void setup() {
         user1 = new User("Sander");
@@ -66,7 +66,7 @@ public class CleanEAppTest extends ApplicationTest {
 
     /**
      * Tester om kontrollen og ledertavlen eksisterer slik at de andre testene vil
-     * fungere
+     * fungere.
      */
     @Test
     public void testControllerAndLeaderboard() {
@@ -109,7 +109,7 @@ public class CleanEAppTest extends ApplicationTest {
 
     /**
      * Skriver inn informasjon og tester om en oppgave med denne informasjonen
-     * faktisk blir laget
+     * faktisk blir laget.
      */
     @Test
     public void testAddTask() {
@@ -130,7 +130,7 @@ public class CleanEAppTest extends ApplicationTest {
     }
 
     /**
-     * Tester om "cancel"-knappen funker og fjerner informasjonen fra inputfeltene
+     * Tester om "cancel"-knappen funker og fjerner informasjonen fra inputfeltene.
      */
     @Test
     public void testClearTask() {
@@ -150,7 +150,7 @@ public class CleanEAppTest extends ApplicationTest {
 
     /**
      * Tester om "completed"-knappen fjerner den valgte oppgaven fra aktive oppgaver
-     * og oppdaterer antall
+     * og oppdaterer antall.
      * poeng til brukeren.
      */
     @Test
@@ -171,7 +171,7 @@ public class CleanEAppTest extends ApplicationTest {
         assertEquals(10, user1.getPoints());
     }
 
-    /** Tester om "update"-knappen sorterer ledertavlen */
+    /** Tester om "update"-knappen sorterer ledertavlen. */
     @Test
     public void testSortList() {
         task1.setTrue();
@@ -206,7 +206,7 @@ public class CleanEAppTest extends ApplicationTest {
     }
 
 
-    /**Tester om 'cancel'-knappen fjerner teksten fra inputene */
+    /**Tester om 'cancel'-knappen fjerner teksten fra inputene. */
     @FXML
     public void testClearUser() {
         clickOn("#nameOfUser").write("Ajanan");
@@ -218,10 +218,4 @@ public class CleanEAppTest extends ApplicationTest {
         assertEquals(controller.getPoints().getText(), "");
         assertEquals(controller.getNameOfUser().getText(), "");
     }
-    // taskName
-    // assignedUser
-    // pointsValue
-    // dueDay
-    // nameOfUser
-    // points
 }

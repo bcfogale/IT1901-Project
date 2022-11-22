@@ -38,7 +38,8 @@ public class CleanEModuleTest {
     }
 
     /**
-     * Tester serialisering
+     * Tester serialisering.
+     * 
      * @throws JsonProcessingException
      */
     @Test
@@ -48,7 +49,7 @@ public class CleanEModuleTest {
     }
 
     /**
-     * Tester deserialisering
+     * Tester deserialisering.
      * @throws JsonMappingException
      * @throws JsonProcessingException
      */
@@ -61,7 +62,8 @@ public class CleanEModuleTest {
     }
 
     /**
-     * Tester serialisering og deserialisering
+     * Tester serialisering og deserialisering.
+     * 
      * @throws JsonProcessingException
      */
     @Test

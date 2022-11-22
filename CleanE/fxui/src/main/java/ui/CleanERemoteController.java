@@ -31,9 +31,6 @@ public class CleanERemoteController {
     private Leaderboard leaderboard = new Leaderboard();
     private RemoteCleanEAccess remoteCleanEAccess;
 
-
-    
-
     public CleanERemoteController() throws URISyntaxException {
         this.remoteCleanEAccess = new RemoteCleanEAccess(new URI("http://localhost:8080/Leaderboard"));
     }
@@ -47,8 +44,7 @@ public class CleanERemoteController {
         }
     }
 
-
-    /**Oppdaterer listviews slik at riktig informasjon vises */
+    /** Oppdaterer listviews slik at riktig informasjon vises. */
     @FXML
     private void updateListViews() {
         this.monday.getItems().clear();
@@ -82,11 +78,12 @@ public class CleanERemoteController {
 
     /**
      * Legger til bruker i leaderboard når man trykker på knappen.
+     * 
      * @throws IOException
      */
     @FXML
-    private void handleAddUserButton(){ 
-        
+    private void handleAddUserButton() {
+
         try {
             User u = checkIfUserExists(nameOfUser.getText());
             int pointsToAdd = Integer.parseInt(points.getText());
@@ -100,17 +97,17 @@ public class CleanERemoteController {
             } else {
                 showErrorMessage(e.getMessage());
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             showErrorMessage(e.getMessage());
         }
-        
+
     }
 
     /**
      * Fjerner inputet til brukeren.
      */
     @FXML
-    private void clearUserInput(){
+    private void clearUserInput() {
         nameOfUser.clear();
         points.clear();
     }
@@ -129,6 +126,7 @@ public class CleanERemoteController {
 
     /**
      * Hjelpemetode som sjekker om en navnet til en bruker allerede finnes.
+     * 
      * @param assignedUser
      * @return
      */
@@ -154,6 +152,7 @@ public class CleanERemoteController {
      * Hjelpemetode som sjekker om en bruker eksisterer og utløser
      * IllegalArgumentException dersom den eksisterer og returnerer
      * en ny bruker dersom ikke.
+     * 
      * @param username
      * @return
      */
@@ -172,14 +171,16 @@ public class CleanERemoteController {
 
     /**
      * Legger til en oppgave til en bruker utifra hva som er skrevet
-     * i input-feltene
+     * i input-feltene.
+     * 
      * @throws IOException
      */
     @FXML
-    private void appendTask(){
+    private void appendTask() {
         try {
             User u = userTextToObject(assignedUser.getText());
-            remoteCleanEAccess.addTask(u, new Task(u, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText()));
+            remoteCleanEAccess.addTask(u,
+                    new Task(u, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText()));
             updateListViews();
             scoreList.getItems().clear();
             scoreList.getItems().setAll(remoteCleanEAccess.getUsers());
@@ -195,26 +196,25 @@ public class CleanERemoteController {
         }
     }
 
-
     // Kontrollerlogikk for leaderBoard
 
     @FXML
     private ListView<User> scoreList;
 
     /**
-     * Sorterer Listview til ledertavlen
+     * Sorterer Listview til ledertavlen.
+     * 
      * @throws IOException
      */
     @FXML
-    private void leaderBoardList() throws IOException { // listen blir sortert når man trykker på update-knapp
-
-        // remoteCleanEAccess.getLeaderboard().sortList();
+    private void leaderBoardList() throws IOException {
         scoreList.getItems().setAll(remoteCleanEAccess.getUsers());
     }
 
     /**
      * Fjerner en oppgave når den er blitt gjort ferdig og oppdaterer
      * antall poeng til ansvarlig bruker.
+     * 
      * @throws IOException
      */
     @FXML
@@ -234,7 +234,8 @@ public class CleanERemoteController {
         for (ListView<Task> day : listviews) {
             for (Task task : day.getItems()) {
                 if (task.equals(day.getSelectionModel().getSelectedItem())) {
-                    remoteCleanEAccess.addPoints(task.getAssignedUser(), task.getPointsValue());;
+                    remoteCleanEAccess.addPoints(task.getAssignedUser(), task.getPointsValue());
+                    ;
                     if (!remoteCleanEAccess.getUsers().contains(task.getAssignedUser())) {
                         remoteCleanEAccess.getUsers().add(task.getAssignedUser());
                     }
@@ -248,7 +249,8 @@ public class CleanERemoteController {
     }
 
     /**
-     * Fjerner teksten i inputfeltene når man trykker på "cancel" knappen
+     * Fjerner teksten i inputfeltene når man trykker på "cancel" knappen.
+     * 
      * @throws IOException
      */
     @FXML

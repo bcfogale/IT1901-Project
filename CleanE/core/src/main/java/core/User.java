@@ -2,7 +2,6 @@ package core;
 
 import java.util.ArrayList;
 import java.util.Collection;
-//import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -15,41 +14,46 @@ public class User {
     private Collection<Task> tasks = new ArrayList<>();
 
     /**
-     * Konstruktør som tar inn et navn
+     * Konstruktør som tar inn et navn.
+     * 
      * @param name
      */
     public User(String name) {
-        if (name.length()<2) {
+        if (name.length() < 2) {
             throw new IllegalArgumentException("Name should be 2 characters or more.");
         } else {
             this.name = name;
         }
-        
+
     }
 
-
-
+    /**
+     * Tom konstruktør for serialisering.
+     */
     public User() {
     }
 
-
-
+    /**
+     * Henter poeng til User.
+     * 
+     * @return
+     */
     public int getPoints() {
         return points;
     }
 
     /**
      * Legger til poeng, slik at brukeren kan rangeres i Leaderboard.
+     * 
      * @param additionalPoints
      */
     public void addPoints(int additionalPoints) {
         if (additionalPoints >= 0) {
             this.points += additionalPoints;
-        }
-        else{
+        } else {
             throw new IllegalArgumentException("Points must be greater than or equal to 1.");
         }
-        
+
     }
 
     public String getName() {
@@ -65,7 +69,8 @@ public class User {
     }
 
     /**
-     * Legger til en oppgave i listen over alle oppgavene til en bruker
+     * Legger til en oppgave i listen over alle oppgavene til en bruker.
+     * 
      * @param task
      */
     public void addTask(Task task) {
@@ -73,30 +78,39 @@ public class User {
     }
 
     /**
-     * Fjerner en oppgave fra listen over alle oppgaver
+     * Fjerner en oppgave fra listen over alle oppgaver.
+     * 
      * @param task
      */
     public void removeTask(Task task) {
         this.tasks.remove(task);
     }
 
+    /**
+     * Fjerner en Task basert på UUID.
+     * 
+     * @param uuid
+     */
     public void removeTaskByUUID(String uuid) {
         Task task = getTaskByUUID(uuid);
-        // if (task != null) {
-        //     removeTask(task);
-        // }
+
         removeTask(task);
     }
 
-    public Task getTaskByUUID(String uuid){
+    /**
+     * Henter en Task med spesifikk UUID.
+     * 
+     * @param uuid
+     * @return
+     */
+    public Task getTaskByUUID(String uuid) {
         Task task = this.tasks.stream().filter(e -> e.getUuid().equals(uuid)).findFirst().orElse(null);
         return task;
     }
+
     @Override
     public String toString() {
         return "" + name + ": " + points + " poeng ";
-
-        // + "Tasks: " + tasks
     }
 
 }

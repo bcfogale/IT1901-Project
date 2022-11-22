@@ -19,7 +19,6 @@ import core.Leaderboard;
 import core.Task;
 import core.User;
 
-
 // Annotation
 @RestController
 @RequestMapping("Leaderboard")
@@ -40,7 +39,7 @@ public class ResponseController {
 	 */
 	@GetMapping
 	public Leaderboard getLeaderboard() {
-	  return this.cleanEService.getLeaderboard();
+		return this.cleanEService.getLeaderboard();
 	}
 
 	/**
@@ -67,7 +66,7 @@ public class ResponseController {
 	public String getTaskName(@PathVariable("name") String name, @PathVariable("uuid") String uuid) {
 		return getLeaderboard().getUser(name).getTaskByUUID(uuid).getTaskName();
 	}
-	
+
 	/**
 	 * Mapper getter for poengverdien til en Task.
 	 */
@@ -106,7 +105,7 @@ public class ResponseController {
 	@DeleteMapping(path = "/removeTaskByUUID/{uuid}")
 	public void removeTaskByUUID(@PathVariable("uuid") String uuid) throws IOException {
 		for (User u : getLeaderboard().getUsers()) {
-			if (u.getTaskByUUID(uuid)!=null) {
+			if (u.getTaskByUUID(uuid) != null) {
 				u.removeTaskByUUID(uuid);
 			}
 		}
@@ -140,19 +139,7 @@ public class ResponseController {
 		getLeaderboard().getUser(name).addPoints(additionalPoints);
 		save();
 	}
+
 	
-
-
-	/**
-	 * Mapper getUsers() metoden til /users
-	 */
-	@GetMapping(path = "/users")
-	public List<User> getUsers(@PathVariable("users") String users) {
-		List<User> allUsers = getLeaderboard().getUsers();
-		if (allUsers.isEmpty()) {
-			return null;
-		} 
-		return allUsers;
-	}
 
 }

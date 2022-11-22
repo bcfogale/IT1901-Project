@@ -20,13 +20,13 @@ public class CleanEController {
 
     @FXML
     private ListView<Task> monday, tuesday, wednesday, thursday, friday, saturday, sunday;
-    
+
     @FXML
     private Button completedButton;
-    
+
     @FXML
     private TextField nameOfUser, points;
-    
+
     @FXML
     private TextField assignedUser;
 
@@ -38,7 +38,7 @@ public class CleanEController {
 
     @FXML
     private TextField dueDay;
-    
+
     @FXML
     private ListView<User> scoreList;
 
@@ -55,20 +55,21 @@ public class CleanEController {
     }
 
     /**
-     * Laster innhold fra fil
+     * Laster innhold fra fil.
      */
     @FXML
-    private void loadFromFile(){
+    private void loadFromFile() {
         try {
             leaderboard = fm.readFromFile();
         } catch (IOException e) {
-            showErrorMessage("There was an error loading the savefile. Either the savefile was manually edited, or the savefile was moved from its location");
+            showErrorMessage(
+                    "There was an error loading the savefile. Either the savefile was manually edited, or the savefile was moved from its location");
         }
         updateListViews();
         leaderBoardList();
     }
 
-    /** Oppdaterer listviews slik at riktig informasjon vises */
+    /** Oppdaterer listviews slik at riktig informasjon vises. */
     @FXML
     private void updateListViews() {
         this.monday.getItems().clear();
@@ -102,7 +103,7 @@ public class CleanEController {
     }
 
     /**
-     * Lagrer innhold til fil
+     * Lagrer innhold til fil.
      */
     @FXML
     private void handleSaveButton() throws IOException {
@@ -111,6 +112,7 @@ public class CleanEController {
 
     /**
      * Metoden gkør det mulig å skrive inn nye brukere og gi dem en mengde poeng.
+     * 
      * @throws IOException
      */
     @FXML
@@ -132,16 +134,15 @@ public class CleanEController {
 
     }
 
-    /**Fjerner tekst fra inputfeltene når man skal lage ny bruker. */
+    /** Fjerner tekst fra inputfeltene når man skal lage ny bruker. */
     @FXML
     private void clearUserInput() {
         nameOfUser.clear();
         points.clear();
     }
 
-
     /**
-     * Hjelpemetode som sjekker om en navnet til en bruker allerede finnes
+     * Hjelpemetode som sjekker om en navnet til en bruker allerede finnes.
      * 
      * @param assignedUser
      * @return
@@ -162,7 +163,7 @@ public class CleanEController {
 
     /**
      * Legger til en oppgave til en bruker utifra hva som er skrevet
-     * i input-feltene
+     * i input-feltene.
      */
     @FXML
     private void appendTask() {
@@ -186,7 +187,7 @@ public class CleanEController {
     }
 
     /**
-     * Legger en bruker til Leaderboard
+     * Legger en bruker til Leaderboard.
      * 
      * @param u
      */
@@ -198,9 +199,8 @@ public class CleanEController {
 
     // Kontrollerlogikk for leaderBoard
 
-
     /**
-     * Sorterer Listview til ledertavlen
+     * Sorterer Listview til ledertavlen.
      */
     @FXML
     private void leaderBoardList() {
@@ -243,7 +243,7 @@ public class CleanEController {
     }
 
     /**
-     * Fjerner teksten i inputfeltene når man trykker på "cancel" knappen
+     * Fjerner teksten i inputfeltene når man trykker på "cancel" knappen.
      */
     @FXML
     private void clearTaskInput() {

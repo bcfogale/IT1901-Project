@@ -5,7 +5,10 @@
               xsi:schemaLocation="https://github.com/spotbugs/filter/3.0.0 https://raw.githubusercontent.com/spotbugs/spotbugs/3.1.0/spotbugs/etc/findbugsfilter.xsd">
 
 <Match>
-  <Class name="core.Task"/>
+  <Classes>
+    <Class name="core.Task"/>
+    <Class name ="rest.CleanEService"/>
+  </Classes>
   <Bug code="EI2" />
 </Match>
 <Match>

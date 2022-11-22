@@ -8,18 +8,17 @@ import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-// Test for first iteration
 public class UserTest {
 
     User s;
 
-    /**Lager ny User objekt før hver test */
+    /**Lager ny User objekt før hver test. */
     @BeforeEach
     public void setup() {
         s = new User("Sander");
     }
 
-    /**Tester konstruktøren til User-klassen */
+    /**Tester konstruktøren til User-klassen. */
     @Test
     public void testConstructor() {
         assertEquals(0, s.getPoints());
@@ -27,7 +26,7 @@ public class UserTest {
         assertTrue(s.getTasks().isEmpty());
     }
 
-    /**Tester om addTask metoden legger til oppgaver til brukeren */
+    /**Tester om addTask metoden legger til oppgaver til brukeren. */
     @Test
     public void testAddTask() {
         s.addTask(new Task("taskName", 5, "monday", UUID.randomUUID().toString()));
@@ -35,7 +34,7 @@ public class UserTest {
         assertEquals(1, s.getTasks().size());
     }
 
-    /**Tester om addPoint metoden legger til poeng */
+    /**Tester om addPoint metoden legger til poeng. */
     @Test
     public void testAddPoint() {
         s.addPoints(10);
@@ -44,7 +43,7 @@ public class UserTest {
         assertEquals(50, s.getPoints());
     }
 
-    /**Tester om det er mulig å endre navn på brukeren med setName metoden */
+    /**Tester om det er mulig å endre navn på brukeren med setName metoden. */
     @Test
     public void testSetName() {
         assertEquals("Sander", s.getName());
@@ -54,7 +53,7 @@ public class UserTest {
         assertEquals("Benji", s.getName());
     }
 
-    /**Tester om det er mulig å fjerne Task objekter fra en bruker */
+    /**Tester om det er mulig å fjerne Task objekter fra en bruker. */
     @Test
     public void testRemoveTask() {
         Task t = new Task(s, "Vaske leilighet", 3, "monday");

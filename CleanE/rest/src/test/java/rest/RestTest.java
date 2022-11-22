@@ -42,11 +42,16 @@ import json.FileManagement;
 @WebMvcTest
 @TestInstance(Lifecycle.PER_CLASS)
 public class RestTest {
-    
-    /*Alle test annotasjoner unntatt den første er kommentert ut grunnet en error som oppstod når man skal legge til en bruker. Vi går
-     * statuskode 415 når man skal få kode 200, vi har ikke klart å fikse denne erroren. Ettersom å legge til en bruker ikke fungerer,
-     * så skaper dette en domino effekt hvor det hverken vil være mulig å legge til Tasks eller poeng. Testdekningsgraden til Rest vil
-     * derfor være 0%, men vi har fortsatt laget tester som vi tror ville økt dette betraktelig hadde vi løst erroren.
+
+    /*
+     * Alle test annotasjoner unntatt den første er kommentert ut grunnet en error
+     * som oppstod når man skal legge til en bruker. Vi går
+     * statuskode 415 når man skal få kode 200, vi har ikke klart å fikse denne
+     * erroren. Ettersom å legge til en bruker ikke fungerer,
+     * så skaper dette en domino effekt hvor det hverken vil være mulig å legge til
+     * Tasks eller poeng. Testdekningsgraden til Rest vil
+     * derfor være 0%, men vi har fortsatt laget tester som vi tror ville økt dette
+     * betraktelig hadde vi løst erroren.
      */
 
     @Autowired
@@ -54,35 +59,39 @@ public class RestTest {
 
     private ObjectMapper objectMapper;
     private FileManagement manager = new FileManagement();
-    
+
     private Path copied = Paths.get("../savestates/savefile_copy.json");
     private Path originalPath = Paths.get("../savestates/savefile.json");
 
     /**
-     * Lager en kopi av savefile.json før testene begynner
+     * Lager en kopi av savefile.json før testene begynner.
+     * 
      * @throws IOException
      */
     @BeforeAll
     public void beforeAll() throws IOException {
-        
+
         Files.copy(originalPath, copied, StandardCopyOption.COPY_ATTRIBUTES);
     }
 
     /**
-     * Setter opp en ny ObjectMapper før hver test og legger til CleanEModule som modul.
+     * Setter opp en ny ObjectMapper før hver test og legger til CleanEModule som
+     * modul.
+     * 
      * @throws IOException
      */
     @BeforeEach
     public void setup() throws IOException {
         this.objectMapper = new ObjectMapper();
         this.objectMapper.registerModule(new CleanEModule());
-        
+
     }
 
-
     /**
-     * Setter savefile.json til å bli kopien som ble laget før testingen og sletter kopien.
+     * Setter savefile.json til å bli kopien som ble laget før testingen og sletter
+     * kopien.
      * Dette er for å passe på at testene ikke permanent endrer savefile.json.
+     * 
      * @throws IOException
      */
     @AfterAll
@@ -93,7 +102,9 @@ public class RestTest {
     }
 
     /**
-     * En hjelpemetode som tar inn strings som et argument og lar oss skrive inn hvor vi vil mappe til.
+     * En hjelpemetode som tar inn strings som et argument og lar oss skrive inn
+     * hvor vi vil mappe til.
+     * 
      * @param strings
      * @return
      */
@@ -107,20 +118,21 @@ public class RestTest {
 
     /**
      * Tester om man får leaderboard objektet gjennom en HTTP GET forespørsel.
+     * 
      * @throws Exception
      */
     @Test
     public void initializationTest() throws Exception {
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get(getURL())
-        .accept(MediaType.APPLICATION_JSON))
-        .andExpect(MockMvcResultMatchers.status().isOk())
-        .andReturn();
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
 
         try {
             Leaderboard leaderboard = objectMapper.readValue(result.getResponse().getContentAsString(),
-            Leaderboard.class);
+                    Leaderboard.class);
             Leaderboard leaderboard2 = manager.readFromFile();
-            assertEquals(leaderboard2.getUsers().size() ,leaderboard.getUsers().size());
+            assertEquals(leaderboard2.getUsers().size(), leaderboard.getUsers().size());
 
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -129,6 +141,7 @@ public class RestTest {
 
     /**
      * Tester om en bruker blir lagt til i REST-serveren.
+     * 
      * @throws Exception
      */
     // @Test
@@ -143,12 +156,12 @@ public class RestTest {
                 .andReturn();
 
         MvcResult getResult = mockMvc.perform(MockMvcRequestBuilders.get(getURL("getUsers"))
-            .accept(MediaType.APPLICATION_JSON))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andReturn();
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
 
         try {
-            
+
             CollectionType javaType = objectMapper.getTypeFactory()
                     .constructCollectionType(List.class, User.class);
             List<User> load = objectMapper.readValue(getResult.getResponse().getContentAsString(), javaType);
@@ -160,7 +173,8 @@ public class RestTest {
     }
 
     /**
-     * Tester om man kan legge til poeng til en eksisterende bruker i REST-serveren
+     * Tester om man kan legge til poeng til en eksisterende bruker i REST-serveren.
+     * 
      * @throws Exception
      */
     // @Test
@@ -176,30 +190,31 @@ public class RestTest {
                 .andReturn();
 
         mockMvc.perform(MockMvcRequestBuilders.put(getURL("addPoints", "Isaac")).content(poengAsString)
-        .contentType(MediaType.APPLICATION_JSON)
-        .accept(MediaType.APPLICATION_JSON))
-        .andExpect(MockMvcResultMatchers.status().isOk())
-        .andReturn();
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
 
         MvcResult getResult = mockMvc.perform(MockMvcRequestBuilders.get(getURL("getUser", "Isaac"))
-        .accept(MediaType.APPLICATION_JSON))
-        .andExpect(MockMvcResultMatchers.status().isOk())
-        .andReturn();
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
 
         try {
             User testUser = objectMapper.readValue(getResult.getResponse().getContentAsString(),
-            User.class); 
+                    User.class);
 
             assertEquals(6, testUser.getPoints());
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
 
-        
     }
 
     /**
-     * Tester om man kan legge til en Task til en eksisterende bruker i REST-serveren
+     * Tester om man kan legge til en Task til en eksisterende bruker i
+     * REST-serveren.
+     * 
      * @throws Exception
      */
     // @Test
@@ -216,19 +231,19 @@ public class RestTest {
                 .andReturn();
 
         mockMvc.perform(MockMvcRequestBuilders.put(getURL("addTask", "Sandra")).content(taskAsString)
-        .contentType(MediaType.APPLICATION_JSON)
-        .accept(MediaType.APPLICATION_JSON))
-        .andExpect(MockMvcResultMatchers.status().isOk())
-        .andReturn();
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
 
         MvcResult getResult = mockMvc.perform(MockMvcRequestBuilders.get(getURL("getUser", "Sandra"))
-        .accept(MediaType.APPLICATION_JSON))
-        .andExpect(MockMvcResultMatchers.status().isOk())
-        .andReturn();
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
 
         try {
             User testUser = objectMapper.readValue(getResult.getResponse().getContentAsString(),
-            User.class);
+                    User.class);
             assertEquals(t1, testUser.getTaskByUUID("temp"));
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -237,10 +252,11 @@ public class RestTest {
 
     /**
      * Tester om det er mulig å fjerne en Task fra en bruker som er i REST-serveren.
+     * 
      * @throws Exception
      */
     // @Test
-    public void testRemoveTask() throws Exception{
+    public void testRemoveTask() throws Exception {
         User u4 = new User("Safura");
         String u4AsString = objectMapper.writeValueAsString(u4);
         Task t2 = new Task(u4, "Vaske badet", 10, "friday", "tempID");
@@ -253,41 +269,40 @@ public class RestTest {
                 .andReturn();
 
         mockMvc.perform(MockMvcRequestBuilders.put(getURL("addTask", "Safura")).content(taskAsString)
-        .contentType(MediaType.APPLICATION_JSON)
-        .accept(MediaType.APPLICATION_JSON))
-        .andExpect(MockMvcResultMatchers.status().isOk())
-        .andReturn();
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
 
         MvcResult getResult = mockMvc.perform(MockMvcRequestBuilders.get(getURL("getUser", "Safura"))
-        .accept(MediaType.APPLICATION_JSON))
-        .andExpect(MockMvcResultMatchers.status().isOk())
-        .andReturn();
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
 
         try {
             User testUser = objectMapper.readValue(getResult.getResponse().getContentAsString(),
-            User.class);
+                    User.class);
             assertEquals(1, testUser.getTasks().size());
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
 
         mockMvc.perform(MockMvcRequestBuilders.delete(getURL("removeTaskByUUID", "tempID"))
-        .accept(MediaType.APPLICATION_JSON))
-        .andExpect(MockMvcResultMatchers.status().isOk())
-        .andReturn();
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
 
         MvcResult getResult2 = mockMvc.perform(MockMvcRequestBuilders.get(getURL("getUser", "Safura"))
-        .accept(MediaType.APPLICATION_JSON))
-        .andExpect(MockMvcResultMatchers.status().isOk())
-        .andReturn();
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
 
         try {
             User testUser2 = objectMapper.readValue(getResult2.getResponse().getContentAsString(),
-            User.class);
+                    User.class);
             assertEquals(0, testUser2.getTasks().size());
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
     }
-
 }

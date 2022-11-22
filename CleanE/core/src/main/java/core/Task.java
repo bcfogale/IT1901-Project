@@ -6,7 +6,8 @@ import java.util.UUID;
 
 public class Task {
 
-    final private static List<String> days = Arrays.asList("monday", "tuesday", "wednesday", "thursday", "friday", "saturday",
+    final private static List<String> days = Arrays.asList("monday", "tuesday", "wednesday", "thursday", "friday",
+            "saturday",
             "sunday");
 
     private String taskName;
@@ -16,14 +17,13 @@ public class Task {
     private User assignedUser;
     private String uuid;
 
-
-    
-
     public Task() {
     }
 
     /**
-     * Konstruerer objektet og setter alle feltene til klassen unntatt dueDay, som allerede er satt til "false".
+     * Konstruerer objektet og setter alle feltene til klassen unntatt dueDay, som
+     * allerede er satt til "false".
+     * 
      * @param assignedUser
      * @param taskName
      * @param pointsValue
@@ -50,7 +50,9 @@ public class Task {
     }
 
     /**
-     * Konstruerer objektet og setter alle feltene til klassen unntatt dueDay, som allerede er satt til "false".
+     * Konstruerer objektet og setter alle feltene til klassen unntatt dueDay, som
+     * allerede er satt til "false".
+     * 
      * @param assignedUser
      * @param taskName
      * @param pointsValue
@@ -73,6 +75,7 @@ public class Task {
 
     /**
      * Enda en konstruktør, men denne brukes kun for deserialisering og testing.
+     * 
      * @param taskName
      * @param pointsValue
      * @param dueDay
@@ -89,7 +92,8 @@ public class Task {
     }
 
     /**
-     * Setter completed til true og legger til oppgavens poengsum til den ansvarlige brukeren
+     * Setter completed til true og legger til oppgavens poengsum til den ansvarlige
+     * brukeren.
      */
     public void setTrue() {
         this.completed = true;

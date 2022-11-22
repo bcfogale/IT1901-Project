@@ -8,9 +8,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * Starter applikasjonen
+ * Starter applikasjonen.
  */
-public class CleanERemoteApp extends Application{
+public class CleanERemoteApp extends Application {
     public static void main(String[] args) {
         Application.launch(args);
     }

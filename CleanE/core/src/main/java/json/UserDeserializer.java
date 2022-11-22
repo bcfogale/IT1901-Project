@@ -20,7 +20,8 @@ public class UserDeserializer extends JsonDeserializer<User> {
     TaskDeserializer taskDeserializer = new TaskDeserializer();
 
     /**
-     * Deserialiserer User-klassen for JSON lagring
+     * Deserialiserer User-klassen for JSON lagring.
+     * 
      * @param jsonNode
      * @return
      */
@@ -56,7 +57,7 @@ public class UserDeserializer extends JsonDeserializer<User> {
         return null;
     }
 
-    /**Deserialiserer User-klassen for JSON lagring */
+    /** Deserialiserer User-klassen for JSON lagring. */
     @Override
     public User deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JacksonException {
         TreeNode treeNode = parser.getCodec().readTree(parser);
