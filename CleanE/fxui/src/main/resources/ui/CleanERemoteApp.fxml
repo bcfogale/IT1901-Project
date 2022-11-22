@@ -11,11 +11,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #b7b8ac;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CleanERemoteController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="783.0" prefWidth="1280.0" style="-fx-background-color: #b7b8ac;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CleanERemoteController">
    <children>
-      <VBox prefHeight="1086.0" prefWidth="1925.0" AnchorPane.bottomAnchor="-6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
+      <VBox fillWidth="false" prefHeight="1086.0" prefWidth="1925.0" AnchorPane.bottomAnchor="-6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="123.0" prefWidth="1272.0">
+            <HBox alignment="CENTER" prefHeight="9.0" prefWidth="1279.0">
                <children>
                   <Text stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="CleanE" textAlignment="CENTER" wrappingWidth="1278.5447998046875">
                      <font>
@@ -366,7 +366,7 @@
                            <children>
                               <VBox prefHeight="366.0" prefWidth="271.0">
                                  <children>
-                                    <ListView fx:id="scorelist" prefHeight="275.0" prefWidth="267.0" style="-fx-border-color: #b7c2b9; -fx-border-radius: 20;">
+                                    <ListView fx:id="scoreList" prefHeight="275.0" prefWidth="267.0" style="-fx-border-color: #b7c2b9; -fx-border-radius: 20;">
                                        <VBox.margin>
                                           <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                        </VBox.margin>
