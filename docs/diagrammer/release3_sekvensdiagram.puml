@@ -2,25 +2,25 @@
 
 actor U1
 
-U1 -> RemoteCleanEController: Legg til bruker
-RemoteCleanEController -> RemoteCleanEAccess: addUser(User)
+U1 -> CleanERemoteController: Legg til bruker
+CleanERemoteController -> RemoteCleanEAccess: addUser(User)
 RemoteCleanEAccess -> ResponseController: HTTP POST
 ResponseController -> RemoteCleanEAccess: 200
-RemoteCleanEController -> RemoteCleanEAccess: getUsers()
+CleanERemoteController -> RemoteCleanEAccess: getUsers()
 RemoteCleanEAccess -> ResponseController: HTTP GET
 ResponseController -> RemoteCleanEAccess: 200
-RemoteCleanEAccess -> RemoteCleanEController: List<User>
-RemoteCleanEController -> U1: Scoreboard i UI oppdatert med bruker
+RemoteCleanEAccess -> CleanERemoteController: List<User>
+CleanERemoteController -> U1: Scoreboard i UI oppdatert med bruker
 
-U1 -> RemoteCleanEController: Legg til oppgave til bruker
-RemoteCleanEController -> RemoteCleanEAccess: addTask(Task)
+U1 -> CleanERemoteController: Legg til oppgave til bruker
+CleanERemoteController -> RemoteCleanEAccess: addTask(Task)
 RemoteCleanEAccess -> ResponseController: HTTP PUT
 ResponseController -> RemoteCleanEAccess: 200
-RemoteCleanEController -> RemoteCleanEAccess: updateListviews()
+CleanERemoteController -> RemoteCleanEAccess: updateListviews()
 RemoteCleanEAccess -> ResponseController: HTTP GET
 ResponseController -> RemoteCleanEAccess: 200
-RemoteCleanEAccess -> RemoteCleanEController: Task
-RemoteCleanEController -> U1: Listview med tasks i UI oppdatert med task
+RemoteCleanEAccess -> CleanERemoteController: Task
+CleanERemoteController -> U1: Listview med tasks i UI oppdatert med task
 
 
 @enduml
