@@ -7,6 +7,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Starter applikasjonen
+ */
 public class CleanERemoteApp extends Application{
     public static void main(String[] args) {
         Application.launch(args);
