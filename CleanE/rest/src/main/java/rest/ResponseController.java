@@ -28,7 +28,7 @@ public class ResponseController {
 	@Autowired
 	private CleanEService cleanEService;
 
-	public void save() throws IOException {
+	private void save() throws IOException {
 		this.cleanEService.save();
 	}
 
@@ -74,28 +74,32 @@ public class ResponseController {
 	}
 
 	@DeleteMapping(path = "/removeTaskByUUID/{uuid}")
-	public void removeTaskByUUID(@PathVariable("uuid") String uuid) {
+	public void removeTaskByUUID(@PathVariable("uuid") String uuid) throws IOException {
 		for (User u : getLeaderboard().getUsers()) {
 			if (u.getTaskByUUID(uuid)!=null) {
 				u.removeTaskByUUID(uuid);
 			}
 		}
+		save();
 	}
 
 	@PutMapping(path = "/addTask/{name}")
-	public void addTask(@RequestBody Task task, @PathVariable("name") String name) {
+	public void addTask(@RequestBody Task task, @PathVariable("name") String name) throws IOException {
 		getLeaderboard().getUser(name).addTask(task);
+		save();
 	}
 
 	@PostMapping(path = "/addUser")
-	public void addUser(@RequestBody User user) {
+	public void addUser(@RequestBody User user) throws IOException {
 		System.out.println(user);
 		getLeaderboard().addUser(user);
+		save();
 	}
 
 	@PutMapping(path = "/addPoints/{name}")
-	public void addPoints(@RequestBody int additionalPoints, @PathVariable("name") String name) {
+	public void addPoints(@RequestBody int additionalPoints, @PathVariable("name") String name) throws IOException {
 		getLeaderboard().getUser(name).addPoints(additionalPoints);
+		save();
 	}
 	
 /*
