@@ -12,9 +12,10 @@ Vi har også gjort noen mindre endringer som å fjerne oppdateringsknappen fra p
 
 <img src="../docs/prosjekt-images/sekvensdiagram_release3.png">
 
-<h2>Klassediagram Core</h2>
+<h2>Klassediagram</h2>
 
-<img src="../docs/prosjekt-images/klassediagram_core.png">
+<img src="../docs/prosjekt-images/klassediagram.png" >
+<figcaption><b>Vi valgte å eksludere mange av metodene i klassene som tilhørte REST, fordi de ikke ga noe verdi til diagrammet. Det mest essensielle er med.</b></figcaption>
 
 <h2>Pakkediagram</h2>
 

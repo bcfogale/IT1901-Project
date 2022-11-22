@@ -20,6 +20,24 @@ class User{
 +String toString()
 }
 
+class CleanERemoteController {
+
+}
+
+class RemoteCleanEAccess {
+
+}
+
+class ResponseController {
+
+}
+
+class CleanEService {
+
+}
+
+
+
 class Task {
 - List<String> days;
 - String taskName;
@@ -35,8 +53,14 @@ class Task {
 + String getDueDay()
 + String toString()
 }
+
+CleanEService ..> Leaderboard
 Leaderboard  --> "*" User: Contains
 User "1" -- "*" Task: Has
+CleanERemoteController ..> RemoteCleanEAccess
+RemoteCleanEAccess <..> ResponseController: HTTP
+ResponseController ..> CleanEService
+
 
 
 @enduml

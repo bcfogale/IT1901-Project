@@ -5,12 +5,13 @@
 
 Prosjektet bruker maven til bygging og kjøring. Gjør følgende operasjoner i terminalen (gitt at du starter fra rotnivå i terminalen):
 
-- Steg 1: &emsp; <code>cd rest </code>
-- Steg 2: &emsp; <code>mvn spring-boot:run </code>
-- Steg 3: &emsp; Åpne så en ny terminal og skriv kommandoene i de neste stegene i denne terminalen
-- Steg 4: &emsp; <code>cd CleanE </code>
-- Steg 5: &emsp; <code>mvn clean install </code>
-- Steg 6: &emsp; <code>mvn javafx:run -f fxui/pom.xml </code>
+- Steg 1: &emsp; <code>cd CleanE </code>
+- Steg 2: &emsp; <code>cd rest </code>
+- Steg 3: &emsp; <code>mvn spring-boot:run </code>
+- Steg 4: &emsp; Åpne så en ny terminal og skriv kommandoene i de neste stegene i denne terminalen
+- Steg 5: &emsp; <code>cd CleanE </code>
+- Steg 6: &emsp; <code>mvn clean install </code>
+- Steg 7: &emsp; <code>mvn javafx:run -f fxui/pom.xml </code>
 
 
 <h1>Innhold</h1>
