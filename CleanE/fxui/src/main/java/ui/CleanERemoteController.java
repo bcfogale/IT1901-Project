@@ -11,9 +11,11 @@ import java.util.List;
 import core.Leaderboard;
 import core.Task;
 import core.User;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 
 public class CleanERemoteController {
 
@@ -80,13 +82,25 @@ public class CleanERemoteController {
 
 
     @FXML
-    private void handleAddUserButton() throws IOException{
-        User u = checkIfUserExists(nameOfUser.getText());
-        int pointsToAdd = Integer.parseInt(points.getText());
-        u.addPoints(pointsToAdd);
-        remoteCleanEAccess.addUser(u);
-        leaderBoardList();
-        clearUserInput();
+    private void handleAddUserButton(){ 
+        
+        try {
+            User u = checkIfUserExists(nameOfUser.getText());
+            int pointsToAdd = Integer.parseInt(points.getText());
+            u.addPoints(pointsToAdd);
+            remoteCleanEAccess.addUser(u);
+            leaderBoardList();
+            clearUserInput();
+        } catch (IllegalArgumentException e) {
+            if (e.getMessage().equals("For input string: \"\"")) {
+                showErrorMessage("Please fill out ALL fields with valid values.");
+            } else {
+                showErrorMessage(e.getMessage());
+            }
+        } catch (Exception e){
+            showErrorMessage(e.getMessage());
+        }
+        
     }
 
     @FXML
@@ -150,13 +164,23 @@ public class CleanERemoteController {
      */
     // sette inn if/else så at AddTask button er ubrukelig mens texfields er tomt
     @FXML
-    private void appendTask() throws IOException {
-        User u = userTextToObject(assignedUser.getText());
-        remoteCleanEAccess.addTask(u, new Task(u, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText()));
-        updateListViews();
-        scoreList.getItems().clear();
-        scoreList.getItems().setAll(remoteCleanEAccess.getUsers());
-        clearTask();
+    private void appendTask(){
+        try {
+            User u = userTextToObject(assignedUser.getText());
+            remoteCleanEAccess.addTask(u, new Task(u, taskName.getText(), Integer.parseInt(pointsValue.getText()), dueDay.getText()));
+            updateListViews();
+            scoreList.getItems().clear();
+            scoreList.getItems().setAll(remoteCleanEAccess.getUsers());
+            clearTask();
+        } catch (IOException e) {
+            showErrorMessage(e.getMessage());
+        } catch (IllegalArgumentException e) {
+            if (e.getMessage().equals("For input string: \"\"")) {
+                showErrorMessage("Please fill out ALL fields with valid values.");
+            } else {
+                showErrorMessage("The user was successfully created, but not the task." + e.getMessage());
+            }
+        }
     }
 
 
@@ -221,6 +245,14 @@ public class CleanERemoteController {
         this.taskName.clear();
         this.pointsValue.clear();
         this.dueDay.clear();
+    }
+
+    private void showErrorMessage(String errorMessage) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Error message");
+        alert.setHeaderText("Something went wrong");
+        alert.setContentText(errorMessage);
+        alert.showAndWait();
     }
 
     // Gettere for testing
