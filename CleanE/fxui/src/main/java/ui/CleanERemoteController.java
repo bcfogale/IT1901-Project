@@ -223,11 +223,6 @@ public class CleanERemoteController {
         this.dueDay.clear();
     }
 
-    @FXML
-    private void handleReset() {
-        scoreList.getItems().clear();
-    }
-
     // Gettere for testing
     public Leaderboard getLeaderboard() {
         return this.leaderboard;

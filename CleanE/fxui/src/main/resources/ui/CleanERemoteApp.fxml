@@ -205,7 +205,7 @@
                         </HBox>
                      </children>
                   </Pane>
-                  <Pane prefHeight="625.0" prefWidth="389.0" style="-fx-background-color: white;">
+                  <Pane prefHeight="375.0" prefWidth="433.0" style="-fx-background-color: white;">
                      <children>
                         <VBox layoutX="21.0" layoutY="454.0" prefHeight="50.0" prefWidth="426.0" />
                         <VBox alignment="CENTER" prefHeight="0.0" prefWidth="446.0">
@@ -219,7 +219,7 @@
                         </VBox>
                         <VBox layoutY="89.0" prefHeight="467.0" prefWidth="379.0">
                            <children>
-                              <VBox prefHeight="467.0" prefWidth="409.0">
+                              <VBox prefHeight="471.0" prefWidth="445.0">
                                  <children>
                                     <HBox prefWidth="445.0">
                                        <children>
@@ -272,7 +272,7 @@
                                           </ListView>
                                        </children>
                                     </HBox>
-                                    <HBox prefHeight="60.0" prefWidth="387.0">
+                                    <HBox prefWidth="429.0">
                                        <children>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thursday" textAlignment="RIGHT" wrappingWidth="89.0">
                                              <font>
@@ -374,14 +374,6 @@
                                           <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                        </VBox.margin>
                                     </ListView>
-                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleReset" prefHeight="27.0" prefWidth="75.0" text="Reset" textAlignment="RIGHT">
-                                       <font>
-                                          <Font name="Tw Cen MT" size="14.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets left="193.0" top="8.0" />
-                                       </VBox.margin>
-                                    </Button>
                                  </children>
                               </VBox>
                            </children>
