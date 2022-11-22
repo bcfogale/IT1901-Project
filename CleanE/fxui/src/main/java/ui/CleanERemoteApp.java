@@ -16,6 +16,7 @@ public class CleanERemoteApp extends Application{
     public void start(Stage primaryStage) throws IOException {
         primaryStage.setTitle("CleanE");
         primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("CleanERemoteApp.fxml"))));
+        primaryStage.setMaximized(true);
         primaryStage.show();
     }
 }
