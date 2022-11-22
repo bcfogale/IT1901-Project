@@ -50,9 +50,16 @@ _App & Kontroller_
 
 - [Clean-E Remote Controller](CleanE/fxui/src/main/java/ui/CleanERemoteController.java) => Filen inneholder kontrolleren for å bruke REST API.
 
+- [Clean-E Remote Controller](CleanE/fxui/src/main/java/ui/RemoteCleanEAccess.java) => Filen håndterer HTTP-forespørsler.
+
 <u><h3>REST</h3></u>
 
 - [Application](CleanE/rest/src/main/java/rest/Application.java) => Filen trengs for å starte REST-server.
+
+- [CleanE Service](CleanE/rest/src/main/java/rest/CleanEService.java) => Filen setter opp Leaderboard i REST API.
+
+- [Response Controller](CleanE/rest/src/main/java/rest/ResponseController.java) => Filen manipulerer Leaderboard i CleanE Service.
+
 
 </br>
 <h1>Testdekningsgrad</h1>
