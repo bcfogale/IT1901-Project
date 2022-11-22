@@ -19,7 +19,7 @@ public class User {
      * @param name
      */
     public User(String name) {
-        if (name.length()<1) {
+        if (name.length()<2) {
             throw new IllegalArgumentException("Name should be 2 characters or more.");
         } else {
             this.name = name;

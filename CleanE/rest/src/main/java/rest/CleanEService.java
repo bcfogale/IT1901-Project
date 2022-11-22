@@ -16,9 +16,9 @@ public class CleanEService {
         this.fileManagement = new FileManagement();
         this.leaderboard = leaderboard;
     }
-    public CleanEService() {
+    public CleanEService() throws IOException {
         this.fileManagement = new FileManagement();
-        this.leaderboard = new Leaderboard();
+        this.leaderboard = fileManagement.readFromFile();
     }
 
     public void save() throws IOException {
