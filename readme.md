@@ -42,11 +42,17 @@ _UI_
 
 _App & Kontroller_
 
-- [Clean-E App](CleanE/fxui/src/main/java/ui/CleanEApp.java) => Filen inneholder main kode for å kjøre appen.
+- [Clean-E App](CleanE/fxui/src/main/java/ui/CleanEApp.java) => Filen inneholder kode for å kjøre appen.
+
+- [Clean-E Remote App](CleanE/fxui/src/main/java/ui/CleanERemoteApp.java) => Filen inneholder kode for å kjøre appen med REST API.
 
 - [Clean-E Controller](CleanE/fxui/src/main/java/ui/CleanEController.java) => Filen inneholder kontrolleren.
 
+- [Clean-E Remote Controller](CleanE/fxui/src/main/java/ui/CleanERemoteController.java) => Filen inneholder kontrolleren for å bruke REST API.
+
 <u><h3>REST</h3></u>
+
+- [Application](CleanE/rest/src/main/java/rest/Application.java) => Filen trengs for å starte REST-server.
 
 </br>
 <h1>Testdekningsgrad</h1>
