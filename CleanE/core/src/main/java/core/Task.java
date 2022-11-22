@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public class Task {
 
-    final private List<String> days = Arrays.asList("monday", "tuesday", "wednesday", "thursday", "friday", "saturday",
+    final private static List<String> days = Arrays.asList("monday", "tuesday", "wednesday", "thursday", "friday", "saturday",
             "sunday");
 
     private String taskName;

@@ -2,7 +2,6 @@ package json;
 
 import java.io.File;
 import java.io.IOException;
-
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -11,7 +10,10 @@ import core.Leaderboard;
 public class FileManagement {
 
     private ObjectMapper mapper;
-    private final File file = new File("../savestates/savefile.json");
+    private final static File file = new File("../savestates/savefile.json");
+
+    private boolean b1;
+    private boolean b2;
 
     /**
      * Oppsett av mapper gjøres i konstruktøren.
@@ -41,6 +43,25 @@ public class FileManagement {
         return mapper.readerFor(Leaderboard.class).readValue(file);
         
     }
+
+    public void deleteSavedContent() throws IOException {
+        String s = System.getProperty("user.dir");
+        File f = new File(s+"/CleanE/savestates/savefile.json");
+
+        b1 = f.delete();
+        b2 = f.createNewFile();
+    }
+
+    public boolean isB1() {
+        return b1;
+    }
+
+    public boolean isB2() {
+        return b2;
+    } 
     
-    
+    public static void main(String[] args) throws IOException {
+        FileManagement m = new FileManagement();
+        m.deleteSavedContent();
+    }
 }

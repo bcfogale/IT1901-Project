@@ -59,8 +59,8 @@
                         <Font size="40.0" />
                      </font>
                   </Text>
-                  <Button mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="24.0" prefWidth="87.0" text="Save" textAlignment="CENTER" GridPane.rowIndex="1" />
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#loadFromFile" prefHeight="26.0" prefWidth="88.0" text="Load" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="24.0" prefWidth="87.0" text="Save" textAlignment="CENTER" GridPane.rowIndex="1" />
+                  <Button fx:id="loadButton" alignment="CENTER" mnemonicParsing="false" onAction="#loadFromFile" prefHeight="26.0" prefWidth="88.0" text="Load" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Monday" wrappingWidth="99.57619857788086" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
@@ -362,12 +362,12 @@
                   </HBox>
                   <HBox alignment="TOP_RIGHT">
                      <children>
-                        <Button alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#handleAddUserButton" prefHeight="26.0" prefWidth="96.0" text="Add user">
+                        <Button fx:id="addUser" alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#handleAddUserButton" prefHeight="26.0" prefWidth="96.0" text="Add user">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#clearUserInput" prefWidth="63.0" text="Cancel">
+                        <Button fx:id="cancelUserInput" mnemonicParsing="false" onAction="#clearUserInput" prefWidth="63.0" text="Cancel">
                            <HBox.margin>
                               <Insets left="10.0" right="54.0" />
                            </HBox.margin>

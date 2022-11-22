@@ -12,7 +12,6 @@ import java.util.List;
 import com.fasterxml.jackson.core.JsonParser.Feature;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import core.Leaderboard;
 import core.Task;
 import core.User;
@@ -81,8 +80,8 @@ public class RemoteCleanEAccess {
      */
     private void addUser(User u, String method) {
         try {
-
             String json = objectMapper.writeValueAsString(u);
+            System.out.println(json);
             HttpRequest request = HttpRequest.newBuilder(setURI(method))
             .header(ACCEPT_HEADER, APPLICATION_JSON)
             .header(CONTENT_TYPE_HEADER, APPLICATION_JSON)

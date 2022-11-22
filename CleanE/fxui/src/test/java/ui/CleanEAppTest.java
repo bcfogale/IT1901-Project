@@ -3,21 +3,29 @@ package ui;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import core.Leaderboard;
 import core.Task;
 import core.User;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
+import json.FileManagement;
 
 public class CleanEAppTest extends ApplicationTest {
 
@@ -37,7 +45,7 @@ public class CleanEAppTest extends ApplicationTest {
 
     }
 
-    /**Lager brukere med oppgaver før hver test */
+    /** Lager brukere med oppgaver før hver test */
     @BeforeEach
     public void setup() {
         user1 = new User("Sander");
@@ -56,14 +64,53 @@ public class CleanEAppTest extends ApplicationTest {
 
     }
 
-    /**Tester om kontrollen og ledertavlen eksisterer slik at de andre testene vil fungere */
+    /**
+     * Tester om kontrollen og ledertavlen eksisterer slik at de andre testene vil
+     * fungere
+     */
     @Test
     public void testControllerAndLeaderboard() {
         assertNotNull(this.controller);
         assertNotNull(this.leaderboard);
     }
 
-    /**Skriver inn informasjon og tester om en oppgave med denne informasjonen faktisk blir laget */
+    /**
+     * Først lages en kopi.
+     * Deretter testes selve lagringen og den orginale filen skrives over.
+     * Til slutt bruker man kopien til å gjenopprette savefilen sin orginale tilstand og sletter kopien.
+     * @throws IOException
+     */
+    @Test
+    public void testSaveKnapp() throws IOException {
+        Path copied = Paths.get("../savestates/savefile_copy.json");
+        Path originalPath = Paths.get("../savestates/savefile.json");
+        Files.copy(originalPath, copied, StandardCopyOption.COPY_ATTRIBUTES);
+
+        
+        clickOn("#saveButton");
+        FileManagement f = new FileManagement();
+        assertThat(leaderboard).usingRecursiveComparison().isEqualTo(f.readFromFile());
+
+        Files.copy(copied, originalPath, StandardCopyOption.REPLACE_EXISTING);
+        File oldFile = copied.toFile();
+        oldFile.delete();
+    }
+
+    /**
+     * Sjekker om load knappen fungerer.
+     * @throws IOException
+     */
+    @Test
+    public void testLoadKnapp() throws IOException {
+        clickOn("#loadButton");
+        FileManagement f = new FileManagement();
+        assertThat(controller.getLeaderboard()).usingRecursiveComparison().isEqualTo(f.readFromFile());
+    }
+
+    /**
+     * Skriver inn informasjon og tester om en oppgave med denne informasjonen
+     * faktisk blir laget
+     */
     @Test
     public void testAddTask() {
         clickOn("#taskName").write("Støvsuge");
@@ -73,7 +120,8 @@ public class CleanEAppTest extends ApplicationTest {
 
         clickOn("#addButton");
 
-        Task t1 = (Task) user1.getTasks().stream().filter(e -> e.getTaskName().equals("Støvsuge")).findFirst().orElse(null);
+        Task t1 = (Task) user1.getTasks().stream().filter(e -> e.getTaskName().equals("Støvsuge")).findFirst()
+                .orElse(null);
         assertEquals("Støvsuge", t1.getTaskName());
         assertEquals("Sander", t1.getAssignedUser().getName());
         assertEquals(5, t1.getPointsValue());
@@ -81,7 +129,9 @@ public class CleanEAppTest extends ApplicationTest {
 
     }
 
-    /**Tester om "cancel"-knappen funker og fjerner informasjonen fra inputfeltene */
+    /**
+     * Tester om "cancel"-knappen funker og fjerner informasjonen fra inputfeltene
+     */
     @Test
     public void testClearTask() {
         clickOn("#taskName").write("Støvsuge");
@@ -98,7 +148,9 @@ public class CleanEAppTest extends ApplicationTest {
 
     }
 
-    /**Tester om "completed"-knappen fjerner den valgte oppgaven fra aktive oppgaver og oppdaterer antall
+    /**
+     * Tester om "completed"-knappen fjerner den valgte oppgaven fra aktive oppgaver
+     * og oppdaterer antall
      * poeng til brukeren.
      */
     @Test
@@ -114,14 +166,12 @@ public class CleanEAppTest extends ApplicationTest {
 
         press(KeyCode.ENTER).release(KeyCode.ENTER);
 
-        
-
         clickOn("#completedButton");
 
         assertEquals(10, user1.getPoints());
     }
 
-    /**Tester om "update"-knappen sorterer ledertavlen */
+    /** Tester om "update"-knappen sorterer ledertavlen */
     @Test
     public void testSortList() {
         task1.setTrue();
@@ -134,15 +184,44 @@ public class CleanEAppTest extends ApplicationTest {
 
         clickOn("#addButton");
 
-
         ObservableList<User> temp = this.controller.getScoreList().getItems();
 
         assertEquals(user1, temp.get(0));
 
     }
 
+    /**Tester å legge til bruker vha. inputfeltene. */
+    @Test
+    public void testAddUser() {
+        clickOn("#nameOfUser").write("Ajanan");
+        clickOn("#points").write("25");
+
+        clickOn("#addUser");
+
+        User u = (User) leaderboard.getUsers().stream().filter(e -> e.getName().equals("Ajanan")).findFirst()
+                    .orElse(null);
+
+        assertEquals(u.getName(), "Ajanan");
+        assertEquals(u.getPoints(), 25);
+    }
+
+
+    /**Tester om 'cancel'-knappen fjerner teksten fra inputene */
+    @FXML
+    public void testClearUser() {
+        clickOn("#nameOfUser").write("Ajanan");
+        clickOn("#points").write("25");
+
+        clickOn("#cancelUserInput");
+
+
+        assertEquals(controller.getPoints().getText(), "");
+        assertEquals(controller.getNameOfUser().getText(), "");
+    }
     // taskName
     // assignedUser
     // pointsValue
     // dueDay
+    // nameOfUser
+    // points
 }

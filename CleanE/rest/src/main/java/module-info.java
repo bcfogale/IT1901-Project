@@ -7,4 +7,6 @@ module CleanE.rest {
     requires spring.boot.autoconfigure;
 
     requires CleanE.core;
+
+    opens rest to spring.beans, spring.context, spring.web;
 }
