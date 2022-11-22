@@ -65,8 +65,6 @@ I dette prosjektet velger vi dokument-metafor i stedet for implisitt lagring, fo
 
 Appen lagrer brukeres informasjon tilstanden til programmet hver gang man trykker på SAVE knappen, og laster inn informasjonen fra filen til programmet med LOAD knappen.
 
-Når programmet kjører med REST, bruker vi implisitt lagring. Når REST-serveren kjøres vil naturligvis alt lastes inn så lenge serveren er gående.
-
 <p style="text-align:center;"><img src="docs/prosjekt-images/Clean-E_SAVE_LOAD.png"  width="300" height="100" ></p>
 
 <p style="text-align:center;">
